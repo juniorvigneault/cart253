@@ -1,8 +1,8 @@
 /**************************************************
-Template p5 project
-Pippin Barr
+Don is born
+Junior Vigneault
 
-Here is a description of this template p5 project.
+Don is an alien created with shapes.
 **************************************************/
 
 // setup()
