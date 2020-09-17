@@ -2,9 +2,9 @@
 Don is born
 Junior Vigneault
 
-Don is an alien created with shapes.
+Don is an alien created with shapes
 **************************************************/
-
+// Drawing of an alien
 // setup()
 //
 // Description of setup() goes here.
