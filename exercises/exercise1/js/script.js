@@ -6,20 +6,18 @@ Junior Vigneault - 40136480
 Here is a description of this template p5 project.
 **************************************************/
 
-let square1 = {
-  x: 500,
-  y: 500,
-  height: 1000,
-  width: 1000,
-  fill: 255,
-  alpha: 50
-}
+let bg = {
+  r: 0,
+  b: 0,
+  g: 0
+
+};
 
 // setup()
 //
 // Description of setup() goes here.
 function setup() {
-createCanvas(1000,1000);
+createCanvas(windowWidth,windowHeight);
 
 }
 
@@ -27,13 +25,18 @@ createCanvas(1000,1000);
 //
 // Description of draw() goes here.
 function draw() {
-background(255,0,0);
 
-// drawing square to make strobe effect
-rectMode(CENTER);
+// creating dark stroboscopy background
+  bg.r = random(0,50);
+  bg.g = random(0,50);
+  bg.b = random(0,50);
 
-rect(square1.x,square1.y,square1.height,square1.width);
-fill(square1.fill = random(0,255));
+  background(bg.r, bg.g, bg.b);
+
+
+
+
+
 
 
 
