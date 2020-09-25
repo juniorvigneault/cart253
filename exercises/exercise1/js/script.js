@@ -2,8 +2,7 @@
 Exercise 01 : I like to move it move it
 Junior Vigneault - 40136480
 
-
-Here is a description of this template p5 project.
+A big eye swallowing the screen on a stroboscoping background
 **************************************************/
 
 let bg = {
@@ -17,6 +16,7 @@ let circle1 = {
   y: 0,
   size: 200,
   fill: 0,
+  sizeGrowth: 1
 };
 
 let circle2 = {
@@ -24,6 +24,7 @@ let circle2 = {
   y: 0,
   size: 190,
   fill: 255,
+  sizeGrowth: 2
 };
 
 let circle3 = {
@@ -34,6 +35,11 @@ let circle3 = {
   fill: 255,
   maximumGrowth:30
 };
+
+let constrainStart = 0;
+let mapStartValue = 200;
+let aLittleBitToTheLeft = -20;
+let aLittleBitUpward = -12;
 
 // setup()
 //
@@ -56,24 +62,23 @@ function draw() {
 
   background(bg.r, bg.g, bg.b);
 
-// creating a dark eye flooding the screen over time
+// creating an eye flooding the screen over time
 
 noStroke();
-circle1.size = circle1.size +1;
+circle1.size = circle1.size + circle1.sizeGrowth;
 ellipse(mouseX, mouseY, circle1.size);
 fill(circle1.fill);
 
-circle2.size = circle1.size /2;
-circle2.size = constrain(circle2.size, 0, width);
+circle2.size = circle1.size / circle2.sizeGrowth;
+circle2.size = constrain(circle2.size, constrainStart, width);
 ellipse(mouseX, mouseY, circle2.size);
 fill(circle2.fill);
 
 
 fill(circle3.fill);
-circle3.size = map(circle1.size, 200, width, circle3.size, circle3.maximumGrowth);
-ellipse(mouseX - 20, mouseY -12, circle3.size);
+circle3.size = map(circle1.size, mapStartValue, width, circle3.size, circle3.maximumGrowth);
+ellipse(mouseX + aLittleBitToTheLeft, mouseY + aLittleBitUpward, circle3.size);
 
-// creating a circle jerking around everywhere randomly
 
 
 
