@@ -26,11 +26,13 @@ let circle2 = {
   fill: 255,
 };
 
-let circle2 = {
+let circle3 = {
   x: 0,
   y: 0,
-  size: 190,
+  size: 1,
+  speed: 1,
   fill: 255,
+  maximumGrowth:30
 };
 
 // setup()
@@ -47,11 +49,14 @@ createCanvas(windowWidth,windowHeight);
 function draw() {
 
 // creating dark stroboscopy background
+
   bg.r = random(0,50);
   bg.g = random(0,50);
   bg.b = random(0,50);
 
   background(bg.r, bg.g, bg.b);
+
+// creating a dark eye flooding the screen over time
 
 noStroke();
 circle1.size = circle1.size +1;
@@ -59,8 +64,17 @@ ellipse(mouseX, mouseY, circle1.size);
 fill(circle1.fill);
 
 circle2.size = circle1.size /2;
+circle2.size = constrain(circle2.size, 0, width);
 ellipse(mouseX, mouseY, circle2.size);
 fill(circle2.fill);
+
+
+fill(circle3.fill);
+circle3.size = map(circle1.size, 200, width, circle3.size, circle3.maximumGrowth);
+ellipse(mouseX - 20, mouseY -12, circle3.size);
+
+// creating a circle jerking around everywhere randomly
+
 
 
 
