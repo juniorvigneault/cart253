@@ -10,7 +10,27 @@ let bg = {
   r: 0,
   b: 0,
   g: 0
+};
 
+let circle1 = {
+  x: 0,
+  y: 0,
+  size: 200,
+  fill: 0,
+};
+
+let circle2 = {
+  x: 0,
+  y: 0,
+  size: 190,
+  fill: 255,
+};
+
+let circle2 = {
+  x: 0,
+  y: 0,
+  size: 190,
+  fill: 255,
 };
 
 // setup()
@@ -32,6 +52,15 @@ function draw() {
   bg.b = random(0,50);
 
   background(bg.r, bg.g, bg.b);
+
+noStroke();
+circle1.size = circle1.size +1;
+ellipse(mouseX, mouseY, circle1.size);
+fill(circle1.fill);
+
+circle2.size = circle1.size /2;
+ellipse(mouseX, mouseY, circle2.size);
+fill(circle2.fill);
 
 
 
