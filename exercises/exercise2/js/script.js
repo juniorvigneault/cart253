@@ -1,9 +1,16 @@
 /**************************************************
-Dodging COVID 19
+Exercise 2 // DODGE-EM
 JUNIOR VIGNEAULT
 
 Here is a description of this template p5 project.
 **************************************************/
+
+let flyImage;
+
+
+function preload() {
+  flyImage = loadImage("assets/images/fly.png");
+}
 
 let covid19 ={
   x:0,
@@ -17,14 +24,7 @@ let covid19 ={
     g:0,
     b:0
   }
-};
-
-let user = {
-  x:250,
-  y:250,
-  size:200,
-  fill:255
-};
+}
 
 function setup() {
 createCanvas(windowWidth, windowHeight);
@@ -33,6 +33,7 @@ createCanvas(windowWidth, windowHeight);
   covid19.vx = covid19.speed;
 
   noCursor();
+
 
 }
 
@@ -58,19 +59,18 @@ for (let i =0; i < 10000; i++) {
   }
 
 
-  user.x = mouseX;
-  user.y = mouseY
+  flyImage.x = mouseX;
+  flyImage.y = mouseY;
 
-  let d = dist(user.x,user.y,covid19.x,covid19.y);
-  if (d < covid19.size/2 + user.size/2) {
+  let d = dist(flyImage.x,flyImage.y,covid19.x,covid19.y);
+  if (d < covid19.size/2 + flyImage.size) {
     noLoop();
 }
 
   fill(covid19.fill.r,covid19.fill.g,covid19.fill.b);
   ellipse(covid19.x, covid19.y, covid19.size);
 
-
-fill(user.fill);
-ellipse(user.x, user.y, user.fill);
+  imageMode(CENTER);
+  image(flyImage, mouseX, mouseY,80,80);
 
 }
