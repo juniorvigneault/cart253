@@ -32,6 +32,8 @@ createCanvas(windowWidth, windowHeight);
   covid19.y = random(0,height);
   covid19.vx = covid19.speed;
 
+  noCursor();
+
 }
 
 // draw()
@@ -39,6 +41,13 @@ createCanvas(windowWidth, windowHeight);
 // Description of draw() goes here.
 function draw() {
   background(0);
+
+for (let i =0; i < 10000; i++) {
+  let x = random(0,width);
+  let y = random(0,height);
+  stroke(255);
+  point(x,y);
+}
 
   covid19.x = covid19.x + covid19.vx;
   covid19.y = covid19.y + covid19.vy;
