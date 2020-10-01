@@ -91,6 +91,9 @@ let bg = {
 
 function setup() {
 
+  clubSong = createAudio('assets/sounds/clubsong.wav');
+  clubSong.autoplay(true);
+
   // I want the biggesssssst canvas
 
 createCanvas(windowWidth, windowHeight);
