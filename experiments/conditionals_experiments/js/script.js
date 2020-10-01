@@ -1,6 +1,10 @@
 
 
-let angle = 0;
+let clownImage;
+
+function preload(){
+  clownImage = loadImage("assets/images/clown.png")
+}
 
 function setup() {
   createCanvas(500,500);
@@ -12,5 +16,7 @@ function setup() {
 function draw() {
 background(0);
 
+imageMode(CENTER);
+image(clownImage,mouseX,mouseY,200,200);
 
 }
