@@ -2,10 +2,10 @@
 Exercise 2 // DODGE-EM
 JUNIOR VIGNEAULT
 
-A fly in a club can pick up cocktails but needs to dodge disco balls
+A fly in a club needs to pick up her cocktail and escape the dangerous disco balls while dancing
 **************************************************/
 
-// Declaring my images for the program, a fly image for the user and a discoball as the obstacle
+// Declaring my images for the program, a fly image for the user and  discoballs as the obstacle and a martini for no reason
 
 let flyImage = {
   x:0,
@@ -20,7 +20,7 @@ let discoBallImage = {
   size:100,
   vx:0,
   vy:0,
-  speed:5,
+  speed:10,
   image: undefined
 }
 
@@ -30,7 +30,7 @@ let discoBallImage2 = {
   size:100,
   vx:0,
   vy:0,
-  speed:6,
+  speed:14,
   image: undefined
 }
 
@@ -40,7 +40,7 @@ let discoBallImage3 = {
   size:300,
   vx:0,
   vy:0,
-  speed:7,
+  speed:9,
   image: undefined
 }
 
@@ -50,7 +50,7 @@ let discoBallImage4 = {
   size:200,
   vx:0,
   vy:0,
-  speed:1,
+  speed:12,
   image: undefined
 }
 
@@ -62,9 +62,7 @@ let martiniImage = {
   beingCarried:false
 }
 
-let clubSong;
-
-// Loading the images! Finally...
+// Loading images and sound!
 
 function preload() {
 
@@ -78,10 +76,12 @@ function preload() {
 
   discoBallImage4.image = loadImage("assets/images/discoball.png");
 
-  martiniImage.image = loadImage("assets/images/martini.png")
+  martiniImage.image = loadImage("assets/images/martini.png");
+
+
 }
 
-// Creating a javascript object for my background to make the colors funky
+// Creating a javascript object for my background to make a strobe effect
 
 let bg = {
   r:0,
@@ -91,10 +91,9 @@ let bg = {
 
 function setup() {
 
-  clubSong = createAudio('assets/sounds/clubsong.wav');
-  clubSong.autoplay(true);
+  noCursor();
 
-  // I want the biggesssssst canvas
+  // Canvas takes the whole window
 
 createCanvas(windowWidth, windowHeight);
 
@@ -112,7 +111,7 @@ createCanvas(windowWidth, windowHeight);
   discoBallImage4.y = random(0,height);
   discoBallImage4.vx = discoBallImage4.speed;
 
-  noCursor();
+// martini initial position
 
 martiniImage.x = width/2;
 martiniImage.y = height/2;
@@ -235,8 +234,8 @@ if (martiniImage.beingCarried){
 // make the disco ball bigger sometimes and slower or smaller and faster depending on it's starting position
 
   if (discoBallImage.y >= width * 0.4) {
-    discoBallImage.size = 200;
-    discoBallImage.speed = 1;
+    discoBallImage.size = 300;
+    discoBallImage.speed = 4;
   }
   else {
     discoBallImage.size = 300;
@@ -244,7 +243,7 @@ if (martiniImage.beingCarried){
   }
 }
 
-// picking up the martini
+// the fly can pick up the martini and drop it using click of the mouse when on the martini
 
 function mousePressed(){
   if (martiniImage.beingCarried){
