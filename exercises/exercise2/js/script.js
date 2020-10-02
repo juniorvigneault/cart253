@@ -78,6 +78,8 @@ function preload() {
 
   martiniImage.image = loadImage("assets/images/martini.png");
 
+  clubSong = loadSound("assets/sounds/clubsong.mp3")
+
 
 }
 
@@ -90,6 +92,8 @@ let bg = {
 }
 
 function setup() {
+
+clubSong.play();
 
   noCursor();
 
@@ -116,10 +120,15 @@ createCanvas(windowWidth, windowHeight);
 martiniImage.x = width/2;
 martiniImage.y = height/2;
 
+mouseX = width /2;
+mouseY = height /2;
+
 }
 // draw()
 //
 // Description of draw() goes here.
+
+// creating the strobe background
 
 function draw() {
 
