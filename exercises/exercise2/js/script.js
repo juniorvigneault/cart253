@@ -62,6 +62,8 @@ let martiniImage = {
   beingCarried:false
 }
 
+let songisPlaying = false;
+
 // Loading images and sound!
 
 function preload() {
@@ -93,7 +95,6 @@ let bg = {
 
 function setup() {
 
-clubSong.play();
 
   noCursor();
 
@@ -265,4 +266,13 @@ function mousePressed(){
     martiniImage.beingCarried = true;
   }
   }
+
+  if (!songisPlaying) {
+  }
+
+  function mousePresed() {
+  clubSong.play();
+  }
+
+
 }
