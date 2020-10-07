@@ -267,12 +267,6 @@ function mousePressed(){
   }
   }
 
-  if (!songisPlaying) {
-  }
-
-  function mousePresed() {
-  clubSong.play();
-  }
 
 
 }
