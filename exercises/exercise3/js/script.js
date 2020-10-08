@@ -13,7 +13,7 @@ let circle1 = {
   size:100,
   vx:0,
   vy:0,
-  speed:3
+  speed:2
 };
 
 let circle2 = {
@@ -57,6 +57,9 @@ function draw() {
   else if (state === 'sadness'){
     sadness();
   }
+  else if (state === 'fear'){
+    fear();
+  }
 
   // control circle 1 with arrow key left and right
 
@@ -71,6 +74,14 @@ function draw() {
     else {
       circle1.vx = 0;
     }
+
+    // circle 2 gets bigger
+
+  circle2.size = circle2.size + 1;
+
+  // circle 1 gets bigger
+
+  circle1.size = circle1.size + 0.5;
 
   function title(){
     push();
@@ -88,6 +99,7 @@ function simulation(){
   checkOffScreen();
   checkOverlap();
   display();
+  checkSize();
 }
 
 function love(){
@@ -108,6 +120,15 @@ function sadness(){
   pop();
 }
 
+function fear(){
+  push();
+  textSize(70);
+  fill(0,0,200);
+  textAlign(CENTER,CENTER);
+  text('U FEAR INTIMACY',width/2, height/2);
+  pop();
+}
+
 function move(){
       // move the circle
 
@@ -120,13 +141,13 @@ function move(){
 
 function checkOffScreen(){
   // check if the circles have gone off screen
-  if (isOffScreen(circle1) || isOffScreen(circle2)) {
+  if (isOffScreen(circle2)) {
     state = 'sadness'
   }
 }
 
 function isOffScreen(circle){
-  if (circle.x < 0 || circle.x > width || circle.y < 0 || circle.y > height){
+  if (circle.y < 0 || circle.y > height){
     return true;
   }
   else{
@@ -156,7 +177,5 @@ function mousePressed(){
     state = 'simulation';
   }
 
-function controlCircle(){
 
-}
 }
