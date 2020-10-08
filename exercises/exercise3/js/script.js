@@ -57,9 +57,6 @@ function draw() {
   else if (state === 'sadness'){
     sadness();
   }
-  else if (state === 'fear'){
-    fear();
-  }
 
   // control circle 1 with arrow key left and right
 
@@ -120,14 +117,6 @@ function sadness(){
   pop();
 }
 
-function fear(){
-  push();
-  textSize(70);
-  fill(0,0,200);
-  textAlign(CENTER,CENTER);
-  text('U FEAR INTIMACY',width/2, height/2);
-  pop();
-}
 
 function move(){
       // move the circle
