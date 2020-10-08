@@ -6,6 +6,7 @@ Junior Vigneault
 
 Here is a description of this template p5 project.
 **************************************************/
+
 let clown = {
   x: 250,
   y: 250,
@@ -14,6 +15,16 @@ let clown = {
   vy: 0,
   speed: 2
 }
+
+let circles = {
+  x: 0,
+  y: 500,
+  size: 100,
+  vx: 0,
+  vy: 0,
+  speed: 5
+}
+
 
 function preload() {
 
@@ -35,6 +46,7 @@ clown.y = height/4;
 
 function draw() {
   background(0);
+  circlesMove();
 
 
 // display the "baby" image
@@ -42,4 +54,23 @@ function draw() {
   imageMode(CENTER);
     image(clown.image, clown.x, clown.y, clown.size, clown.size);
 
+}
+
+// defining the "good" candy
+  function circlesMove() {
+  // drawing style
+  push();
+  noStroke();
+  fill(255);
+  ellipseMode(CENTER);
+  pop();
+  // draw an ellipse
+  ellipse(circles.x, circles.y, circles.size);
+  // make the circles move across the screen
+  circles.vx = circles.speed;
+  circles.x = circles.x + circles.vx;
+  // make the circles reappear at the right side of the screen when off screen
+  if (circles.x > 1380){
+    circles.x = -100;
+  }
 }

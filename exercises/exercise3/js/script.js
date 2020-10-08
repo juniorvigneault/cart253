@@ -29,7 +29,7 @@ let state = 'title'; // can be : title, simulation,love or sadness
 
 
 function setup() {
-  createCanvas(500,500)
+  createCanvas(windowWidth, windowHeight);
 
     // position circles separated from one another
 
@@ -93,10 +93,10 @@ function draw() {
 
 function simulation(){
   move();
-  checkOffScreen();
+  checkOffScreen(circle1);
+  checkOffScreen(circle2);
   checkOverlap();
   display();
-  checkSize();
 }
 
 function love(){
@@ -117,6 +117,15 @@ function sadness(){
   pop();
 }
 
+function fear(){
+  push();
+  textSize(70);
+  fill(0,0,200);
+  textAlign(CENTER,CENTER);
+  text('U FEAR INTIMACY',width/2, height/2);
+  pop();
+}
+
 
 function move(){
       // move the circle
@@ -124,14 +133,19 @@ function move(){
   circle1.x = circle1.x + circle1.vx;
   circle1.y = circle1.y + circle1.vy;
 
-  circle2.x = circle2.x + circle2.vx;
-  circle2.y = circle2.y + circle2.vy;
 }
 
 function checkOffScreen(){
-  // check if the circles have gone off screen
+  // check if the circle2 has gone off screen
   if (isOffScreen(circle2)) {
     state = 'sadness'
+  }
+}
+
+function checkOffScreen(){
+  // check if the circle1 has gone off screen
+  if (isOffScreen(circle1)) {
+    state = 'fear'
   }
 }
 
