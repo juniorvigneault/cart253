@@ -25,6 +25,10 @@ function preload() {
 function setup() {
   createCanvas(1280,720);
 
+  // move the ''baby''
+
+  clown.vy = clown.speed;
+
 // position the "baby"
 
 clown.x = width/2;
@@ -36,6 +40,10 @@ clown.y = height/4;
 function draw() {
   background(0);
 
+
+// move the ''baby''
+
+clown.y = clown.y + clown.vy;
 
 // display the "baby" image
 
