@@ -57,6 +57,9 @@ function draw() {
   else if (state === 'sadness'){
     sadness();
   }
+  else if (state === 'fear'){
+    fear();
+  }
 
   // control circle 1 with arrow key left and right
 
@@ -80,21 +83,23 @@ function draw() {
 
   circle1.size = circle1.size + 0.5;
 
-  function title(){
-    push();
-    textSize(100);
-    fill(random(0,255));
-    textAlign(CENTER,CENTER);
-    text('LOVE?',width/2, height/2);
-    pop();
-  }
 
+
+}
+
+function title(){
+  push();
+  textSize(100);
+  fill(random(0,255));
+  textAlign(CENTER,CENTER);
+  text('LOVE?',width/2, height/2);
+  pop();
 }
 
 function simulation(){
   move();
-  checkOffScreen(circle1);
-  checkOffScreen(circle2);
+  checkFear();
+  checkSadness();
   checkOverlap();
   display();
 }
@@ -135,14 +140,14 @@ function move(){
 
 }
 
-function checkOffScreen(){
+function checkSadness(){
   // check if the circle2 has gone off screen
   if (isOffScreen(circle2)) {
     state = 'sadness'
   }
 }
 
-function checkOffScreen(){
+function checkFear(){
   // check if the circle1 has gone off screen
   if (isOffScreen(circle1)) {
     state = 'fear'
@@ -150,7 +155,7 @@ function checkOffScreen(){
 }
 
 function isOffScreen(circle){
-  if (circle.y < 0 || circle.y > height){
+  if (circle.x < 0 || circle.x > width || circle.y < 0 || circle.y > height){
     return true;
   }
   else{

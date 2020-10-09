@@ -20,9 +20,12 @@ let circles = {
   x: 0,
   y: 500,
   size: 100,
+  fill: 255,
   vx: 0,
   vy: 0,
-  speed: 5
+  speed: 5,
+  leaveScreen:1380,
+  reAppear: -100
 }
 
 
@@ -46,7 +49,7 @@ clown.y = height/4;
 
 function draw() {
   background(0);
-  circlesMove();
+  thoughtMove(circles);
 
 
 // display the "baby" image
@@ -57,20 +60,20 @@ function draw() {
 }
 
 // defining the "good" candy
-  function circlesMove() {
+  function thoughtMove(thought) {
   // drawing style
   push();
   noStroke();
-  fill(255);
+  fill(thought.fill);
   ellipseMode(CENTER);
   pop();
   // draw an ellipse
-  ellipse(circles.x, circles.y, circles.size);
+  ellipse(thought.x, thought.y, thought.size);
   // make the circles move across the screen
-  circles.vx = circles.speed;
-  circles.x = circles.x + circles.vx;
+  thought.vx = thought.speed;
+  thought.x = thought.x + thought.vx;
   // make the circles reappear at the right side of the screen when off screen
-  if (circles.x > 1380){
-    circles.x = -100;
+  if (thought.x > thought.leaveScreen){
+    thought.x = thought.reAppear;
   }
 }
