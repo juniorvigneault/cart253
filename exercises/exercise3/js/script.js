@@ -13,7 +13,7 @@ let circle1 = {
   size:100,
   vx:0,
   vy:0,
-  speed:2
+  speed:3
 };
 
 let circle2 = {
@@ -22,7 +22,7 @@ let circle2 = {
   size:100,
   vx:0,
   vy:0,
-  speed:3
+  speed:2
 };
 
 let state = 'title'; // can be : title, simulation,love or sadness
@@ -137,6 +137,9 @@ function move(){
 
   circle1.x = circle1.x + circle1.vx;
   circle1.y = circle1.y + circle1.vy;
+
+  circle2.x = circle2.x + circle2.vx;
+  circle2.y = circle2.y + circle2.vy;
 
 }
 
