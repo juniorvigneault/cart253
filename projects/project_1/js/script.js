@@ -85,7 +85,7 @@ function userControl(){
 
 // creating the thoughts and making them move
 
-  function thoughtMove(thought,speed,size) {
+  function thoughtMove(thought) {
   // drawing style
   push();
   noStroke();
@@ -101,7 +101,7 @@ function userControl(){
   if (thought.x > thought.leaveScreen){
     thought.x = thought.reAppear;
   }
-  
+
   // making the user pick up the "candy" with mouse
 
   function mousePressed(){
