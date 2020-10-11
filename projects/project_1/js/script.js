@@ -25,7 +25,15 @@ let circles = {
   vy: 0,
   speed: 5,
   leaveScreen:1380,
-  reAppear: -100
+  reAppear: -100,
+  beingCarried: false
+}
+
+let cursor = {
+  x:undefined,
+  y:undefined,
+  size: 70,
+  image: undefined,
 }
 
 
@@ -39,10 +47,17 @@ function preload() {
 function setup() {
   createCanvas(1280,720);
 
+  noCursor();
+
+  // cursor initial position
+
+  mouseX = width/2;
+  mouseY = height/2;
+
 // position the "baby"
 
-clown.x = width/2;
-clown.y = height/4;
+  clown.x = width/2;
+  clown.y = height/4;
 
 }
 
@@ -50,17 +65,27 @@ clown.y = height/4;
 function draw() {
   background(0);
   thoughtMove(circles);
-
-
-// display the "baby" image
+  userControl();
+  display();
 
   imageMode(CENTER);
     image(clown.image, clown.x, clown.y, clown.size, clown.size);
-
 }
 
-// defining the "good" candy
-  function thoughtMove(thought) {
+// setting up the cursor image
+
+function userControl(){
+  // position the cursor
+    cursor.x = mouseX;
+    cursor.y = mouseY;
+  // load image cursor
+    imageMode(CENTER);
+    image(clown.image, cursor.x, cursor.y, cursor.size, cursor.size);
+}
+
+// creating the thoughts and making them move
+
+  function thoughtMove(thought,speed,size) {
   // drawing style
   push();
   noStroke();
@@ -76,4 +101,25 @@ function draw() {
   if (thought.x > thought.leaveScreen){
     thought.x = thought.reAppear;
   }
+  
+  // making the user pick up the "candy" with mouse
+
+  function mousePressed(){
+    if (thought.beingCarried){
+      thought.beingCarried = false;
+    }
+    else {
+    let d = dist(cursor.x, cursor.y, thought.x, thought.y);
+    if (d < thought.size/2) {
+      thought.beingCarried = true;
+    }
+    }
+    }
+}
+
+// display the "baby" image
+
+function display(){
+    imageMode(CENTER);
+      image(clown.image, clown.x, clown.y, clown.size, clown.size);
 }

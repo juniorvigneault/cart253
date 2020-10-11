@@ -160,6 +160,8 @@ if (martiniImage.beingCarried){
 
   image(martiniImage.image, martiniImage.x, martiniImage.y, martiniImage.size, martiniImage.size+20);
 
+  martiniImage.x = martiniImage.x + 2
+
 // The disco ball is moving accross the screen using it's velocity
 
   discoBallImage.x = discoBallImage.x + discoBallImage.vx;
