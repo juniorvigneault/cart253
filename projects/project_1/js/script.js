@@ -101,7 +101,6 @@ function userControl(){
   if (thought.x > thought.leaveScreen){
     thought.x = thought.reAppear;
   }
-
   // making the user pick up the "candy" with mouse
 
   function mousePressed(){
