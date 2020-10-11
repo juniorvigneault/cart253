@@ -27,7 +27,7 @@ let circles = {
   leaveScreen:1380,
   reAppear: -100,
   beingCarried: false
-}
+  }
 
 let cursor = {
   x:undefined,
@@ -101,20 +101,11 @@ function userControl(){
   if (thought.x > thought.leaveScreen){
     thought.x = thought.reAppear;
   }
+  // make the user pick up thoughts
+  
+}
   // making the user pick up the "candy" with mouse
 
-  function mousePressed(){
-    if (thought.beingCarried){
-      thought.beingCarried = false;
-    }
-    else {
-    let d = dist(cursor.x, cursor.y, thought.x, thought.y);
-    if (d < thought.size/2) {
-      thought.beingCarried = true;
-    }
-    }
-    }
-}
 
 // display the "baby" image
 
