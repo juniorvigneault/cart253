@@ -96,15 +96,34 @@ function userControl(){
   ellipse(thought.x, thought.y, thought.size);
   // make the circles move across the screen
   thought.vx = thought.speed;
-  thought.x = thought.x + thought.vx;
   // make the circles reappear at the right side of the screen when off screen
   if (thought.x > thought.leaveScreen){
     thought.x = thought.reAppear;
   }
-  // make the user pick up thoughts
-  
-}
   // making the user pick up the "candy" with mouse
+
+  function mousePressed(){
+    if (thought.beingCarried){
+      thought.beingCarried = false;
+    }
+
+    else {
+    let d = dist(cursor.x, cursor.y, thought.x, thought.y);
+    if (d < thought.size) {
+      thought.beingCarried = true;
+    }
+    }
+  }
+
+  if (thought.beingCarried){
+  thought.x = cursor.x;
+  thought.y = cursor.y;
+  }
+  else {
+  thought.x = thought.x + thought.vx;
+  }
+
+}
 
 
 // display the "baby" image

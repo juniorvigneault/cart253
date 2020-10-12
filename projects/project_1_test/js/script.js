@@ -41,10 +41,6 @@ function draw() {
   background(0);
 
 
-// move the ''baby''
-
-clown.y = clown.y + clown.vy;
-
 // display the "baby" image
 
   imageMode(CENTER);
