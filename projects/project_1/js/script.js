@@ -26,7 +26,7 @@ let circles = {
   speed: 5,
   leaveScreen:1380,
   reAppear: -100,
-  beingCarried: false
+  beingCarried: undefined
   }
 
 let cursor = {
@@ -65,11 +65,9 @@ function setup() {
 function draw() {
   background(0);
   thoughtMove(circles);
-  userControl();
   display();
+  userControl();
 
-  imageMode(CENTER);
-    image(clown.image, clown.x, clown.y, clown.size, clown.size);
 }
 
 // setting up the cursor image
@@ -83,6 +81,13 @@ function userControl(){
     image(clown.image, cursor.x, cursor.y, cursor.size, cursor.size);
 }
 
+// display the "baby" image
+
+function display(){
+    imageMode(CENTER);
+      image(clown.image, clown.x, clown.y, clown.size, clown.size);
+}
+
 // creating the thoughts and making them move
 
   function thoughtMove(thought) {
@@ -94,7 +99,8 @@ function userControl(){
   pop();
   // draw an ellipse
   ellipse(thought.x, thought.y, thought.size);
-  // make the circles move across the screen
+  // make the circles move across the screen or being carried by user
+
   if (thought.beingCarried){
   thought.x = cursor.x;
   thought.y = cursor.y;
@@ -107,13 +113,13 @@ function userControl(){
   if (thought.x > thought.leaveScreen){
     thought.x = thought.reAppear;
   }
+}
   // making the user pick up the "candy" with mouse
 
   function mousePressed(){
     if (thought.beingCarried){
       thought.beingCarried = false;
     }
-
     else {
     let d = dist(cursor.x, cursor.y, thought.x, thought.y);
     if (d < thought.size) {
@@ -121,13 +127,3 @@ function userControl(){
     }
     }
   }
-
-}
-
-
-// display the "baby" image
-
-function display(){
-    imageMode(CENTER);
-      image(clown.image, clown.x, clown.y, clown.size, clown.size);
-}
