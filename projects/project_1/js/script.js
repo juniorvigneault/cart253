@@ -95,7 +95,14 @@ function userControl(){
   // draw an ellipse
   ellipse(thought.x, thought.y, thought.size);
   // make the circles move across the screen
+  if (thought.beingCarried){
+  thought.x = cursor.x;
+  thought.y = cursor.y;
+  }
+  else {
   thought.vx = thought.speed;
+  thought.x = thought.x + thought.vx;
+  }
   // make the circles reappear at the right side of the screen when off screen
   if (thought.x > thought.leaveScreen){
     thought.x = thought.reAppear;
@@ -113,14 +120,6 @@ function userControl(){
       thought.beingCarried = true;
     }
     }
-  }
-
-  if (thought.beingCarried){
-  thought.x = cursor.x;
-  thought.y = cursor.y;
-  }
-  else {
-  thought.x = thought.x + thought.vx;
   }
 
 }
