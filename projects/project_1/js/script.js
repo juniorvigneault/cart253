@@ -81,12 +81,21 @@ function userControl(){
     image(clown.image, cursor.x, cursor.y, cursor.size, cursor.size);
 }
 
+
+
 // display the "baby" image
 
 function display(){
     imageMode(CENTER);
       image(clown.image, clown.x, clown.y, clown.size, clown.size);
-}
+
+      clown.vy = clown.speed;
+      clown.y = clown.y - clown.vy;
+
+      if (clown.y < 0){
+        clown.y = clown.y + clown.vy;
+      }
+      }
 
 // creating the thoughts and making them move
 
