@@ -14,45 +14,6 @@ let flyImage = {
   image:undefined
 }
 
-let discoBallImage = {
-  x:0,
-  y:0,
-  size:100,
-  vx:0,
-  vy:0,
-  speed:10,
-  image: undefined
-}
-
-let discoBallImage2 = {
-  x:0,
-  y:0,
-  size:100,
-  vx:0,
-  vy:0,
-  speed:14,
-  image: undefined
-}
-
-let discoBallImage3 = {
-  x:0,
-  y:0,
-  size:300,
-  vx:0,
-  vy:0,
-  speed:9,
-  image: undefined
-}
-
-let discoBallImage4 = {
-  x:0,
-  y:0,
-  size:200,
-  vx:0,
-  vy:0,
-  speed:12,
-  image: undefined
-}
 
 let martiniImage = {
   x:0,
@@ -268,7 +229,4 @@ function mousePressed(){
     martiniImage.beingCarried = true;
   }
   }
-
-
-
 }
