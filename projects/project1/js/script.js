@@ -91,6 +91,14 @@ let flower6 = {
   }
 }
 
+let okImage = {
+  x:300,
+  y:500,
+  sizeX: 90,
+  sizeY: 40,
+  image: undefined
+}
+
 let size = {
   growing:50,
 }
@@ -103,7 +111,8 @@ let typing = ``;
 let everythingSFX;
 
 function preload(){
-  everythingSFX = loadSound('assets/sounds/everything.mp3')
+  everythingSFX = loadSound('assets/sounds/everything.mp3');
+  okImage.image = loadImage('assets/images/ok.png');
 }
 
 let state = 'title';
@@ -343,6 +352,7 @@ function title9(){
   flowers(flower1);
   push();
   fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fade.fadeIn = constrain(fade.fadeIn,0,255);
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(90);
@@ -468,7 +478,7 @@ function title20(){
   textAlign(CENTER,CENTER);
   textSize(100);
   textStyle(BOLD);
-  text("...and more...", windowWidth/2, windowHeight/2);
+  text(`...and more...`, windowWidth/2, windowHeight/2);
   pop();
 }
 function title21(){
@@ -479,7 +489,7 @@ function title21(){
   textAlign(CENTER,CENTER);
   textSize(50);
   textStyle(BOLD);
-  text("Are you ready?", windowWidth/2, windowHeight/2);
+  text(`Are you ready?`, windowWidth/2, windowHeight/2);
   pop();
 }
 function title22(){
@@ -490,7 +500,7 @@ function title22(){
   textAlign(CENTER,CENTER);
   textSize(80);
   textStyle(BOLD);
-  text("You must before promise...", windowWidth/2, windowHeight/2);
+  text(`You must before promise...`, windowWidth/2, windowHeight/2);
   pop();
 }
 function title23(){
@@ -501,7 +511,7 @@ function title23(){
   textAlign(CENTER,CENTER);
   textSize(100);
   textStyle(BOLD);
-  text("PROMISE TO NEVER TELL", windowWidth/2, windowHeight/2);
+  text(`PROMISE TO NEVER TELL`, windowWidth/2, windowHeight/2);
   pop();
 }
 function title24(){
@@ -511,17 +521,7 @@ function title24(){
   textAlign(CENTER,CENTER);
   textSize(50);
   textStyle(BOLD);
-  text("...if you do promise...", windowWidth/2, windowHeight/2);
-  pop();
-}
-function title25(){
-  flowers(flower1)
-  push();
-  fill(255);
-  textAlign(CENTER,CENTER);
-  textSize(200);
-  textStyle(BOLD);
-  text("...if you do promise...", windowWidth/2, windowHeight/2);
+  text(`...if you do promise...`, windowWidth/2, windowHeight/2);
   pop();
 }
 function title25(){
@@ -529,9 +529,9 @@ function title25(){
   fade.fadeIn = fade.fadeIn + fade.fadeIn2;
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
-  textSize(50);
+  textSize(40);
   textStyle(BOLD);
-  text("...then click, and type 'I promise'", windowWidth/2, windowHeight/2);
+  text(`...then click, type "I promise" and click "ok"`, windowWidth/2, windowHeight/2);
   pop();
 }
 function title26(){
@@ -541,6 +541,8 @@ function title26(){
   textSize(50);
   textStyle(BOLD);
   text(typing, windowWidth/2, windowHeight/2);
+  imageMode(CENTER);
+  image(okImage.image, okImage.x, okImage.y, okImage.sizeX, okImage.sizeY);
   pop();
 }
 function title27(){
@@ -550,7 +552,7 @@ function title27(){
   textAlign(CENTER,CENTER);
   textSize(50);
   textStyle(BOLD);
-  text("Good...", windowWidth/2, windowHeight/2);
+  text(`Good...`, windowWidth/2, windowHeight/2);
   pop();
 }
 function title28(){
@@ -560,7 +562,7 @@ function title28(){
   textAlign(CENTER,CENTER);
   textSize(50);
   textStyle(BOLD);
-  text("Very good...", windowWidth/2, windowHeight/2);
+  text(`Very good...`, windowWidth/2, windowHeight/2);
   pop();
 }
 
