@@ -20,7 +20,7 @@ let flower1 = {
     b:200,
   }
 }
-
+let state = 'title';
 // setup()
 //
 // Description of setup() goes here.
@@ -35,10 +35,16 @@ function setup() {
 // Description of draw() goes here.
 function draw() {
   background(0);
-  flowers(flower1);
+  if (state === 'title'){
   title();
-
 }
+else if (state === 'title2'){
+  title2();
+}
+}
+
+
+
 
 function flowers(flowers){
 
@@ -58,6 +64,7 @@ push();
 }
 
 function title(){
+  flowers(flower1)
   push();
   fill(255);
   textAlign(CENTER,CENTER);
@@ -65,4 +72,20 @@ function title(){
   textStyle(BOLD);
   text("Welcome to my incredible program!", windowWidth/2, windowHeight/2);
   pop();
+}
+  function title2(){
+    flowers(flower1)
+    push();
+    fill(255);
+    textAlign(CENTER,CENTER);
+    textSize(60);
+    textStyle(BOLD);
+    text("Welcome to my marvelous program!", windowWidth/2, windowHeight/2);
+    pop();
+}
+
+function mousePressed(){
+  if (state === 'title'){
+    state = 'title2'
+  }
 }
