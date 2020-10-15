@@ -105,8 +105,9 @@ let childImage = {
   sizeX: undefined,
   sizeY: undefined,
   image: undefined,
-  beingCarried: false,
-  drifting: 7
+  drifting: 1,
+  vx:1,
+  vy:1
 }
 
 let earthImage = {
@@ -771,7 +772,27 @@ function lostChild(){
   image(earthImage.image, earthImage.x, earthImage.y, earthImage.size, earthImage.size);
   image(childImage.image, childImage.x, childImage.y, childImage.size, childImage.size);
 
+  if(keyIsDown(LEFT_ARROW)){
+    childImage.vx = -childImage.drifting;
+  }
+  else if(keyIsDown(RIGHT_ARROW)){
+    childImage.vx = childImage.drifting;
+  }
+  else{
+    childImage.vx = 0;
+  }
+  if(keyIsDown(UP_ARROW)){
+    childImage.vy = -childImage.drifting;
+  }
+  else if(keyIsDown(DOWN_ARROW)){
+    childImage.vy = childImage.drifting;
+  }
+  else{
+    childImage.vy = 0;
+  }
 
+  childImage.x = childImage.x + childImage.vx;
+  childImage.y = childImage.y + childImage.vy;
 
 
   // making stars in the sky
