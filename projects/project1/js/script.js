@@ -105,9 +105,9 @@ let childImage = {
   sizeX: undefined,
   sizeY: undefined,
   image: undefined,
-  drifting: 1,
-  vx:1,
-  vy:1
+  speed: 5,
+  vx:0,
+  vy:0
 }
 
 let earthImage = {
@@ -126,24 +126,40 @@ let fade = {
   fadeIn2: .7,
 }
 
+let circleBg = {
+  x:100,
+  y:100,
+  size:100,
+  speed:100,
+  vx:0,
+  vy:0
+}
+
 let typing = ``;
 let everythingSFX;
+let opusSFX;
 
 function preload(){
   everythingSFX = loadSound('assets/sounds/everything.mp3');
+  opusSFX = loadSound('assets/sounds/opus.mp3');
   okImage.image = loadImage('assets/images/ok.png');
   childImage.image = loadImage('assets/images/child.png')
   earthImage.image = loadImage('assets/images/earth.png')
 
 }
 
-let state = 'test';
+let state = 'start';
 // setup()
 //
 // Description of setup() goes here.
 function setup() {
   createCanvas(windowWidth,windowHeight);
   angleMode(DEGREES);
+
+  // lost child original position in state title32
+
+  childImage.x = windowWidth/4
+  childImage.y = windowHeight/7
 }
 
 // draw()
@@ -168,6 +184,9 @@ function draw() {
 // This function has all my state switches everytime the title changes
 
 function titleSwitch(){
+  if (state === 'start'){
+  start();
+}
   if (state === 'title'){
   title();
 }
@@ -267,8 +286,41 @@ else if (state === 'title32'){
 else if (state === 'title33'){
   title33();
 }
-else if (state === 'test'){
-  test();
+else if (state === 'title34'){
+  title34();
+}
+else if (state === 'title35'){
+  title35();
+}
+else if (state === 'title36'){
+  title36();
+}
+else if (state === 'title37'){
+  title37();
+}
+else if (state === 'title38'){
+  title38();
+}
+else if (state === 'title39'){
+  title39();
+}
+else if (state === 'title40'){
+  title40();
+}
+else if (state === 'title41'){
+  title41();
+}
+else if (state === 'title42'){
+  title42();
+}
+else if (state === 'title43'){
+  title43();
+}
+else if (state === 'title44'){
+  title44();
+}
+else if (state === 'title45'){
+  title45();
 }
 }
 
@@ -292,10 +344,12 @@ push();
 }
 }
 
-// All my different titles with different back
-function test(){
-  lostChild();
+// All my different titles with different backgrounds and games
+
+function start(){
+  clickInstruction();
 }
+
 function title(){
   flowers(flower1)
   push();
@@ -643,24 +697,178 @@ function title32(){
   push();
   fade.fadeIn = fade.fadeIn + fade.fadeIn2;
   fill(fade.fadeIn);
+  noStroke();
   textAlign(CENTER,CENTER);
-  textSize(30);
+  textSize(20);
   textStyle(BOLD);
-  text(`Bring this lost child back to the chain of love...`, windowWidth/2, windowHeight/2);
+  text(`Bring this drifting lost child back to the chain of love using the arrow keys`, windowWidth/2, windowHeight/2);
   pop();
   lostChild();
 }
 function title33(){
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
   fill(fade.fadeIn);
+  noStroke();
   textAlign(CENTER,CENTER);
   textSize(50);
   textStyle(BOLD);
-  text(`Very good...`, windowWidth/2, windowHeight/2);
+  text(`Congratulations...`, windowWidth/2, windowHeight/2);
   pop();
+
 }
+
+function title34(){
+    push();
+    flowers(flower1)
+    fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+    fill(fade.fadeIn);
+    noStroke();
+    textAlign(RIGHT);
+    textSize(40);
+    textStyle(BOLD);
+    text("you have proven to be a pure soul...", windowWidth/2, windowHeight/4);
+    textAlign(LEFT, BOTTOM);
+    text(`...the program knows it...`, windowWidth * .2, windowHeight * .6 )
+    pop();
+
+  }
+
+  function title35(){
+    push();
+    flowers(flower1)
+    fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+    fill(fade.fadeIn);
+    noStroke();
+    textAlign(CENTER,CENTER);
+    textSize(50);
+    textStyle(BOLD);
+    text(`...and it is ready...`, windowWidth/2, windowHeight/2);
+    pop();
+
+  }
+  function title36(){
+    push();
+    flowers(flower2)
+    noStroke();
+    let size = random(148,150);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`THE TIME HAS COME`, windowWidth/2, windowHeight/2);
+    pop();
+
+  }
+  function title37(){
+    push();
+    noStroke();
+    let size = random(78,80);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`THE PROGRAM IS ABOUT TO UNRAVEL`, windowWidth/2, windowHeight/2);
+    pop();
+
+  }
+  function title38(){
+    push();
+    noStroke();
+    let size = random(78,80);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`BEFORE YOUR BEAUTIFUL SHINY EYES`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title39(){
+    push();
+    noStroke();
+    let size = random(300,302);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`ARE`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title40(){
+    push();
+    noStroke();
+    let size = random(350,352);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`YOU`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title41(){
+    push();
+    noStroke();
+    let size = random(400,402);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`READY?`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title42(){
+    push();
+    fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+    fill(fade.fadeIn);
+    textAlign(CENTER,CENTER);
+    textSize(30);
+    textStyle(BOLD);
+    text(`Bring this lost child back to the chain of love using the arrow keys`, windowWidth/2, windowHeight/2);
+    pop();
+    lostChild();
+  }
+  function title43(){
+    push();
+    fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+    fill(fade.fadeIn);
+    textAlign(CENTER,CENTER);
+    textSize(50);
+    textStyle(BOLD);
+    text(`Congratulations...`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title44(){
+    push();
+    fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+    fill(fade.fadeIn);
+    textAlign(CENTER,CENTER);
+    textSize(50);
+    textStyle(BOLD);
+    text(`Congratulations...`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title45(){
+    push();
+    fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+    fill(fade.fadeIn);
+    textAlign(CENTER,CENTER);
+    textSize(50);
+    textStyle(BOLD);
+    text(`Congratulations...`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+
 function mousePressed(){
+  if (state === 'start'){
+    state = 'title';
+    opusSFX.play();
+  }
   if (state === 'title'){
     state = 'title2';
   }
@@ -755,37 +963,72 @@ function mousePressed(){
   else if (state === 'title31'){
     state = 'title32';
   }
+  else if (state === 'title33'){
+    state = 'title34';
+  }
+  else if (state === 'title34'){
+    state = 'title35';
+  }
+  else if (state === 'title35'){
+    state = 'title36';
+  }
+  else if (state === 'title36'){
+    state = 'title37';
+  }
+  else if (state === 'title37'){
+    state = 'title38';
+  }
+  else if (state === 'title38'){
+    state = 'title39';
+  }
+  else if (state === 'title39'){
+    state = 'title40';
+  }
+  else if (state === 'title40'){
+    state = 'title41';
+  }
+  else if (state === 'title41'){
+    state = 'title42';
+  }
+  else if (state === 'title42'){
+    state = 'title43';
+  }
+  else if (state === 'title43'){
+    state = 'title44';
+  }
+  else if (state === 'title44'){
+    state = 'title45';
+  }
 }
 
 function keyTyped(){
   typing = typing + key;
 }
 
+
+// function of the lost child game in title 32
 function lostChild(){
 
-  // making stars in the sky
+// positioning the earth
   imageMode(CENTER);
   earthImage.x = windowWidth/2
   earthImage.y = windowHeight/2 + 200;
-  childImage.x = windowWidth/4
-  childImage.y = windowHeight/7
-  image(earthImage.image, earthImage.x, earthImage.y, earthImage.size, earthImage.size);
-  image(childImage.image, childImage.x, childImage.y, childImage.size, childImage.size);
 
+// controlling child with arrow keys and making it drift
   if(keyIsDown(LEFT_ARROW)){
-    childImage.vx = -childImage.drifting;
+    childImage.vx = -childImage.speed;
   }
   else if(keyIsDown(RIGHT_ARROW)){
-    childImage.vx = childImage.drifting;
+    childImage.vx = childImage.speed;
   }
   else{
-    childImage.vx = 0;
+    childImage.vx = 4;
   }
   if(keyIsDown(UP_ARROW)){
-    childImage.vy = -childImage.drifting;
+    childImage.vy = -childImage.speed;
   }
   else if(keyIsDown(DOWN_ARROW)){
-    childImage.vy = childImage.drifting;
+    childImage.vy = childImage.speed;
   }
   else{
     childImage.vy = 0;
@@ -794,6 +1037,15 @@ function lostChild(){
   childImage.x = childImage.x + childImage.vx;
   childImage.y = childImage.y + childImage.vy;
 
+  // making the child and earth appear
+  image(earthImage.image, earthImage.x, earthImage.y, earthImage.size, earthImage.size);
+  image(childImage.image, childImage.x, childImage.y, childImage.size, childImage.size);
+
+// changing the state if the child is back in the chain of love!
+let d = dist(childImage.x, childImage.y, earthImage.x, earthImage.y);
+if (d < 120){
+  state = 'title33'
+}
 
   // making stars in the sky
   for (let i =0; i < 10; i++) {
@@ -803,5 +1055,16 @@ function lostChild(){
   strokeWeight(1);
   point(x,y);
 }
+}
 
+function clickInstruction(){
+  push();
+  noStroke();
+  let color = random(0,50);
+  fill(color);
+  textStyle(BOLD);
+  textSize(50);
+  textAlign(CENTER, CENTER);
+  text('CLICK TO TRAVEL', 0, 450, width);
+  pop();
 }
