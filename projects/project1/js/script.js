@@ -99,6 +99,24 @@ let okImage = {
   image: undefined
 }
 
+let childImage = {
+  x:undefined,
+  y:undefined,
+  sizeX: undefined,
+  sizeY: undefined,
+  image: undefined,
+  beingCarried: false,
+  drifting: 7
+}
+
+let earthImage = {
+  x:undefined,
+  y:undefined,
+  sizeX: undefined,
+  sizeY: undefined,
+  image: undefined
+}
+
 let size = {
   growing:50,
 }
@@ -113,16 +131,18 @@ let everythingSFX;
 function preload(){
   everythingSFX = loadSound('assets/sounds/everything.mp3');
   okImage.image = loadImage('assets/images/ok.png');
+  childImage.image = loadImage('assets/images/child.png')
+  earthImage.image = loadImage('assets/images/earth.png')
+
 }
 
-let state = 'title';
+let state = 'test';
 // setup()
 //
 // Description of setup() goes here.
 function setup() {
   createCanvas(windowWidth,windowHeight);
   angleMode(DEGREES);
-
 }
 
 // draw()
@@ -231,6 +251,24 @@ else if (state === 'title27'){
 else if (state === 'title28'){
   title28();
 }
+else if (state === 'title29'){
+  title29();
+}
+else if (state === 'title30'){
+  title30();
+}
+else if (state === 'title31'){
+  title31();
+}
+else if (state === 'title32'){
+  title32();
+}
+else if (state === 'title33'){
+  title33();
+}
+else if (state === 'test'){
+  test();
+}
 }
 
 
@@ -254,7 +292,9 @@ push();
 }
 
 // All my different titles with different back
-
+function test(){
+  lostChild();
+}
 function title(){
   flowers(flower1)
   push();
@@ -565,13 +605,67 @@ function title28(){
   text(`Very good...`, windowWidth/2, windowHeight/2);
   pop();
 }
-
+function title29(){
+  push();
+  flowers(flower1)
+  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fill(fade.fadeIn);
+  textAlign(CENTER,CENTER);
+  textSize(50);
+  textStyle(BOLD);
+  text(`You are so close to meeting the program...`, windowWidth/2, windowHeight/2);
+  pop();
+}
+function title30(){
+  push();
+  flowers(flower1)
+  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fill(fade.fadeIn);
+  textAlign(CENTER,CENTER);
+  textSize(50);
+  textStyle(BOLD);
+  text(`So...close...`, windowWidth/2, windowHeight/2);
+  pop();
+}
+function title31(){
+  push();
+  flowers(flower1)
+  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fill(fade.fadeIn);
+  textAlign(CENTER,CENTER);
+  textSize(50);
+  textStyle(BOLD);
+  text(`There is one more thing you need to do...`, windowWidth/2, windowHeight/2);
+  pop();
+}
+function title32(){
+  push();
+  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fill(fade.fadeIn);
+  textAlign(CENTER,CENTER);
+  textSize(30);
+  textStyle(BOLD);
+  text(`Bring this lost child back to the chain of love...`, windowWidth/2, windowHeight/2);
+  pop();
+  lostChild();
+}
+function title33(){
+  push();
+  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fill(fade.fadeIn);
+  textAlign(CENTER,CENTER);
+  textSize(50);
+  textStyle(BOLD);
+  text(`Very good...`, windowWidth/2, windowHeight/2);
+  pop();
+}
 function mousePressed(){
   if (state === 'title'){
     state = 'title2';
   }
   else if (state === 'title2'){
     state = 'title3';
+    everythingSFX.play();
   }
   else if (state === 'title3'){
     state = 'title4';
@@ -648,8 +742,45 @@ function mousePressed(){
   else if (state === 'title27'){
     state = 'title28';
   }
+  else if (state === 'title28'){
+    state = 'title29';
+  }
+  else if (state === 'title29'){
+    state = 'title30';
+  }
+  else if (state === 'title30'){
+    state = 'title31';
+  }
+  else if (state === 'title31'){
+    state = 'title32';
+  }
 }
 
 function keyTyped(){
   typing = typing + key;
+}
+
+function lostChild(){
+
+  // making stars in the sky
+  imageMode(CENTER);
+  earthImage.x = windowWidth/2
+  earthImage.y = windowHeight/2 + 200;
+  childImage.x = windowWidth/4
+  childImage.y = windowHeight/7
+  image(earthImage.image, earthImage.x, earthImage.y, earthImage.size, earthImage.size);
+  image(childImage.image, childImage.x, childImage.y, childImage.size, childImage.size);
+
+
+
+
+  // making stars in the sky
+  for (let i =0; i < 10; i++) {
+  let x = random(0,width);
+  let y = random(0,height);
+  stroke(255);
+  strokeWeight(1);
+  point(x,y);
+}
+
 }
