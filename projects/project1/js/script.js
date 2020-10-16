@@ -1,11 +1,14 @@
 "use strict";
 
 /**************************************************
-Template p5 project
-Pippin Barr
+Project 1 : Simulation
+Junior Vigneault
 
-Here is a description of this template p5 project.
+My project is a simulation that leads the user through uncharted programming territories...view at your own risk
 **************************************************/
+
+// declaring my variables for the backgrounds
+
 let flower1 = {
   x : 1,
   y : 1,
@@ -91,6 +94,8 @@ let flower6 = {
   }
 }
 
+// declaring variables for images
+
 let okImage = {
   x:300,
   y:500,
@@ -118,12 +123,14 @@ let earthImage = {
   image: undefined
 }
 
+// declaring some variables I will use a couple times during the program
+
 let size = {
   growing:50,
 }
 let fade = {
   fadeIn: 0,
-  fadeIn2: .7,
+  fadeIn2: 1,
 }
 
 let circleBg = {
@@ -136,47 +143,47 @@ let circleBg = {
 }
 
 let typing = ``;
+
+// creating variables for my sounds
+
 let everythingSFX;
 let opusSFX;
+let opusfinSFX;
+
 
 function preload(){
   everythingSFX = loadSound('assets/sounds/everything.mp3');
   opusSFX = loadSound('assets/sounds/opus.mp3');
+  opusfinSFX = loadSound('assets/sounds/opusfin.mp3')
   okImage.image = loadImage('assets/images/ok.png');
   childImage.image = loadImage('assets/images/child.png')
   earthImage.image = loadImage('assets/images/earth.png')
 
 }
 
+// my first state... WOW!
+
 let state = 'start';
-// setup()
-//
-// Description of setup() goes here.
+
+
 function setup() {
   createCanvas(windowWidth,windowHeight);
   angleMode(DEGREES);
 
+
   // lost child original position in state title32
 
-  childImage.x = windowWidth/4
-  childImage.y = windowHeight/7
+  childImage.x = windowWidth/4;
+  childImage.y = windowHeight/7;
 }
 
-// draw()
-//
-// Description of draw() goes here.
+
 
 function draw() {
   background(0);
   titleSwitch();
 
 }
-
-
-
-
-
-
 
 // My beautiful functions
 
@@ -187,7 +194,7 @@ function titleSwitch(){
   if (state === 'start'){
   start();
 }
-  if (state === 'title'){
+else if (state === 'title'){
   title();
 }
 else if (state === 'title2'){
@@ -322,25 +329,44 @@ else if (state === 'title44'){
 else if (state === 'title45'){
   title45();
 }
+else if (state === 'title46'){
+  title46();
 }
-
-
-// This function is for the big laser flower background
-
-function flowers(flowers){
-
-for (let i = 0; i < 500; i++){
-push();
-  flowers.angle = flowers.angle + flowers.speed
-  translate(windowWidth/2, windowHeight/2);
-  rotate(flowers.angle);
-  stroke(flowers.fill.r, flowers.fill.g, flowers.fill.b);
-  strokeWeight(flowers.weight);
-  line(flowers.x,flowers.y,flowers.x2,flowers.y2);
-  translate(flowers.x,flowers.y);
-  rotate(flowers.angle);
-  flowers.x = flowers.x + random(0,width);
-  pop();
+else if (state === 'title47'){
+  title47();
+}
+else if (state === 'title48'){
+  title48();
+}
+else if (state === 'title49'){
+  title49();
+}
+else if (state === 'title50'){
+  title50();
+}
+else if (state === 'title51'){
+  title51();
+}
+else if (state === 'title52'){
+  title52();
+}
+else if (state === 'title53'){
+  title53();
+}
+else if (state === 'title54'){
+  title54();
+}
+else if (state === 'title55'){
+  title55();
+}
+else if (state === 'title56'){
+  title56();
+}
+else if (state === 'title57'){
+  title57();
+}
+else if (state === 'title58'){
+  title58();
 }
 }
 
@@ -353,7 +379,7 @@ function start(){
 function title(){
   flowers(flower1)
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fadeIn();
   fill(fade.fadeIn);
   textAlign(RIGHT);
   textSize(40);
@@ -363,23 +389,23 @@ function title(){
   text(`...has never been seen before in the history of programming...`, windowWidth * .2, windowHeight * .6 )
   pop();
 }
-  function title2(){
-    flowers(flower1)
-    push();
-    fade.fadeIn = fade.fadeIn - fade.fadeIn2;
-    fill(fade.fadeIn);
-    textAlign(RIGHT);
-    textSize(40);
-    textStyle(BOLD);
-    text(`It may change...`, windowWidth /2, windowHeight/4);
-    textAlign(LEFT, BOTTOM);
-    text(`...everything you know about programming...`, windowWidth * .3, windowHeight * .6 )
-    pop();
+function title2(){
+  flowers(flower1)
+  push();
+  fadeOut();
+  fill(fade.fadeIn);
+  textAlign(RIGHT);
+  textSize(40);
+  textStyle(BOLD);
+  text(`It may change...`, windowWidth /2, windowHeight/4);
+  textAlign(LEFT, BOTTOM);
+  text(`...everything you know about programming...`, windowWidth * .3, windowHeight * .6 )
+  pop();
 }
 function title3(){
   flowers(flower2)
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fadeIn();
   let size = map(mouseX, 0, width, 80, 500);
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
@@ -391,7 +417,7 @@ function title3(){
 function title4(){
   flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fadeOut();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(45);
@@ -402,7 +428,7 @@ function title4(){
 function title5(){
   flowers(flower1)
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fadeIn();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(45);
@@ -413,7 +439,7 @@ function title5(){
 function title6(){
   flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fadeOut();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(45);
@@ -424,7 +450,7 @@ function title6(){
 function title7(){
 flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fadeIn();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(45);
@@ -435,7 +461,7 @@ flowers(flower1);
 function title8(){
   flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fadeOut();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(70);
@@ -446,7 +472,7 @@ function title8(){
 function title9(){
   flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fadeIn();
   fade.fadeIn = constrain(fade.fadeIn,0,255);
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
@@ -458,7 +484,7 @@ function title9(){
 function title10(){
   flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fadeOut();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(110);
@@ -469,7 +495,7 @@ function title10(){
 function title11(){
   flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fadeIn();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(120);
@@ -480,7 +506,7 @@ function title11(){
 function title12(){
   flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fadeOut();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(130);
@@ -491,7 +517,7 @@ function title12(){
 function title13(){
   flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fadeIn();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(140);
@@ -502,7 +528,7 @@ function title13(){
 function title14(){
   flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fadeOut();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(150);
@@ -513,7 +539,7 @@ function title14(){
 function title15(){
   flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fadeIn();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(160);
@@ -524,7 +550,7 @@ function title15(){
 function title16(){
   flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fadeOut();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(165);
@@ -535,7 +561,7 @@ function title16(){
 function title17(){
   flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fadeIn();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(170);
@@ -546,7 +572,7 @@ function title17(){
 function title18(){
   flowers(flower1);
   push();
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fadeOut();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(185);
@@ -568,7 +594,7 @@ function title19(){
 function title20(){
   flowers(flower1)
   push();
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fadeOut();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(100);
@@ -590,7 +616,7 @@ function title21(){
 function title22(){
   flowers(flower5)
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fadeOut();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(80);
@@ -611,7 +637,7 @@ function title23(){
 }
 function title24(){
   push();
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fadeOut();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(50);
@@ -621,14 +647,16 @@ function title24(){
 }
 function title25(){
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
-  fill(fade.fadeIn);
+  fill(255,0,0);
   textAlign(CENTER,CENTER);
   textSize(40);
   textStyle(BOLD);
   text(`...then click, type "I promise" and click "ok"`, windowWidth/2, windowHeight/2);
   pop();
 }
+
+// GAME 1 - YOU HAVE TO TYPE I PROMISE AND CLICK OK
+
 function title26(){
   push();
   fill(255);
@@ -642,7 +670,7 @@ function title26(){
 }
 function title27(){
   push();
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fadeIn();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(50);
@@ -652,7 +680,7 @@ function title27(){
 }
 function title28(){
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fadeOut();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
   textSize(50);
@@ -662,152 +690,160 @@ function title28(){
 }
 function title29(){
   push();
-  flowers(flower1)
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  starrySky();
+  fadeIn();
   fill(fade.fadeIn);
+  noStroke();
   textAlign(CENTER,CENTER);
   textSize(50);
   textStyle(BOLD);
-  text(`You are so close to meeting the program...`, windowWidth/2, windowHeight/2);
+  text(``, windowWidth/2, windowHeight/2);
   pop();
 }
 function title30(){
   push();
-  flowers(flower1)
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  starrySky();
+  fadeOut();
   fill(fade.fadeIn);
+  noStroke();
   textAlign(CENTER,CENTER);
   textSize(50);
   textStyle(BOLD);
-  text(`So...close...`, windowWidth/2, windowHeight/2);
+  text(`There is just one last thing...`, windowWidth/2, windowHeight/2);
   pop();
 }
 function title31(){
   push();
-  flowers(flower1)
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  starrySky();
+  fadeIn();
   fill(fade.fadeIn);
   textAlign(CENTER,CENTER);
+  noStroke();
   textSize(50);
   textStyle(BOLD);
-  text(`There is one more thing you need to do...`, windowWidth/2, windowHeight/2);
+  text(`One last thing you need to do...`, windowWidth/2, windowHeight/2);
   pop();
 }
+
+// GAME 2 - YOU HAVE TO BRING THE CHILD TO EARTH WITH THE ARROW KEYS
+
 function title32(){
   push();
-  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
-  fill(fade.fadeIn);
+  fill(170);
   noStroke();
   textAlign(CENTER,CENTER);
-  textSize(20);
+  textSize(30);
   textStyle(BOLD);
-  text(`Bring this drifting lost child back to the chain of love using the arrow keys`, windowWidth/2, windowHeight/2);
+  text(`Bring this lost child back to the chain of love using the arrow keys`, windowWidth/2, windowHeight/2);
   pop();
   lostChild();
 }
 function title33(){
+  starrySky();
   push();
-  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fadeIn();
   fill(fade.fadeIn);
   noStroke();
   textAlign(CENTER,CENTER);
   textSize(50);
   textStyle(BOLD);
-  text(`Congratulations...`, windowWidth/2, windowHeight/2);
+  text(`Good...`, windowWidth/2, windowHeight/2);
   pop();
 
 }
-
 function title34(){
-    push();
-    flowers(flower1)
-    fade.fadeIn = fade.fadeIn + fade.fadeIn2;
-    fill(fade.fadeIn);
-    noStroke();
-    textAlign(RIGHT);
-    textSize(40);
-    textStyle(BOLD);
-    text("you have proven to be a pure soul...", windowWidth/2, windowHeight/4);
-    textAlign(LEFT, BOTTOM);
-    text(`...the program knows it...`, windowWidth * .2, windowHeight * .6 )
-    pop();
+  starrySky();
+  push();
+  fadeOut();
+  fill(fade.fadeIn);
+  noStroke();
+  textAlign(CENTER,CENTER);
+  textSize(50);
+  textStyle(BOLD);
+  text(`Very good...`, windowWidth/2, windowHeight/2);
+  pop();
 
   }
 
   function title35(){
     push();
-    flowers(flower1)
-    fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+    starrySky();
+    fadeIn();
     fill(fade.fadeIn);
     noStroke();
     textAlign(CENTER,CENTER);
     textSize(50);
     textStyle(BOLD);
-    text(`...and it is ready...`, windowWidth/2, windowHeight/2);
+    text(`You are finally ready...`, windowWidth/2, windowHeight/2);
     pop();
 
   }
   function title36(){
     push();
-    flowers(flower2)
     noStroke();
-    let size = random(148,150);
+    starrySky();
+    let size = random(98,100);
     let color = random(0,255);
     fill(color);
     textAlign(CENTER,CENTER);
     textSize(size);
     textStyle(BOLD);
-    text(`THE TIME HAS COME`, windowWidth/2, windowHeight/2);
+    text(`The time has come`, windowWidth/2, windowHeight/2);
     pop();
 
   }
   function title37(){
     push();
     noStroke();
+    starrySky();
     let size = random(78,80);
     let color = random(0,255);
     fill(color);
     textAlign(CENTER,CENTER);
     textSize(size);
     textStyle(BOLD);
-    text(`THE PROGRAM IS ABOUT TO UNRAVEL`, windowWidth/2, windowHeight/2);
+    text(`For you to meet THE program`, windowWidth/2, windowHeight/2);
     pop();
 
   }
   function title38(){
     push();
     noStroke();
+    starrySky();
     let size = random(78,80);
     let color = random(0,255);
     fill(color);
     textAlign(CENTER,CENTER);
     textSize(size);
     textStyle(BOLD);
-    text(`BEFORE YOUR BEAUTIFUL SHINY EYES`, windowWidth/2, windowHeight/2);
+    text(`Open of your beautiful eyes`, windowWidth/2, windowHeight/2);
     pop();
   }
   function title39(){
     push();
+    push();
     noStroke();
-    let size = random(300,302);
+    starrySky();
+    let size = random(78,80);
     let color = random(0,255);
     fill(color);
     textAlign(CENTER,CENTER);
     textSize(size);
     textStyle(BOLD);
-    text(`ARE`, windowWidth/2, windowHeight/2);
+    text(`And take everything in`, windowWidth/2, windowHeight/2);
     pop();
   }
   function title40(){
     push();
     noStroke();
-    let size = random(350,352);
+    starrySky();
+    let size = random(70,80);
     let color = random(0,255);
     fill(color);
     textAlign(CENTER,CENTER);
     textSize(size);
     textStyle(BOLD);
-    text(`YOU`, windowWidth/2, windowHeight/2);
+    text(`THE TIME IS`, windowWidth/2, windowHeight/2);
     pop();
   }
   function title41(){
@@ -819,137 +855,330 @@ function title34(){
     textAlign(CENTER,CENTER);
     textSize(size);
     textStyle(BOLD);
-    text(`READY?`, windowWidth/2, windowHeight/2);
+    text(`NOW`, windowWidth/2, windowHeight/2);
     pop();
   }
   function title42(){
     push();
-    fade.fadeIn = fade.fadeIn + fade.fadeIn2;
-    fill(fade.fadeIn);
+    noStroke();
+    starrySky();
+    let size = random(300,302);
+    let color = random(0,255);
+    fill(color);
     textAlign(CENTER,CENTER);
-    textSize(30);
+    textSize(size);
     textStyle(BOLD);
-    text(`Bring this lost child back to the chain of love using the arrow keys`, windowWidth/2, windowHeight/2);
+    text(`ARE`, windowWidth/2, windowHeight/2);
     pop();
-    lostChild();
   }
   function title43(){
     push();
-    fade.fadeIn = fade.fadeIn - fade.fadeIn2;
-    fill(fade.fadeIn);
+    noStroke();
+    starrySky();
+    let size = random(350,352);
+    let color = random(0,255);
+    fill(color);
     textAlign(CENTER,CENTER);
-    textSize(50);
+    textSize(size);
     textStyle(BOLD);
-    text(`Congratulations...`, windowWidth/2, windowHeight/2);
+    text(`YOU`, windowWidth/2, windowHeight/2);
     pop();
   }
   function title44(){
     push();
-    fade.fadeIn = fade.fadeIn - fade.fadeIn2;
-    fill(fade.fadeIn);
+    noStroke();
+    starrySky();
+    let size = random(400,402);
+    let color = random(0,255);
+    fill(color);
     textAlign(CENTER,CENTER);
-    textSize(50);
+    textSize(size);
     textStyle(BOLD);
-    text(`Congratulations...`, windowWidth/2, windowHeight/2);
+    text(`READY?`, windowWidth/2, windowHeight/2);
     pop();
   }
   function title45(){
     push();
-    fade.fadeIn = fade.fadeIn - fade.fadeIn2;
-    fill(fade.fadeIn);
+    noStroke();
+    starrySky();
+    let size = random(400,402);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`TO`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title46(){
+    push();
+    noStroke();
+    starrySky();
+    let size = random(400,402);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`BE`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title47(){
+    push();
+    noStroke();
+    starrySky();
+    let size = random(400,402);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`BORN`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title48(){
+    push();
+    noStroke();
+    starrySky();
+    let size = random(400,402);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`AGAIN`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title49(){
+    push();
+    noStroke();
+    starrySky();
+    let size = random(400,402);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`5`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title50(){
+    push();
+    noStroke();
+    starrySky();
+    let size = random(400,402);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`4`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title51(){
+    push();
+    noStroke();
+    starrySky();
+    let size = random(400,402);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`3`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title52(){
+    push();
+    noStroke();
+    starrySky();
+    let size = random(400,402);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`2`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title53(){
+    push();
+    noStroke();
+    flowers(flower2);
+    let size = random(400,402);
+    let color = random(0,255);
+    fill(color);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    textStyle(BOLD);
+    text(`1`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+
+  function title54(){
+    push();
+    noStroke();
+    fill(170);
+    textAlign(CENTER,CENTER);
+    textSize(200);
+    textStyle(BOLD);
+    text(`WAIT`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+
+  function title55(){
+    push();
+    noStroke();
+    fill(170);
+    textAlign(CENTER,CENTER);
+    textSize(100);
+    textStyle(BOLD);
+    text(`INHALE`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title56(){
+    push();
+    noStroke();
+    fill(170);
+    textAlign(CENTER,CENTER);
+    textSize(100);
+    textStyle(BOLD);
+    text(`EXHALE`, windowWidth/2, windowHeight/2);
+    pop();
+  }
+  function title57(){
+  grandeFinale();
+  }
+
+  function title58(){
+    push();
+    noStroke();
+    fill(170);
     textAlign(CENTER,CENTER);
     textSize(50);
     textStyle(BOLD);
-    text(`Congratulations...`, windowWidth/2, windowHeight/2);
+    text(`fin`, windowWidth/2, windowHeight/2);
     pop();
   }
+
+  // letting mouse pressed change almost all my title states
 
 function mousePressed(){
   if (state === 'start'){
     state = 'title';
+    fade.fadeIn = 0;
+    // song starts
     opusSFX.play();
   }
-  if (state === 'title'){
+else if (state === 'title'){
     state = 'title2';
+    fade.fadeIn = 170;
   }
   else if (state === 'title2'){
     state = 'title3';
+    // voice effect
     everythingSFX.play();
+    fade.fadeIn = 0;
   }
   else if (state === 'title3'){
     state = 'title4';
+   fade.fadeIn = 170;
   }
   else if (state === 'title4'){
     state = 'title5';
+    fade.fadeIn = 0;
   }
   else if (state === 'title5'){
     state = 'title6';
+    fade.fadeIn = 170;
   }
   else if (state === 'title6'){
     state = 'title7';
+    fade.fadeIn = 0;
   }
   else if (state === 'title7'){
     state = 'title8';
+    fade.fadeIn = 170;
   }
   else if (state === 'title8'){
     state = 'title9';
+  fade.fadeIn = 0;
   }
   else if (state === 'title9'){
     state = 'title10';
+    fade.fadeIn = 170;
   }
   else if (state === 'title10'){
     state = 'title11';
+    fade.fadeIn = 0;
   }
   else if (state === 'title11'){
     state = 'title12';
+    fade.fadeIn = 170;
   }
   else if (state === 'title12'){
     state = 'title13';
+    fade.fadeIn = 0;
   }
   else if (state === 'title13'){
     state = 'title14';
+    fade.fadeIn = 170;
   }
   else if (state === 'title14'){
     state = 'title15';
+    fade.fadeIn = 0;
   }
   else if (state === 'title15'){
     state = 'title16';
+    fade.fadeIn = 170;
   }
   else if (state === 'title16'){
     state = 'title17';
+   fade.fadeIn = 0;
   }
   else if (state === 'title17'){
     state = 'title18';
+    fade.fadeIn = 170;
   }
   else if (state === 'title18'){
     state = 'title19';
+    fade.fadeIn = 0;
   }
   else if (state === 'title19'){
     state = 'title20';
+    fade.fadeIn = 170;
   }
   else if (state === 'title20'){
     state = 'title21';
+    fade.fadeIn = 170;
   }
   else if (state === 'title21'){
     state = 'title22';
+
   }
   else if (state === 'title22'){
     state = 'title23';
+
   }
   else if (state === 'title23'){
     state = 'title24';
+    fade.fadeIn = 170;
   }
   else if (state === 'title24'){
     state = 'title25';
+
   }
   else if (state === 'title25'){
     state = 'title26';
+    fade.fadeIn = 170;
   }
   else if (state === 'title26'){
     state = 'title27';
+    fade.fadeIn = 0;
   }
   else if (state === 'title27'){
     state = 'title28';
+    fade.fadeIn = 170;
   }
   else if (state === 'title28'){
     state = 'title29';
@@ -999,22 +1228,68 @@ function mousePressed(){
   else if (state === 'title44'){
     state = 'title45';
   }
+  else if (state === 'title45'){
+    state = 'title46';
+  }
+  else if (state === 'title46'){
+    state = 'title47';
+  }
+  else if (state === 'title47'){
+    state = 'title48';
+  }
+  else if (state === 'title48'){
+    state = 'title49';
+  }
+  else if (state === 'title49'){
+    state = 'title50';
+  }
+  else if (state === 'title50'){
+    state = 'title51';
+  }
+  else if (state === 'title51'){
+    state = 'title52';
+  }
+  else if (state === 'title52'){
+    state = 'title53';
+  }
+  else if (state === 'title53'){
+    state = 'title54';
+    // song stops
+    opusSFX.stop();
+  }
+  else if (state === 'title54'){
+    state = 'title55';
+  }
+  else if (state === 'title55'){
+    state = 'title56';
+  }
+  else if (state === 'title56'){
+    state = 'title57';
+    // final song starts!
+    opusfinSFX.play();
+  }
+  else if (state === 'title57'){
+    state = 'title58';
+    // final song stops :(
+    opusfinSFX.stop();
+  }
 }
 
+// typing for the game 1 in title 26
 function keyTyped(){
   typing = typing + key;
 }
 
 
-// function of the lost child game in title 32
+// function of the lost child in game 2 in title 32
 function lostChild(){
 
-// positioning the earth
+// positioning the earth in game 2 in title 32
   imageMode(CENTER);
   earthImage.x = windowWidth/2
   earthImage.y = windowHeight/2 + 200;
 
-// controlling child with arrow keys and making it drift
+// controlling child with arrow keys and making it drift (game2 title 32)
   if(keyIsDown(LEFT_ARROW)){
     childImage.vx = -childImage.speed;
   }
@@ -1037,25 +1312,22 @@ function lostChild(){
   childImage.x = childImage.x + childImage.vx;
   childImage.y = childImage.y + childImage.vy;
 
-  // making the child and earth appear
+  // making the child and earth appear (game2 title 32)
+
   image(earthImage.image, earthImage.x, earthImage.y, earthImage.size, earthImage.size);
   image(childImage.image, childImage.x, childImage.y, childImage.size, childImage.size);
 
-// changing the state if the child is back in the chain of love!
+// changing the state if the child is back in the chain of love! (game2 title 32)
 let d = dist(childImage.x, childImage.y, earthImage.x, earthImage.y);
 if (d < 120){
   state = 'title33'
 }
 
   // making stars in the sky
-  for (let i =0; i < 10; i++) {
-  let x = random(0,width);
-  let y = random(0,height);
-  stroke(255);
-  strokeWeight(1);
-  point(x,y);
+starrySky();
 }
-}
+
+// first state to make the music play
 
 function clickInstruction(){
   push();
@@ -1067,4 +1339,75 @@ function clickInstruction(){
   textAlign(CENTER, CENTER);
   text('CLICK TO TRAVEL', 0, 450, width);
   pop();
+}
+
+// making stars in the sky like (like white noise or grain)
+function starrySky(){
+
+for (let i =0; i < 10; i++) {
+let x = random(0,width);
+let y = random(0,height);
+stroke(255);
+strokeWeight(1);
+point(x,y);
+}
+}
+
+// confetti with text magic is real as finale with song called in mouse pressed
+
+function grandeFinale(){
+
+
+for (let i =0; i < 10; i++) {
+let x = random(0,width);
+let y = random(0,height);
+let r = random(0,255);
+let g = random(0,255);
+let b = random(0,255);
+
+noStroke();
+fill(r, g, b);
+rectMode(CENTER)
+rect(x,y,10,50);
+
+push();
+noStroke();
+fill(r, g, b);
+textAlign(CENTER,CENTER);
+textSize(200);
+textStyle(BOLD);
+text(`MAGIC IS REAL`, windowWidth/2, windowHeight/2);
+pop();
+}
+}
+
+// from black to white (used in many titles)
+function fadeIn(){
+  fade.fadeIn = fade.fadeIn + fade.fadeIn2;
+  fade.fadeIn = constrain(fade.fadeIn, 0, 170);
+}
+
+// from white to black (used in many titles)
+function fadeOut(){
+  fade.fadeIn = fade.fadeIn - fade.fadeIn2;
+  fade.fadeIn = constrain(fade.fadeIn, 0, 170);
+}
+
+// This function is for the big laser flower background
+
+function flowers(flowers){
+
+for (let i = 0; i < 500; i++){
+push();
+  flowers.angle = flowers.angle + flowers.speed
+  translate(windowWidth/2, windowHeight/2);
+  rotate(flowers.angle);
+  stroke(flowers.fill.r, flowers.fill.g, flowers.fill.b);
+  strokeWeight(flowers.weight);
+  line(flowers.x,flowers.y,flowers.x2,flowers.y2);
+  translate(flowers.x,flowers.y);
+  rotate(flowers.angle);
+  flowers.x = flowers.x + random(0,width);
+  pop();
+}
 }
