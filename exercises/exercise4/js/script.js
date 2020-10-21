@@ -1,7 +1,12 @@
 "use strict";
 
 let school = [];
-let schoolSize = 1;
+let schoolSize = 8;
+let discoSong;
+
+function preload(){
+  discoSong = loadSound('assets/sounds/disco.mp3')
+}
 
 
 function setup() {
@@ -59,11 +64,30 @@ function displayFish(fish){
   push();
   fill(200,100,100);
   noStroke();
-  ellipse(fish.x, fish.y, fish.size);
+  drawFish(fish.x,fish.y);
   pop();
 }
 
  function mousePressed() {
    let fish = createFish(mouseX,mouseY);
    school.push(fish);
+   //discoSong.play();
  }
+
+ function drawFish(x,y){
+     push();
+     noStroke();
+     fill(100,100,130);
+     ellipseMode(CENTER);
+     ellipse(x,y,200,50);
+     triangle(x,y,x+200,y,x+180,y-50);
+     strokeWeight(4);
+     fill(0);
+     stroke(255);
+     ellipse(x-60,y-10,30,30);
+     ellipse(x-100,y-10,30,30);
+     fill(255);
+     noStroke();
+     ellipse(x-80,y+10,20,10);
+     pop();
+   }
