@@ -1,6 +1,7 @@
 "use strict";
 
 let school = [];
+let schoolSize = 1;
 
 
 function setup() {
@@ -8,10 +9,10 @@ function setup() {
 
  // create 4 fish positioned randomly
 
-  school[0] = createFish(random(0, width), random(0,height));
-  school[1] = createFish(random(0, width), random(0,height));
-  school[2] = createFish(random(0, width), random(0,height));
-  school[3] = createFish(random(0, width), random(0,height));
+ for(let i = 0; i < schoolSize; i++){
+   let fish = createFish(random(0,width), random(0,height));
+   school.push(fish);
+ }
 }
 
 // create new javascript object describing fish
@@ -30,6 +31,11 @@ function createFish(x,y){
 
 function draw() {
   background(0);
+
+  for(let i = 0; i < school.length; i++){
+    moveFish(school[i]);
+    displayFish(school[i]);
+  }
 }
 
 // chooses wether the provided fish changes direction and moves it
@@ -56,3 +62,8 @@ function displayFish(fish){
   ellipse(fish.x, fish.y, fish.size);
   pop();
 }
+
+ function mousePressed() {
+   let fish = createFish(mouseX,mouseY);
+   school.push(fish);
+ }
