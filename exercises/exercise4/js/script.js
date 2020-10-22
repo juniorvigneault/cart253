@@ -1,5 +1,10 @@
 "use strict";
 
+// Junior Vigneault - Exercise 4 - aquarium
+// Cart 253 - B
+
+// hungry raving fish inside fish tank on house music 
+
 let laser1 = {
   x: 1,
   y: 1,
@@ -26,19 +31,13 @@ let handImage = {
   x: undefined,
   y: undefined,
   size: undefined,
-  image: undefined
+  image: undefined,
+  beingMoved: true
 }
 
-let pillImage = {
-  x: undefined,
-  y: undefined,
-  size: undefined,
-  image: undefined,
-  consumed: false
-}
 
 let school = [];
-let schoolSize = 7;
+let schoolSize = 16;
 let discoSong;
 
 
@@ -46,7 +45,6 @@ function preload() {
   discoSong = loadSound('assets/sounds/disco.mp3')
   hookImage.image = loadImage('assets/images/hook.png')
   handImage.image = loadImage('assets/images/hand.png')
-  pillImage.image = loadImage('assets/images/pill.png')
 }
 
 // starting title state
@@ -96,8 +94,21 @@ function draw() {
 function stateSwitch() {
   if (state === 'start') {
     start();
-  } else if (state === 'simulation') {
+  }
+  else if (state === 'simulation') {
     simulation();
+  }
+  else if (state === 'fishText') {
+    fishText();
+  }
+  else if (state === 'loveText') {
+    loveText();
+  }
+  else if (state === 'toText') {
+    toText();
+  }
+  else if (state === 'raveText') {
+    raveText();
   }
 }
 
@@ -155,11 +166,27 @@ function fishTank() {
 // chooses wether the provided fish changes direction and moves it
 
 function moveFish(fish) {
-  let change = random(0, 1);
-  if (change < 0.02) {
-    fish.vx = random(-fish.speed, fish.speed);
-    fish.vy = random(-fish.speed, fish.speed);
+
+// if hand is moving then fish goes away
+
+  if (handImage.beingMoved == true){
+    if (handImage.x > fish.x){
+      fish.vx = .05
+    }
+    else if (handImage.x < fish.x){
+      fish.vx = -.05
+    }
   }
+  // if hand is not moving fish come close
+
+   else if(handImage.beingMoved == false){
+     let change = random(0, 1);
+     if (change < 0.02) {
+       fish.vx = random(-fish.speed, fish.speed);
+       fish.vy = random(-fish.speed, fish.speed);
+     }
+   }
+
   // move fish
 
   fish.x = fish.x + fish.vx;
@@ -169,6 +196,8 @@ function moveFish(fish) {
 
   fish.x = constrain(fish.x, 0, width);
   fish.y = constrain(fish.y, 0, height);
+
+
 }
 
 // display fish on canvas
@@ -184,18 +213,17 @@ function displayFish(fish) {
 // start song by pressing enter and switching to fishtank
 
 function keyPressed() {
-  if (state = 'start') {
-    //discoSong.play();
-    state = 'simulation';
+  if (state == 'start') {
+    discoSong.play();
+    setTimeout(function(){ state = 'simulation'; }, 4300);
+    setTimeout(function(){ state = 'fishText'; }, 14300);
+    setTimeout(function(){ state = 'loveText'; }, 14900);
+    setTimeout(function(){ state = 'toText'; }, 15500);
+    setTimeout(function(){ state = 'raveText'; }, 16100);
+    setTimeout(function(){ state = 'simulation2'; }, 21000);
+
   }
 }
-
-
-// function switch(){
-//   if (state === 'start' && frameCount >= 200){
-//     state = 'simulation';
-//   }
-// }
 
 // drawing my precious fishes
 
@@ -218,7 +246,6 @@ function drawFish(x, y) {
   ellipse(x - 80, y + 10, 20, 10);
   pop();
 }
-
 
 // rave background for the fish!
 
@@ -248,4 +275,59 @@ function displayHand(){
   handImage.x = mouseX;
   handImage.y = height - handLimit;
   image(handImage.image, handImage.x, handImage.y, handImage.size, handImage.size);
+  if (pmouseX-mouseX > 5 || pmouseX-mouseX < -5){
+    handImage.beingMoved = true;
+  }
+  else {
+    handImage.beingMoved = false;
+  }
+}
+
+function fishText(){
+  push();
+noStroke();
+let size = random(90,92);
+let color = random(0,255);
+fill(color);
+textAlign(CENTER,CENTER);
+textSize(size);
+textStyle(BOLD);
+text(`Fish`, width/2, height/2);
+pop();
+}
+function loveText(){
+  push();
+noStroke();
+let size = random(90,92);
+let color = random(0,255);
+fill(color);
+textAlign(CENTER,CENTER);
+textSize(size);
+textStyle(BOLD);
+text(`love`, width/2, height/2);
+pop();
+}
+function toText(){
+  push();
+noStroke();
+let size = random(90,92);
+let color = random(0,255);
+fill(color);
+textAlign(CENTER,CENTER);
+textSize(size);
+textStyle(BOLD);
+text(`to`, width/2, height/2);
+pop();
+}
+function raveText(){
+  push();
+noStroke();
+let size = random(200,202);
+let color = random(0,255);
+fill(color);
+textAlign(CENTER,CENTER);
+textSize(size);
+textStyle(BOLD);
+text(`RAVE`, width/2, height/2);
+pop();
 }
