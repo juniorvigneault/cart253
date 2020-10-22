@@ -3,7 +3,7 @@
 // Junior Vigneault - Exercise 4 - aquarium
 // Cart 253 - B
 
-// hungry raving fish inside fish tank on house music 
+// hungry raving fish inside fish tank on house music
 
 let laser1 = {
   x: 1,
@@ -220,7 +220,7 @@ function keyPressed() {
     setTimeout(function(){ state = 'loveText'; }, 14900);
     setTimeout(function(){ state = 'toText'; }, 15500);
     setTimeout(function(){ state = 'raveText'; }, 16100);
-    setTimeout(function(){ state = 'simulation2'; }, 21000);
+    setTimeout(function(){ state = 'simulation'; }, 21000);
 
   }
 }
