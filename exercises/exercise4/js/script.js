@@ -283,6 +283,7 @@ function displayHand(){
   }
 }
 
+// functions with text! I tried to make only 1 and then add the text as a parameter but then it acted weird when I used the timeout function
 function fishText(){
   push();
 noStroke();
@@ -295,6 +296,7 @@ textStyle(BOLD);
 text(`Fish`, width/2, height/2);
 pop();
 }
+
 function loveText(){
   push();
 noStroke();
@@ -307,6 +309,7 @@ textStyle(BOLD);
 text(`love`, width/2, height/2);
 pop();
 }
+
 function toText(){
   push();
 noStroke();
@@ -319,6 +322,7 @@ textStyle(BOLD);
 text(`to`, width/2, height/2);
 pop();
 }
+
 function raveText(){
   push();
 noStroke();
