@@ -13,9 +13,8 @@ class Ball {
     this.fill = {
       r: random(0,255),
       g: random(0,255),
-      b: random(0,255)
+      b: random(0,255),
     }
-    this.stroke = 0
   }
 
   gravity(force){
@@ -42,8 +41,9 @@ class Ball {
 
   display(){
     push();
-    fill(this.fiil.r, this.fill.g, this.fill.b);
+    fill(this.fill.r, this.fill.g, this.fill.b);
     noStroke();
+    ellipseMode(CENTER);
     ellipse(this.x, this.y, this.size);
     pop();
   }
