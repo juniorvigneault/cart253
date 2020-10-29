@@ -10,21 +10,23 @@ class Paddle {
       g: 100,
       b: 20
     }
-    this.strokeFill = 255;
-    this.strokeWeight = 5
   }
+
+  // move the circle paddle with the mouse
 
   move() {
     this.x = mouseX;
+    this.y = mouseY;
   }
+
+// display the circle paddle
 
   display() {
     push();
     fill(this.fill.r, this.fill.g, this.fill.b);
-    stroke(this.strokeFill);
     strokeWeight(this.strokeWeight);
-    rectMode(CENTER);
-    rect(this.x, this.y, this.width, this.height);
+    ellipseMode(CENTER);
+    ellipse(this.x, this.y, this.width, this.height);
     pop();
   }
 }
