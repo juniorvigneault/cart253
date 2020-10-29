@@ -10,7 +10,7 @@ let gravityForce = 0.0025;
 let paddle;
 
 let balls = [];
-let numBalls = 200;
+let numBalls = 1;
 
 // setup()
 //
@@ -41,7 +41,7 @@ function draw() {
     let ball = balls[i];
     ball.gravity(gravityForce);
     ball.move();
-    ball.bounce();
+    ball.bounce(paddle);
     ball.display();
   }
 }
