@@ -18,8 +18,7 @@ let enterImage = {
   x:undefined,
   y:undefined,
   size:undefined,
-  image:undefined,
-  clicked: false
+  image:undefined
 }
 
 let rememberTitleImage = {
@@ -40,16 +39,21 @@ let scene1Image = {
   x:undefined,
   y:undefined,
   size:undefined,
-  image:undefined,
-  isLooping: false
+  image:undefined
 }
 
 let loadingImage = {
   x:undefined,
   y:undefined,
   size:undefined,
-  image:undefined,
-  isLooping: false
+  image:undefined
+}
+
+let textBoxImage = {
+  x:undefined,
+  y:undefined,
+  size:undefined,
+  image:undefined
 }
 
 
@@ -60,6 +64,8 @@ let remember1SFX;
 
 let scene1SFX;
 
+let typewriter;
+
 function preload() {
 enterImage.image = loadImage(`assets/images/enter.png`);
 rememberTitleImage.image = loadImage(`assets/images/remembertitle.png`);
@@ -68,6 +74,9 @@ startImage.image = loadImage(`assets/images/start.png`);
 scene1Image.image = loadImage(`assets/images/scene1.gif`);
 
 loadingImage.image = loadImage(`assets/images/loading.png`);
+
+textBoxImage.image = loadImage(`assets/images/textbox.png`);
+
 
 remember1SFX = loadSound (`assets/sounds/remember1.mp3`);
 
@@ -79,6 +88,8 @@ scene1SFX = loadSound (`assets/sounds/scene1.mp3`);
 function setup() {
   // positionning the canvas at the middle of the screen
   canvasPosition();
+
+  typewriter = new Typewriter();
 }
 
 // draw()
@@ -124,6 +135,7 @@ function mainTitle() {
   rememberTitleImage.y = height/2;
   image(rememberTitleImage.image, rememberTitleImage.x, rememberTitleImage.y);
 
+
 // start image
   startImage.x = width/2;
   startImage.y = height/2;
@@ -152,8 +164,18 @@ function scene1() {
   scene1Image.x = width/2;
   scene1Image.y = height/2;
 
+  textBoxImage.x = width/2;
+  textBoxImage.y = height/2;
 
+  
   image(scene1Image.image, scene1Image.x, scene1Image.y);
+
+  // text box, will appear almost every scene at some point
+  image(textBoxImage.image, textBoxImage.x, textBoxImage.y);
+
+  // display the typewriter in scence 1
+  typewriter.display();
+
   pop();
 }
 
@@ -174,7 +196,7 @@ function mousePressed() {
         mouseY > enterImage.y - enterImage.image.height / 2 &&
         mouseY < enterImage.y + enterImage.image.height / 2){
           state = 'mainTitle';
-          remember1SFX.loop();
+          //remember1SFX.loop();
         }
   }
 
@@ -184,8 +206,8 @@ function mousePressed() {
         mouseY > startImage.y - startImage.image.height / 2 &&
         mouseY < startImage.y + startImage.image.height / 2){
           state = 'loadingScene';
-          remember1SFX.stop();
-          scene1SFX.loop();
+        //  remember1SFX.stop();
+        //  scene1SFX.loop();
         }
   }
 
@@ -195,6 +217,9 @@ function mousePressed() {
         mouseY > startImage.y - startImage.image.height / 2 &&
         mouseY < startImage.y + startImage.image.height / 2){
           state = 'scene1';
+          // typewriter writes some text
+          typewriter.typewrite(`I feel like I know you from somewhere {name of the person}`, width/2, height/2);
+
         }
   }
 }

@@ -1,3 +1,0 @@
-class Title extends Scene {
-
-}
