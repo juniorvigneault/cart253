@@ -1,22 +1,38 @@
 "use strict";
 
-/**************************************************
-Template p5 project
-Pippin Barr
+function preload() {}
 
-Here is a description of this template p5 project.
-**************************************************/
+// the balls
+let balls = [];
 
-// setup()
-//
-// Description of setup() goes here.
+
+let notes = [`C5`, `D5`, `Eb5`, `F5`, `G5`, `Ab5`, `Bb5`];
+
+// creates the canvas
 function setup() {
-
+  createCanvas(600, 600);
 }
 
-// draw()
-//
-// Description of draw() goes here.
+
 function draw() {
 
+
+  // move, bounce and display the balls
+
+  for (let i = 0; i < balls.length; i++) {
+    let ball = balls[i];
+    ball.move();
+    ball.bounce();
+    ball.display();
+  }
+}
+
+function mousePressed() {
+  createBall(mouseX, mouseY);
+}
+
+function createBall(x, y) {
+  let note = random(notes);
+  let ball = new Ball(x, y, note);
+  balls.push(ball);
 }

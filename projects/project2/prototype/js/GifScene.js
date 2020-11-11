@@ -13,3 +13,10 @@ class GifScene extend Scene{
     this.textbox = new Typewriter();
   }
 }
+
+  displyGif(){
+    push();
+    imageMode(CENTER);
+    image(this.image, this.x, this.y);
+    pop();
+  }

@@ -23,7 +23,6 @@ class EnterScene extends Scene {
           mouseY > this.y - this.image.height / 2 &&
           mouseY < this.y + this.image.height / 2){
             state = 'mainTitle';
-            remember1SFX.loop();
           }
     }
 }

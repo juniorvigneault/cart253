@@ -25,8 +25,6 @@ mousePressed(){
         mouseY > this.y - this.image.height / 2 &&
         mouseY < this.y + this.image.height / 2){
           state = 'loadingScene';
-          remember1SFX.stop();
-          scene1SFX.loop();
       }
     }
 }
