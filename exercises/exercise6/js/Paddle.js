@@ -3,14 +3,15 @@ class Paddle {
   constructor(w,h) {
     this.width = w;
     this.height = h;
-    this.x = 0;
+    this.x = width/2;
     this.y = height - this.height/2;
     this.fill = {
-      r: 200,
-      g: 100,
-      b: 20
+      r: 255,
+      g: 200,
+      b: 200
     }
     this.strokeWeight = 1;
+
   }
 
   // move the circle paddle with the mouse
@@ -29,5 +30,7 @@ class Paddle {
     rectMode(CENTER);
     rect(this.x, this.y, this.width, this.height);
     pop();
+
+
   }
 }

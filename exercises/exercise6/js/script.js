@@ -7,13 +7,9 @@ Junior Vigneault
 You have been hired by a circus! Control a circle with the mouse. Drop the ball and get fired!
 **************************************************/
 
-let congratulationTxt = {
+let click = {
   size : 60,
-  color : {
-    r: undefined,
-    g: undefined,
-    b: undefined
-  }
+  color : 0
 }
 
 
@@ -22,8 +18,6 @@ let paddle;
 
 let balls = [];
 let numBalls = 30;
-
-let congratulationSFX;
 
 let notes = [`C5`, `D5`, `Eb5`, `F5`, `G5`, `Ab5`, `Bb5`];
 
@@ -41,11 +35,11 @@ let state = 'title'
 // Set up //
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(windowWidth, windowHeight);
 
   // // creating the floor (paddle)
 
-  paddle = new Paddle(1600, 100);
+  paddle = new Paddle(width, 100);
 
   // creating balls to their original position
 
@@ -58,18 +52,7 @@ function setup() {
   }
 }
 
-  //  creating clouds at a random position
 
-  // for (let i = 0; i < numClouds; i++) {
-  //   let x = random(0, width);
-  //   let y = random(0, height);
-  //   let size = random(80, 300);
-  //   let cloud = new Cloud(x, y, size);
-  //   clouds.push(cloud);
-  // }
-
-// draw()
-//
 // different states
 
 function draw() {
@@ -91,13 +74,8 @@ function draw() {
 function title() {
   background(255);
   push();
-
-  congratulationTxt.color.r = random(0,255);
-  congratulationTxt.color.g = random(0,255);
-  congratulationTxt.color.b = random(0,255);
-
-  textSize(congratulationTxt.size);
-  fill(congratulationTxt.color.r, congratulationTxt.color.g, congratulationTxt.color.b);
+  textSize(click.size);
+  fill(click.color);
   textAlign(CENTER,CENTER);
   text(`click`, width/2, height/2);
   pop();
