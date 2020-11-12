@@ -44,7 +44,7 @@ function setup() {
 
   for (let i = 0; i < numBalls; i++) {
     let x = random(0, width);
-    let y = random(-4000, -1);
+    let y = random(-10000, -1);
     let note = random(notes)
     let ball = new Ball(x, y, note);
     balls.push(ball);
