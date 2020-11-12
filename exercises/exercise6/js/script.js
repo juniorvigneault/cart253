@@ -1,10 +1,9 @@
 "use strict";
 
 /**************************************************
-Exercise 5 : Juggling!
+Exercise 6: music box!
 Junior Vigneault
-
-You have been hired by a circus! Control a circle with the mouse. Drop the ball and get fired!
+Random music box generator !!
 **************************************************/
 
 let click = {
@@ -17,14 +16,14 @@ let gravityForce = 0.0025;
 let paddle;
 
 let balls = [];
-let numBalls = 30;
+let numBalls = 20;
+
+let bigBalls = [];
+let numBigBalls = 3;
 
 let notes = [`C5`, `D5`, `Eb5`, `F5`, `G5`, `Ab5`, `Bb5`];
 
-function preload(){
-
-  congratulationSFX = loadSound(`assets/sounds/congratulation.mp3`)
-}
+let bassNotes = [`C3`, `D3`, `Eb3`, `F3`, `G3`, `Ab3`, `Bb3`];
 
 
 // starting state
@@ -50,6 +49,19 @@ function setup() {
     let ball = new Ball(x, y, note);
     balls.push(ball);
   }
+
+  // creating bigger balls for the bass
+
+  for (let i = 0; i < numBigBalls; i++) {
+    let x = random(0, width);
+    let y = random(-4000, -1);
+    let note = random(bassNotes)
+    let bigBall = new BigBall(x, y, note);
+    bigBalls.push(bigBall);
+  }
+
+
+
 }
 
 
@@ -88,7 +100,7 @@ function simulation() {
   // paddle.move();
   paddle.display();
 
-  // display the falling balls, bounce on paddle and make them dissapear when they leave scren
+  // display the falling balls, bounce on paddley and sides
 
   for (let i = 0; i < balls.length; i++) {
     let ball = balls[i];
@@ -98,6 +110,19 @@ function simulation() {
       ball.bounce(paddle);
       ball.display();
       ball.bounceSides();
+    }
+  }
+
+  // display the falling big balls, bounce on paddle and sides
+
+  for (let i = 0; i < bigBalls.length; i++) {
+    let bigBall = bigBalls[i];
+    if (bigBall.active) {
+      bigBall.gravity(gravityForce);
+      bigBall.move();
+      bigBall.bounce(paddle);
+      bigBall.display();
+      bigBall.bounceSides();
     }
   }
 

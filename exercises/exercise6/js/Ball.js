@@ -19,6 +19,10 @@ class Ball {
     // synth
     this.note = note;
     this.synth = new p5.PolySynth();
+
+    // reverb
+    this.delay = new p5.Delay();
+
   }
 
   // make the ball move according to it's position
@@ -26,6 +30,8 @@ class Ball {
   gravity(force) {
     this.ay = this.ay + force;
   }
+
+  // move the ball!
 
   move() {
     this.vx = this.vx + this.ax;
@@ -50,13 +56,17 @@ class Ball {
 
       let dx = this.x - paddle.x;
       this.vx = this.vx + map(dx, -paddle.width / 2, paddle.width / 2, -10, 10);
-      // this.size = this.size + this.growth;
 
       this.vy = -this.vy;
       this.ay = 0;
+      //  play the note when bouncing
       this.playNote();
+      // add delay when bouncing
+      this.delay.process(this.synth, .2, .7, 4000);
     }
   }
+
+  // ball can bounce on the sides of the screen
 
   bounceSides(){
     if (this.x - this.size / 2 < 0 || this.x + this.size / 2 > width) {
@@ -70,6 +80,7 @@ if (this.y - this.size / 2 < 0 || this.y + this.size / 2 > height) {
 }
   }
 
+  // play the note in synth
     playNote(){
     this.synth.play(this.note,0.2,0,0.1);
   }
