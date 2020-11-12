@@ -23,7 +23,7 @@ let numBigBalls = 3;
 
 let notes = [`C5`, `D5`, `Eb5`, `F5`, `G5`, `Ab5`, `Bb5`];
 
-let bassNotes = [`C3`, `D3`, `Eb3`, `F3`, `G3`, `Ab3`, `Bb3`];
+let bassNotes = [`C4`, `D4`, `Eb4`, `F4`, `G3`, `Ab3`, `Bb3`];
 
 
 // starting state

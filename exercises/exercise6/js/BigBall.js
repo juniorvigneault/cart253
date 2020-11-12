@@ -10,6 +10,9 @@ class BigBall extends Ball {
 
         // reverb
         this.delay = new p5.Delay();
+        this.delayTime = 0.3;
+        this.feedback = 0.5;
+        this.filterFreq = 500;
 
   }
 
@@ -20,7 +23,7 @@ class BigBall extends Ball {
   bounce(paddle){
 
     super.bounce(paddle);
-    this.delay.process(this.synth, .12, .7, 100);
+    this.delay.process(this.synth, this.delayTime, this.feedback, this.filterFreq);
 
   }
 }
