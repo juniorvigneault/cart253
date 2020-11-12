@@ -109,6 +109,7 @@ function states() {
 
 function enter() {
   push();
+  background(255);
   imageMode(CENTER);
   enterImage.x = width/2;
   enterImage.y = height/2;

@@ -7,14 +7,31 @@ Junior Vigneault
 You have been hired by a circus! Control a circle with the mouse. Drop the ball and get fired!
 **************************************************/
 
+let congratulationTxt = {
+  size : 60,
+  color : {
+    r: undefined,
+    g: undefined,
+    b: undefined
+  }
+}
+
+
 let gravityForce = 0.0025;
 let paddle;
 
 let balls = [];
-let numBalls = 0;
+let numBalls = 30;
 
-let clouds = [];
-let numClouds = 10;
+let congratulationSFX;
+
+let notes = [`C5`, `D5`, `Eb5`, `F5`, `G5`, `Ab5`, `Bb5`];
+
+function preload(){
+
+  congratulationSFX = loadSound(`assets/sounds/congratulation.mp3`)
+}
+
 
 // starting state
 
@@ -24,92 +41,73 @@ let state = 'title'
 // Set up //
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(800, 800);
 
-  // creating the paddle (now a circle) to it's original position
+  // // creating the floor (paddle)
 
-  paddle = new Paddle(300, 300);
+  paddle = new Paddle(1600, 100);
 
   // creating balls to their original position
 
   for (let i = 0; i < numBalls; i++) {
     let x = random(0, width);
-    let y = random(-800, -100);
-    let ball = new Ball(x, y);
+    let y = random(-4000, -1);
+    let note = random(notes)
+    let ball = new Ball(x, y, note);
     balls.push(ball);
   }
+}
 
   //  creating clouds at a random position
 
-  for (let i = 0; i < numClouds; i++) {
-    let x = random(0, width);
-    let y = random(0, height);
-    let size = random(80, 300);
-    let cloud = new Cloud(x, y, size);
-    clouds.push(cloud);
-  }
-}
+  // for (let i = 0; i < numClouds; i++) {
+  //   let x = random(0, width);
+  //   let y = random(0, height);
+  //   let size = random(80, 300);
+  //   let cloud = new Cloud(x, y, size);
+  //   clouds.push(cloud);
+  // }
 
 // draw()
 //
 // different states
 
 function draw() {
-  background(100, 200, 255);
+
 
   if (state === 'title') {
     title();
-  } else if (state === 'simulation') {
+  }
+  else if (state === 'simulation') {
     simulation();
-  } else if (state === 'end1') {
-    end1();
-  } else if (state === 'end2') {
-    end2();
+  }
+  else if (state === 'title') {
+    simulation();
   }
 }
 
-// first ending, when you lose and the ball goes to the bottom
-
-function end1() {
-  push();
-  textSize(100);
-  fill(250);
-  textAlign(CENTER, CENTER);
-  text('Pack your stuff and leave!', width / 2, height / 2);
-  pop();
-  noLoop();
-}
-
-// second ending, when you juggle long enough!
-
-function end2() {
-  push();
-  textSize(100);
-  fill(250);
-  textAlign(CENTER, CENTER);
-  text('You are a natural!', width / 2, height / 2);
-  pop();
-  noLoop();
-}
-
 // title screen with instructions
-
+//
 function title() {
+  background(255);
   push();
-  textSize(100);
-  fill(250);
-  textAlign(CENTER, CENTER);
-  text(`Welcome to a circus!
-  Drop the ball to
-  get fired`, width / 2, height / 2);
+
+  congratulationTxt.color.r = random(0,255);
+  congratulationTxt.color.g = random(0,255);
+  congratulationTxt.color.b = random(0,255);
+
+  textSize(congratulationTxt.size);
+  fill(congratulationTxt.color.r, congratulationTxt.color.g, congratulationTxt.color.b);
+  textAlign(CENTER,CENTER);
+  text(`click`, width/2, height/2);
   pop();
 }
 
 // game state, where you have to juggle
 
 function simulation() {
-
-  paddle.move();
+  background(255);
+  // paddle.move();
   paddle.display();
 
   // display the falling balls, bounce on paddle and make them dissapear when they leave scren
@@ -121,28 +119,17 @@ function simulation() {
       ball.move();
       ball.bounce(paddle);
       ball.display();
+      ball.bounceSides();
     }
   }
 
- // displaying the clouds in the sky
 
-  for (let i = 0; i < clouds.length; i++) {
-    let cloud = clouds[i];
-    cloud.display();
-  }
 }
 
-// make the ball appear and switch from title state to simulation. Also triggers the timer to win.
-
+// // make the ball appear and switch from title state to simulation. Also triggers the timer to win.
+//
 function mousePressed() {
-  let ball = new Ball(mouseX, mouseY);
-  balls.push(ball);
-
   if (state = 'title') {
     state = 'simulation';
   }
-
-// timer : if you juggle long enough, you win!
-
-  setTimeout(function() {state = 'end2';}, 7000);
 }

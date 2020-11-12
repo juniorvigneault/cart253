@@ -7,16 +7,22 @@ Pippin Barr
 Here is a description of this template p5 project.
 **************************************************/
 
-// setup()
-//
-// Description of setup() goes here.
-function setup() {
+let currentState;
 
+function setup() {
+  createCanvas(800,800);
+
+  currentState = new Enter();
 }
 
-// draw()
-//
-// Description of draw() goes here.
-function draw() {
 
+function draw() {
+ // calling the current state
+  currentState.draw();
+}
+
+
+function mousePressed(){
+  // 
+  currentState.mousePressed();
 }
