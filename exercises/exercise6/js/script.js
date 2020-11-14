@@ -19,7 +19,7 @@ let balls = [];
 let numBalls = 20;
 
 let bigBalls = [];
-let numBigBalls = 3;
+let numBigBalls = 2;
 
 let notes = [`C5`, `D5`, `Eb5`, `F5`, `G5`, `Ab5`, `Bb5`];
 
