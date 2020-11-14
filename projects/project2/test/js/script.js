@@ -6,6 +6,8 @@ Junior Vigneault
 
 You have won
 **************************************************/
+// horse.com home page variable
+let currentState;
 
 // balloon gravity
 let gravityForce = 0.0025;
@@ -17,6 +19,7 @@ let stage;
 let balloons = [];
 let numBalloons = 80;
 
+// song variable
 let congratulationSFX;
 
 // random colors for background in transition scene between mail and congratulation
@@ -29,28 +32,39 @@ let bg = {
 // congratulation gif variable
 let congratulationsGif;
 
+let homePageImage;
+
+// ship image png (not there yet)
+// let shipImage = {
+//   x: 200,
+//   y: 200,
+//   image: undefined,
+// }
+
 // preload images and sounds
 function preload() {
 
-  congratulationSFX = loadSound(`assets/sounds/congratulation.mp3`)
-  congratulationsGif = loadImage(`assets/images/congratulations.gif`)
-}
+  congratulationSFX = loadSound(`assets/sounds/congratulation.mp3`);
+  congratulationsGif = loadImage(`assets/images/congratulations.gif`);
+  homePageImage = loadImage(`assets/images/home.png`)
 
-let state = `mail`
+  // shipImage.image = loadImage(`assets/images/ship.png`);
+}
 
 // setup()
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-  // creating stage and balloons
-  createStage();
+  // // creating stage and balloons
+  // createStage();
+  currentState = new Home(homePageImage);
 }
 
 
 // draw()
 function draw() {
   // switching between mail and congratulation scene
-  stateSwitch();
+  // stateSwitch();
 }
 
 function createStage() {
@@ -85,6 +99,7 @@ function congratulation() {
       balloon.display();
     }
   }
+//  ship();
 }
 
 // function mail (starting state, eventually log in mail)
@@ -131,3 +146,8 @@ function mousePressed(){
     setTimeout(function(){ state = 'congratulation'; }, 1500);
   }
 }
+
+// function ship(){
+//       imageMode(CENTER);
+//       image(shipImage.image, shipImage.x, shipImage.y)
+//   }
