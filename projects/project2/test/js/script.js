@@ -6,8 +6,6 @@ Junior Vigneault
 
 You have won
 **************************************************/
-// horse.com home page variable
-let currentState;
 
 // balloon gravity
 let gravityForce = 0.0025;
@@ -32,39 +30,39 @@ let bg = {
 // congratulation gif variable
 let congratulationsGif;
 
-let homePageImage;
 
-// ship image png (not there yet)
 // let shipImage = {
 //   x: 200,
 //   y: 200,
 //   image: undefined,
-// }
+
+
+
 
 // preload images and sounds
 function preload() {
 
   congratulationSFX = loadSound(`assets/sounds/congratulation.mp3`);
   congratulationsGif = loadImage(`assets/images/congratulations.gif`);
-  homePageImage = loadImage(`assets/images/home.png`)
 
   // shipImage.image = loadImage(`assets/images/ship.png`);
 }
+
+let state = `mail`
 
 // setup()
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-  // // creating stage and balloons
-  // createStage();
-  currentState = new Home(homePageImage);
+  // creating stage and balloons
+  createStage();
 }
 
 
 // draw()
 function draw() {
   // switching between mail and congratulation scene
-  // stateSwitch();
+  stateSwitch();
 }
 
 function createStage() {

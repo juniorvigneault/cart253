@@ -42,7 +42,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
 // current state definition
-  currentState = new Enter(enterCollage, enterGif, petalGif);
+  currentState = new Home(homePageImage, horseDotComGif, backgroundHorse);
 }
 
 
