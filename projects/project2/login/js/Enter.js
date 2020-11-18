@@ -23,7 +23,6 @@ class Enter {
   }
 
   display() {
-    push();
     imageMode(CENTER);
     background(234, 216, 202);
     // collage
@@ -32,7 +31,6 @@ class Enter {
     image(this.enterGif, this.enterGifx, this.enterGify, this.enterGifWidth, this.enterGifHeight);
     // rose petal gif
     image(this.petalGif, this.petalGifx, this.petalGify, this.petalGifWidth, this.petalGifHeight);
-    pop();
   }
 
   draw() {
@@ -45,7 +43,7 @@ class Enter {
       mouseY > this.enterGify - this.enterGifHeight / 2 &&
       mouseY < this.enterGify + this.enterGifHeight / 2) {
       // current state definition
-      currentState = new Home(homePageImage, horseDotComGif, backgroundHorse, riding, caring, images, aboutUs);
+      currentState = new Home(homePageImage, horseDotComGif, backgroundHorse);
       guitarMusic.loop();
     }
   }

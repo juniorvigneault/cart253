@@ -20,13 +20,6 @@ let horseDotComGif;
 let backgroundHorse;
 let guitarMusic;
 
-// variables for menu buttons on homepage
-let riding;
-let caring;
-let images;
-let aboutUs;
-let login;
-
 // variable for login page
 let backgroundLogin;
 
@@ -40,13 +33,6 @@ function preload() {
   backgroundHorse = loadImage(`assets/images/background.jpg`);
   // guitar music
   guitarMusic = loadSound(`assets/sounds/guitar.mp3`)
-
-  // home page menu images
-  riding = loadImage(`assets/images/rinding.png`)
-  caring = loadImage(`assets/images/caring.png`)
-  images = loadImage(`assets/images/images.png`)
-  aboutUs = loadImage(`assets/images/aboutus.png`)
-  // login = loadImage(`assets/images/`)
 
   // enter page images
   enterCollage = loadImage(`assets/images/collage.png`);
@@ -62,7 +48,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
 // current state definition
-  currentState = new Enter(enterCollage, enterGif, petalGif);
+  currentState = new Login(backgroundLogin);
 }
 
 
