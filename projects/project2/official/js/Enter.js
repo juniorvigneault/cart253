@@ -6,8 +6,6 @@ class Enter {
     this.enterGif = enterGif;
     this.enterGifx = width / 2
     this.enterGify = height * .8
-    this.enterGifWidth = 300
-    this.enterGifHeight = 200
 
     // collage of horses
     this.enterCollage = collage;
@@ -40,12 +38,12 @@ class Enter {
   }
 
   mousePressed() {
-    if (mouseX > this.enterGifx - this.enterGifWidth / 2 &&
-      mouseX < this.enterGifx + this.enterGifWidth / 2 &&
-      mouseY > this.enterGify - this.enterGifHeight / 2 &&
-      mouseY < this.enterGify + this.enterGifHeight / 2) {
+    if (mouseX > this.enterGifx - this.enterGif.width / 2 &&
+      mouseX < this.enterGifx + this.enterGif.width / 2 &&
+      mouseY > this.enterGify - this.enterGif.height / 2 &&
+      mouseY < this.enterGify + this.enterGif.height / 2) {
       // current state definition
-      currentState = new Home(homePageImage, horseDotComGif, backgroundHorse, riding, caring, images, aboutUs);
+      currentState = new Home(homePageImage, horseDotComGif, backgroundHorse, caring, ourMission, achievements, volunteer);
       guitarMusic.loop();
     }
   }

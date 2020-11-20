@@ -73,7 +73,7 @@ class Home {
   }
 
   mousePressed() {
-    // clicking on our mission in the menu opens the our mission page
+    // clicking(this.ourMissionMenux, this.ourMissionMenuy, this.ourMissionMenu.width, this.ourMissionMenu.height, new OurMission(ourMissionBg))
     if (mouseX > this.ourMissionMenux - this.ourMissionMenu.width / 2 &&
       mouseX < this.ourMissionMenux + this.ourMissionMenu.width / 2 &&
       mouseY > this.ourMissionMenuy - this.ourMissionMenu.height / 2 &&
@@ -82,7 +82,6 @@ class Home {
       currentState = new OurMission(ourMissionBg, homeIcon);
     }
 
-    // clicking on caring in the menu opens the caring page
     if (mouseX > this.caringMenux - this.caringMenu.width / 2 &&
       mouseX < this.caringMenux + this.caringMenu.width / 2 &&
       mouseY > this.caringMenuy - this.caringMenu.height / 2 &&
@@ -91,22 +90,12 @@ class Home {
       currentState = new Caring(caringBg, homeIcon);
     }
 
-    // clicking on achievements in the menu opens the achievements page
-    if (mouseX > this.achievementsMenux - this.achievementsMenu.width / 2 &&
-      mouseX < this.achievementsMenux + this.achievementsMenu.width / 2 &&
-      mouseY > this.achievementsMenuy - this.achievementsMenu.height / 2 &&
-      mouseY < this.achievementsMenuy + this.achievementsMenu.height / 2) {
+    if (mouseX > this.caringMenux - this.caringMenu.width / 2 &&
+      mouseX < this.caringMenux + this.caringMenu.width / 2 &&
+      mouseY > this.caringMenuy - this.caringMenu.height / 2 &&
+      mouseY < this.caringMenuy + this.caringMenu.height / 2) {
       // current state definition
-      currentState = new Achievements(achievementsBg, homeIcon);
-    }
-
-    // clicking on volunteer in the menu opens the volunteer page
-    if (mouseX > this.volunteerMenux - this.volunteerMenu.width / 2 &&
-      mouseX < this.volunteerMenux + this.volunteerMenu.width / 2 &&
-      mouseY > this.volunteerMenuy - this.volunteerMenu.height / 2 &&
-      mouseY < this.volunteerMenuy + this.volunteerMenu.height / 2) {
-      // current state definition
-      currentState = new Volunteer(volunteerBg, homeIcon);
+      currentState = new Caring(caringBg);
     }
   }
 
@@ -118,4 +107,5 @@ class Home {
   //         // current state definition
   //         currentState = state;
   //       }
+  }
 }
