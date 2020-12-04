@@ -20,6 +20,12 @@ let horseDotComGif;
 let backgroundHorse;
 let guitarMusic;
 
+// variables for the second home page visuals and music
+let homePageImage2;
+let horseDotComGif2;
+let backgroundHorse2;
+let darkSFX
+
 // variables for menu buttons on homepage
 let achievements;
 let caring;
@@ -39,6 +45,33 @@ let achievementsBg;
 // variables for volunteer page
 let volunteerBg;
 
+// HOME 2 / THE INVESTIGATION BEGINS
+
+// glitch horse pop up
+let glitchHorse;
+// glitch horse sound
+let isanybodythereSFX;
+
+// Slideshow variables
+// Array to store the slideshow images to display
+let slideshowImages = [];
+// Index in the array of the current image to display (the first one)
+let currentSlideshowImage = 0;
+// The number of images total (for loading them in a for-loop)
+let numImages = 4;
+// A place to store the timer that moves between the images in case we want to stop it
+let slideshowTimer;
+
+//  dark Slideshow variables
+// Array to store the slideshow images to display
+let slideshowImages2 = [];
+// Index in the array of the current image to display (the first one)
+let currentSlideshowImage2 = 0;
+// The number of images total (for loading them in a for-loop)
+let numImages2 = 4;
+// A place to store the timer that moves between the images in case we want to stop it
+let slideshowTimer2;
+
 // preload images and sounds
 function preload() {
   // home page template
@@ -49,6 +82,15 @@ function preload() {
   backgroundHorse = loadImage(`assets/images/background.jpg`);
   // guitar music
   guitarMusic = loadSound(`assets/sounds/guitar.mp3`)
+
+  // second home page (dark)
+  homePageImage2 = loadImage(`assets/images/webpagebg2.jpg`);
+  // fire horse.com
+  horseDotComGif2 = loadImage(`assets/images/horsedotcom2.gif`);
+  // background of running horse on home page
+  backgroundHorse2 = loadImage(`assets/images/background2.jpg`);
+  // dark ambiance
+  darkSFX = loadSound(`assets/sounds/dark.mp3`)
 
   // home page menu images
   caring = loadImage(`assets/images/caring.png`)
@@ -63,7 +105,7 @@ function preload() {
 
   // our mission page images
   ourMissionBg = loadImage(`assets/images/ourmissionbg.jpg`)
-  homeIcon = loadImage(`assets/images/homeicon.png`)
+  homeIcon = loadImage(`assets/images/homeIcon.png`)
   // caring page images
   caringBg = loadImage(`assets/images/caringbg.jpg`)
 
@@ -73,12 +115,22 @@ function preload() {
   // volunteer page images
   volunteerBg = loadImage(`assets/images/volunteerbg.jpg`)
 
+  // load glitch horse pop up 1
+  glitchHorse = loadImage(`assets/images/glitchhorse.gif`)
+  isanybodythereSFX = loadSound(`assets/sounds/isanybodythere.mp3`)
 
-  // // slideshow on homepage
-  // for (let i = 0; i < numImages; i++) {
-  //   let slideshowImage = loadImage(`assets/images/slideshow-image-${i}.png`);
-  //   slideshowImages.push(slideshowImage);
+  // slideshow on homepage
+  for (let i = 0; i < numImages; i++) {
+    let slideshowImage = loadImage(`assets/images/slideshow-image-${i}.jpg`);
+    slideshowImages.push(slideshowImage);
   }
+
+  // slide show dark on dark home page
+  for (let i = 0; i < numImages2; i++) {
+    let slideshowImage2 = loadImage(`assets/images/slideshow2-image-${i}.jpg`);
+    slideshowImages2.push(slideshowImage2);
+  }
+}
 
 // setup()
 function setup() {

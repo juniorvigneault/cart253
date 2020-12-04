@@ -1,7 +1,7 @@
 class Home {
   // class home is the home webpage of horse.com || displays the webpage and different things to click on
 
-  constructor(image, gif, bgImg, caring, ourMission, achievements, volunteer) {
+  constructor(image, gif, bgImg, caring, ourMission, achievements, volunteer, slideshowImage) {
     // home page background template
     this.homePageImagex = 0;
     this.homePageImagey = 0;
@@ -34,11 +34,8 @@ class Home {
     this.volunteerMenux = 150;
     this.volunteerMenuy = 600;
 
-    // // slideshow
-    // this.slideshowImages = []
-    // this.currentSlideshowImage = 0;
-    // this.numImages = 4;
-    // this.slideshowTimer = setInterval(this.changeimage(), 1000);
+    // slide show
+    this.homeSlideshow = new Slideshow(slideshowImage);
   }
 
 
@@ -59,9 +56,8 @@ class Home {
     image(this.achievementsMenu, this.achievementsMenux, this.achievementsMenuy);
     image(this.volunteerMenu, this.volunteerMenux, this.volunteerMenuy);
 
-    // // Display the current slideshow image in the array
-    // image(slideshowImages[this.currentSlideshowImage], width / 2, height / 2);
-    // pop();
+    // slideshow
+    this.homeSlideshow.display();
   }
 
   draw() {
@@ -106,16 +102,7 @@ class Home {
       mouseY > this.volunteerMenuy - this.volunteerMenu.height / 2 &&
       mouseY < this.volunteerMenuy + this.volunteerMenu.height / 2) {
       // current state definition
-      currentState = new Volunteer(volunteerBg, homeIcon);
+      currentState = new Volunteer(volunteerBg, homeIcon, glitchHorse);
     }
   }
-
-  // clicking(x, y, w, h, state){
-  //     if (mouseX > x - w / 2 &&
-  //         mouseX < x + w / 2 &&
-  //         mouseY > y - h / 2 &&
-  //         mouseY < y + h / 2) {
-  //         // current state definition
-  //         currentState = state;
-  //       }
 }

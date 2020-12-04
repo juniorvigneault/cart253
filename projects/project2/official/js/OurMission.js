@@ -39,8 +39,8 @@ class OurMission {
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
       // current state definition
-      currentState = new Home(homePageImage, horseDotComGif, backgroundHorse, caring, ourMission, achievements, volunteer);
-      this.ourMissionChecked = true;
+      currentState = new Home(homePageImage, horseDotComGif, backgroundHorse, caring, ourMission, achievements, volunteer, slideshowImages);
+      currentState.homeSlideshow.startSlideshow();
     }
   }
 }

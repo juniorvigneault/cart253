@@ -43,8 +43,10 @@ class Enter {
       mouseY > this.enterGify - this.enterGif.height / 2 &&
       mouseY < this.enterGify + this.enterGif.height / 2) {
       // current state definition
-      currentState = new Home(homePageImage, horseDotComGif, backgroundHorse, caring, ourMission, achievements, volunteer);
+      currentState = new Home(homePageImage, horseDotComGif, backgroundHorse, caring, ourMission, achievements, volunteer, slideshowImages);
+      currentState.homeSlideshow.startSlideshow();
       guitarMusic.loop();
+
     }
   }
 }
