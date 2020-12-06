@@ -5,9 +5,6 @@ class Volunteer {
     this.volunteerBgx = 0;
     this.volunteerBgy = 0;
 
-    // checking if the user visited the caring page
-    this.volunteerChecked = false;
-
     // home icon
     this.homeIcon = homeIcon;
     this.homeIconx = 700;

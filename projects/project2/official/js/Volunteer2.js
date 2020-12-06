@@ -39,12 +39,10 @@ class Volunteer2 {
        mouseY > this.homeIcony - this.homeIcon.height / 2 &&
        mouseY < this.homeIcony + this.homeIcon.height / 2) {
        // current state definition -- goes to dark homepage and starts adventure
-       currentState = new Home2(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2);
-       // stops guitare music
-       guitarMusic.stop();
-       currentState.home2Slideshow.startSlideshow();
-       // starts dark drone sound
-       darkSFX.loop();
+       currentState = new Home3(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2);
+       // currentState.home2Slideshow.startSlideshow();
+       // // starts dark drone sound
+       // darkSFX.loop();
      }
   }
 }

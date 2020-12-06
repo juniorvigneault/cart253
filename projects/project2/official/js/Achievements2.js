@@ -38,8 +38,8 @@ class Achievements2 {
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
       // current state definition
-      currentState = new Home2(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2);
-      currentState.home2Slideshow.startSlideshow();
+      currentState = new Home3(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2);
+      // currentState.home2Slideshow.startSlideshow();
   }
 }
 }

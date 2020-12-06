@@ -1,9 +1,9 @@
 class OurMission2 {
 
-  constructor(ourMissionBg, homeIcon) {
-    this.ourMissionBg = ourMissionBg;
-    this.ourMissionBgx = 0;
-    this.ourMissionBgy = 0;
+  constructor(ourMissionBg2, homeIcon) {
+    this.ourMission2Bg = ourMissionBg2;
+    this.ourMission2Bgx = 0;
+    this.ourMission2Bgy = 0;
 
     // checking if the user visited the our mission page
     this.ourMissionChecked = false;
@@ -17,7 +17,7 @@ class OurMission2 {
   // display background
   display() {
     push();
-    image(this.ourMissionBg, this.ourMissionBgx, this.ourMissionBgy);
+    image(this.ourMission2Bg, this.ourMission2Bgx, this.ourMission2Bgy);
     pop();
 
     // home icon display
@@ -39,8 +39,8 @@ class OurMission2 {
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
       // current state definition
-      currentState = new Home2(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2);
-      currentState.home2Slideshow.startSlideshow();
+      currentState = new Home3(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2);
+      // currentState.home2Slideshow.startSlideshow();
     }
   }
 }

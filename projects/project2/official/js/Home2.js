@@ -1,8 +1,8 @@
 class Home2 {
   // class home is the home webpage of horse.com || displays the webpage and different things to click on
 
-  constructor(image2, gif2, bgImg2, caring, ourMission, achievements, volunteer, slideshowImages2) {
-    // home page background template
+  constructor(image2, gif2, bgImg2, caring, ourMission, achievements, volunteer, slideshowImages2, parchemin1, parchemin2, close) {
+    // home page background glitch happy/dark
     this.homePage2Imagex = 0;
     this.homePage2Imagey = 0;
     this.homePage2Image = image2;
@@ -36,6 +36,21 @@ class Home2 {
 
     // slideshow 2
     this.home2Slideshow = new Slideshow(slideshowImages2);
+
+    // rolled parchemin (clue 1)
+    this.parchemin1 = parchemin1;
+    this.parchemin1x = width / 2;
+    this.parchemin1y = height / 2;
+    this.parchemin1Display = true;
+
+    // unrolled parchemin with message
+    this.parchemin2 = parchemin2;
+    this.parchemin2x = width / 2;
+    this.parchemin2y = height / 2;
+    this.parchemin2PopUp = false;
+    this.close = close;
+    this.closex = width/2;
+    this.closey = height/2 *1.4;
   }
 
 
@@ -57,8 +72,20 @@ class Home2 {
     image(this.volunteerMenu, this.volunteerMenux, this.volunteerMenuy);
 
 
-    // slideshow
-  //  this.home2Slideshow.display();
+    // slideshow dark
+    //  this.home2Slideshow.display();
+
+    // parchemin clue display
+    if (this.parchemin1Display) {
+      this.displayparchemin1();
+    }
+
+    // display opened parchemin when toggled
+
+    if (this.parchemin2PopUp) {
+      this.displayPopUp();
+    }
+
   }
 
   draw() {
@@ -70,40 +97,61 @@ class Home2 {
   }
 
   mousePressed() {
-    // clicking on our mission in the menu opens the our mission page
-    if (mouseX > this.ourMissionMenux - this.ourMissionMenu.width / 2 &&
-      mouseX < this.ourMissionMenux + this.ourMissionMenu.width / 2 &&
-      mouseY > this.ourMissionMenuy - this.ourMissionMenu.height / 2 &&
-      mouseY < this.ourMissionMenuy + this.ourMissionMenu.height / 2) {
-      // current state definition
-      currentState = new OurMission2(ourMissionBg, homeIcon);
+
+    // clicking on the closed parchemin opens the unrolled version with sound effect
+    if (mouseX > this.parchemin1x - this.parchemin1.width / 2 &&
+      mouseX < this.parchemin1x + this.parchemin1.width / 2 &&
+      mouseY > this.parchemin1y - this.parchemin1.height / 2 &&
+      mouseY < this.parchemin1y + this.parchemin1.height / 2) {
+      // hides the rolled parchemin after opening it
+      setTimeout(this.hideParchemin1.bind(this), 50);
+      // opens the parchemin
+      setTimeout(this.togglePopUp.bind(this), 50);
+
+
     }
 
-    // clicking on caring in the menu opens the caring page
-    if (mouseX > this.caringMenux - this.caringMenu.width / 2 &&
-      mouseX < this.caringMenux + this.caringMenu.width / 2 &&
-      mouseY > this.caringMenuy - this.caringMenu.height / 2 &&
-      mouseY < this.caringMenuy + this.caringMenu.height / 2) {
-      // current state definition
-      currentState = new Caring2(caringBg, homeIcon);
-    }
+    // clicking on close in parchemin after reading hides the pop up
+    if (mouseX > this.closex - this.close.width / 2 &&
+      mouseX < this.closex + this.close.width / 2 &&
+      mouseY > this.closey - this.close.height / 2 &&
+      mouseY < this.closey + this.close.height / 2) {
+      // hides the pop up parchemin
+      this.hidePopUp();
+      currentState = new Home3(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2);
 
-    // clicking on achievements in the menu opens the achievements page
-    if (mouseX > this.achievementsMenux - this.achievementsMenu.width / 2 &&
-      mouseX < this.achievementsMenux + this.achievementsMenu.width / 2 &&
-      mouseY > this.achievementsMenuy - this.achievementsMenu.height / 2 &&
-      mouseY < this.achievementsMenuy + this.achievementsMenu.height / 2) {
-      // current state definition
-      currentState = new Achievements2(achievementsBg, homeIcon);
     }
+  }
 
-    // clicking on volunteer in the menu opens the volunteer page
-    if (mouseX > this.volunteerMenux - this.volunteerMenu.width / 2 &&
-      mouseX < this.volunteerMenux + this.volunteerMenu.width / 2 &&
-      mouseY > this.volunteerMenuy - this.volunteerMenu.height / 2 &&
-      mouseY < this.volunteerMenuy + this.volunteerMenu.height / 2) {
-      // current state definition
-      currentState = new Volunteer2(volunteerBg, homeIcon);
-    }
+  displayparchemin1() {
+    push();
+    imageMode(CENTER);
+    image(this.parchemin1, this.parchemin1x, this.parchemin1y);
+    pop();
+  }
+  // hide the rolled parchemin
+  hideParchemin1(){
+    this.parchemin1Display = false;
+  }
+
+
+  // parchemin pop up
+  // display
+  displayPopUp() {
+    push();
+    imageMode(CENTER);
+    image(this.parchemin2, this.parchemin2x, this.parchemin2y);
+    image(this.close, this.closex, this.closey);
+    pop();
+  }
+ // toggle
+  togglePopUp() {
+    this.parchemin2PopUp = true;
+    parcheminSFX.play();
+  }
+// hide
+  hidePopUp() {
+    this.parchemin2PopUp = false;
+    parchemin2SFX.play();
   }
 }

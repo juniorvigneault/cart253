@@ -46,6 +46,17 @@ let achievementsBg;
 let volunteerBg;
 
 // HOME 2 / THE INVESTIGATION BEGINS
+// clue 1 =  parchemin in home 2
+let parchemin1;
+// opened parchemin with information
+let parchemin2;
+let parcheminSFX;
+let parchemin2SFX;
+let close;
+
+
+// glitch backgrounds menu pages
+let ourMission2Bg;
 
 // glitch horse pop up
 let glitchHorse;
@@ -83,8 +94,8 @@ function preload() {
   // guitar music
   guitarMusic = loadSound(`assets/sounds/guitar.mp3`)
 
-  // second home page (dark)
-  homePageImage2 = loadImage(`assets/images/webpagebg2.jpg`);
+  // second home page glitch happy/dark
+  homePageImage2 = loadImage(`assets/images/webpagebg2.gif`);
   // fire horse.com
   horseDotComGif2 = loadImage(`assets/images/horsedotcom2.gif`);
   // background of running horse on home page
@@ -130,6 +141,17 @@ function preload() {
     let slideshowImage2 = loadImage(`assets/images/slideshow2-image-${i}.jpg`);
     slideshowImages2.push(slideshowImage2);
   }
+
+  // clue 1 parchemin home 2
+  parchemin1 = loadImage(`assets/images/parchemin1.png`)
+  // parchemin opened version pop up
+  parchemin2 = loadImage(`assets/images/parchemin2.png`)
+  parcheminSFX = loadSound(`assets/sounds/paper.mp3`)
+  parchemin2SFX = loadSound(`assets/sounds/paper2.mp3`)
+  close = loadImage(`assets/images/close.png`)
+
+  // glitch backgrounds menu pages
+  ourMission2Bg = loadImage(`assets/images/ourmission2bg.gif`)
 }
 
 // setup()

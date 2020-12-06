@@ -43,9 +43,9 @@ class Enter {
       mouseY > this.enterGify - this.enterGif.height / 2 &&
       mouseY < this.enterGify + this.enterGif.height / 2) {
       // current state definition
-      currentState = new Home(homePageImage, horseDotComGif, backgroundHorse, caring, ourMission, achievements, volunteer, slideshowImages);
-      currentState.homeSlideshow.startSlideshow();
-      guitarMusic.loop();
+      currentState = new Home2(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, parchemin1, parchemin2, close);
+      // currentState.homeSlideshow.startSlideshow();
+      // guitarMusic.loop();
 
     }
   }
