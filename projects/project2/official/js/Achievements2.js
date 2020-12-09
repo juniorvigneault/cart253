@@ -1,7 +1,7 @@
 class Achievements2 {
 
-  constructor(achievementsBg, homeIcon){
-    this.achievementsBg = achievementsBg
+  constructor(achievementsBg2, homeIcon){
+    this.achievementsBg = achievementsBg2;
     this.achievementsBgx = 0;
     this.achievementsBgy = 0;
 
@@ -38,7 +38,7 @@ class Achievements2 {
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
       // current state definition
-      currentState = new Home3(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
+      currentState = new Home3(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
       // currentState.home2Slideshow.startSlideshow();
   }
 }

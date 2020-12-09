@@ -1,11 +1,11 @@
 class Home3 {
   // class home is the home webpage of horse.com || displays the webpage and different things to click on
 
-  constructor(image2, gif2, bgImg2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse) {
+  constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse) {
     // home page background glitch happy/dark
     this.homePage2Imagex = 0;
     this.homePage2Imagey = 0;
-    this.homePage2Image = image2;
+    this.homePage2Image = image3;
     // glitter gif
     this.horseDotCom2Gif = gif2;
     this.horseDotCom2Gifx = this.homePage2Imagex + 50;
@@ -42,7 +42,6 @@ class Home3 {
     this.screamingHorsex = width / 2;
     this.screamingHorsey = height / 2;
     this.screamingHorseAppear = false;
-
   }
 
 
@@ -106,7 +105,7 @@ class Home3 {
         mouseY > this.achievementsMenuy - this.achievementsMenu.height / 2 &&
         mouseY < this.achievementsMenuy + this.achievementsMenu.height / 2) {
         // current state definition
-        currentState = new Achievements2(achievementsBg, homeIcon);
+        currentState = new Achievements2(achievementsBg2, homeIcon);
       }
 
       // clicking on volunteer in the menu opens the volunteer page

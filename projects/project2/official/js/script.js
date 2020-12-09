@@ -26,6 +26,9 @@ let horseDotComGif2;
 let backgroundHorse2;
 let darkSFX
 
+// variables for Home 3
+let homePageImage3;
+
 // variables for menu buttons on homepage
 let achievements;
 let caring;
@@ -57,6 +60,7 @@ let close;
 // Clue 1
 let journal1;
 let journal2;
+let inventory;
 
 // HOME 3
 let screamingHorse;
@@ -78,6 +82,9 @@ let stabSFX
 let password;
 let unlockButton;
 let chest;
+
+// Achievements 2 bg
+let achievementsBg2;
 
 
 // glitch horse pop up
@@ -181,6 +188,7 @@ function preload() {
   // Home 3 clicking on volunteer horse screaming
   screamingHorse = loadImage(`assets/images/scream.gif`);
   screamSFX = loadSound(`assets/sounds/scream.mp3`);
+  homePageImage3 = loadImage(`assets/images/home3.gif`)
 
   // flask in Our Mission 2
   flask1 = loadImage(`assets/images/flask1.png`)
@@ -198,6 +206,9 @@ function preload() {
   password = loadImage(`assets/images/password.png`)
   unlockButton = loadImage(`assets/images/unlock.png`)
 
+  // achievementsbg 2
+  achievementsBg2 = loadImage(`assets/images/achievements2.gif`)
+  
 }
 
 // setup()

@@ -19,6 +19,7 @@ class OurMission2 {
     this.horseGhostvy = 0;
     this.horseGhostCaptured = false;
     this.changeDirection = undefined;
+
     // this.ghostTrail = [];
     // this.newTrailPosition = {
     //   x: undefined,
@@ -71,7 +72,7 @@ class OurMission2 {
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
       // current state definition
-      currentState = new Home3(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
+      currentState = new Home3(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
       // currentState.home2Slideshow.startSlideshow();
     }
 

@@ -1,7 +1,7 @@
 class Riddle {
 
   constructor(password, unlockButton){
-    this.magicWord = `renaissance`;
+    this.magicWord = `cavalry`;
 
     this.password = password;
     this.passwordx = width/2;

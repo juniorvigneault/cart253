@@ -33,17 +33,18 @@ class Caring2 {
     this.chest = chest;
     this.chestx = width/2;
     this.chesty = height/2;
-    this.chestAppear = true;
 
-    this.magicWord = `renaissance`;
+    this.magicWord = `cavalry`;
 
     this.password = password;
     this.passwordx = width/2;
     this.passwordy = height/2;
+    this.passwordAppear = false;
+
 
     this.unlockButton = unlockButton;
     this.unlockButtonx = width/2;
-    this.unlockButtony = height/2 * 1.5;
+    this.unlockButtony = height/2 * 1.3;
     this.unlockButtonAppear = false;
 
     this.currentInput =``;
@@ -65,8 +66,8 @@ class Caring2 {
     pop();
 
     // chest
-    if (this.chestAppear) {
-      this.displayChest();
+    if (this.passwordAppear) {
+      this.enterPassword();
     }
 
     // you found flask pop up
@@ -94,7 +95,7 @@ class Caring2 {
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
       // current state definition
-      currentState = new Home3(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
+      currentState = new Home3(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
       // currentState.home2Slideshow.startSlideshow();
     }
 
@@ -106,7 +107,7 @@ class Caring2 {
       mouseY > this.chesty - this.chest.height / 2 &&
       mouseY < this.chesty + this.chest.height / 2) {
       // hides the rolled parchemin after opening it
-      this.enterPassword();
+      this.passwordAppear = true;
       // opens the password pop up
 
     }
@@ -164,10 +165,10 @@ class Caring2 {
     let lowerCaseInput = this.currentInput.toLowerCase();
 
     if(lowerCaseInput === this.magicWord) {
-      return true;
+      this.unlockButtonAppear = true;
     }
     else {
-      return false;
+      this.unlockButtonAppear = true;
     }
   }
     keyTyped(){

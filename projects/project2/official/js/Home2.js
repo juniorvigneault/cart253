@@ -1,11 +1,11 @@
 class Home2 {
   // class home is the home webpage of horse.com || displays the webpage and different things to click on
 
-  constructor(image2, gif2, bgImg2, caring, ourMission, achievements, volunteer, slideshowImages2, journal1, journal2, close) {
+  constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, slideshowImages2, journal1, journal2, close) {
     // home page background glitch happy/dark
     this.homePage2Imagex = 0;
     this.homePage2Imagey = 0;
-    this.homePage2Image = image2;
+    this.homePage2Image = image3;
     // glitter gif
     this.horseDotCom2Gif = gif2;
     this.horseDotCom2Gifx = this.homePage2Imagex + 50;
@@ -52,6 +52,7 @@ class Home2 {
     this.closex = width / 2 * 0.7
     this.closey = height / 2 * 1.5
 
+
   }
 
 
@@ -87,7 +88,6 @@ class Home2 {
     if (this.journal2PopUp) {
       this.displayPopUp();
     }
-
   }
 
   draw() {
@@ -111,47 +111,47 @@ class Home2 {
       setTimeout(this.togglePopUp.bind(this), 50);
     }
 
-  // clicking on close in opened journal hides the pop up
-  if (mouseX > this.closex - this.close.width / 2 &&
-    mouseX < this.closex + this.close.width / 2 &&
-    mouseY > this.closey - this.close.height / 2 &&
-    mouseY < this.closey + this.close.height / 2) {
-    // hides the pop up parchemin
-    this.hidePopUp();
-
-    currentState = new Home3(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
+    // clicking on close in opened journal hides the pop up
+    if (mouseX > this.closex - this.close.width / 2 &&
+      mouseX < this.closex + this.close.width / 2 &&
+      mouseY > this.closey - this.close.height / 2 &&
+      mouseY < this.closey + this.close.height / 2) {
+      // hides the pop up parchemin
+      this.hidePopUp();
+      currentState = new Home3(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
+    }
   }
-}
 
-displayjournal1() {
-  push();
-  imageMode(CENTER);
-  image(this.journal1, this.journal1x, this.journal1y);
-  pop();
-}
-// hide the closed journal
-hidejournal1(){
-  this.journal1Display = false;
-}
+  displayjournal1() {
+    push();
+    imageMode(CENTER);
+    image(this.journal1, this.journal1x, this.journal1y);
+    pop();
+  }
+  // hide the closed journal
+  hidejournal1() {
+    this.journal1Display = false;
+  }
 
 
-// secret journal pop up
-// display
-displayPopUp() {
-  push();
-  imageMode(CENTER);
-  image(this.journal2, this.journal2x, this.journal2y);
-  image(this.close, this.closex, this.closey);
-  pop();
-}
-// toggle
-togglePopUp() {
-  this.journal2PopUp = true;
-  parcheminSFX.play();
-}
-// hide
-hidePopUp() {
-  this.journal2PopUp = false;
-  parchemin2SFX.play();
-}
+  // secret journal pop up
+  // display
+  displayPopUp() {
+    push();
+    imageMode(CENTER);
+    image(this.journal2, this.journal2x, this.journal2y);
+    image(this.close, this.closex, this.closey);
+    pop();
+  }
+  // toggle
+  togglePopUp() {
+    this.journal2PopUp = true;
+    parcheminSFX.play();
+  }
+  // hide
+  hidePopUp() {
+    this.journal2PopUp = false;
+    parchemin2SFX.play();
+  }
+
 }
