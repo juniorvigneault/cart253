@@ -37,12 +37,6 @@ class Home3 {
     // slideshow 2
     this.home2Slideshow = new Slideshow(slideshowImages2);
 
-    // rolled parchemin (clue 1)
-    // this.parchemin1 = parchemin1;
-    // this.parchemin1x = width / 2;
-    // this.parchemin1y = height / 2;
-    // this.parchemin1Display = true;
-
     // screaming horse
     this.screamingHorse = screamingHorse;
     this.screamingHorsex = width / 2;
@@ -94,7 +88,7 @@ class Home3 {
         mouseY > this.ourMissionMenuy - this.ourMissionMenu.height / 2 &&
         mouseY < this.ourMissionMenuy + this.ourMissionMenu.height / 2) {
         // current state definition
-        currentState = new OurMission2(ourMission2Bg, homeIcon, flask1, flask2, close);
+        currentState = new OurMission2(ourMission2Bg, homeIcon, horseGhost, wanderingInfo, close);
       }
 
       // clicking on caring in the menu opens the caring page
@@ -103,7 +97,7 @@ class Home3 {
         mouseY > this.caringMenuy - this.caringMenu.height / 2 &&
         mouseY < this.caringMenuy + this.caringMenu.height / 2) {
         // current state definition
-        currentState = new Caring2(caringBg, homeIcon, 200, 200);
+        currentState = new Caring2(caringBg, homeIcon, flask1, flask2, close, chest, password, unlockButton);
       }
 
       // clicking on achievements in the menu opens the achievements page

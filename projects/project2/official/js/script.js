@@ -46,7 +46,7 @@ let achievementsBg;
 let volunteerBg;
 
 // HOME 2 / THE INVESTIGATION BEGINS
-// clue 1 =  parchemin in home 2
+
 let parchemin1;
 // opened parchemin with information
 let parchemin2;
@@ -54,7 +54,7 @@ let parcheminSFX;
 let parchemin2SFX;
 let close;
 
-// OUR MISSION2 / Clue 2
+// Clue 1
 let journal1;
 let journal2;
 
@@ -62,12 +62,23 @@ let journal2;
 let screamingHorse;
 let screamSFX
 
+
+// OUR MISSION2 / Clue 2
+let horseGhost;
+let wanderingInfo;
+
 // glitch backgrounds menu pages
 let ourMission2Bg;
-// empty flask found in Our Mission 2
+// empty flask found in Caring 2 2
 let flask1;
 let flask2;
 let stabSFX
+
+// Caring 2 password
+let password;
+let unlockButton;
+let chest;
+
 
 // glitch horse pop up
 let glitchHorse;
@@ -175,6 +186,18 @@ function preload() {
   flask1 = loadImage(`assets/images/flask1.png`)
   flask2 = loadImage(`assets/images/flask2.png`)
   stabSFX = loadSound(`assets/sounds/stab.mp3`)
+
+  // horse ghost gif in Our Mission 2
+  horseGhost = loadImage(`assets/images/ghost.png`)
+  // pop up without flask
+  wanderingInfo = loadImage(`assets/images/wandering.png`)
+
+  // chest that opens password
+  chest = loadImage(`assets/images/chest.png`)
+  // password Riddle
+  password = loadImage(`assets/images/password.png`)
+  unlockButton = loadImage(`assets/images/unlock.png`)
+
 }
 
 // setup()

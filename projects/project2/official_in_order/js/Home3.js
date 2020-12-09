@@ -103,7 +103,7 @@ class Home3 {
         mouseY > this.caringMenuy - this.caringMenu.height / 2 &&
         mouseY < this.caringMenuy + this.caringMenu.height / 2) {
         // current state definition
-        currentState = new Caring2(caringBg, homeIcon, 200, 200);
+        currentState = new Caring2(caringBg, homeIcon);
       }
 
       // clicking on achievements in the menu opens the achievements page

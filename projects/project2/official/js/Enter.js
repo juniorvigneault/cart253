@@ -45,7 +45,7 @@ class Enter {
       // current state definition
       currentState = new Home3(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
       // currentState.homeSlideshow.startSlideshow();
-      darkSFX.loop();
+      // darkSFX.loop();
     }
   }
 }
