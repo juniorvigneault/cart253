@@ -71,6 +71,9 @@ let screamSFX
 let horseGhost;
 let wanderingInfo;
 
+// caring 2
+let caringBg2;
+
 // glitch backgrounds menu pages
 let ourMission2Bg;
 // empty flask found in Caring 2 2
@@ -86,11 +89,13 @@ let chest;
 // Achievements 2 bg
 let achievementsBg2;
 
-
 // glitch horse pop up
 let glitchHorse;
 // glitch horse sound
 let isanybodythereSFX;
+
+// Our Mission 3 : catching the soul!
+let ghostCaught;
 
 // Slideshow variables
 // Array to store the slideshow images to display
@@ -208,7 +213,13 @@ function preload() {
 
   // achievementsbg 2
   achievementsBg2 = loadImage(`assets/images/achievements2.gif`)
-  
+
+  // caring2 bg
+  caringBg2 = loadImage(`assets/images/caring2.gif`)
+
+  // Our mission 3
+  ghostCaught = loadImage(`assets/images/caught.gif`)
+
 }
 
 // setup()
@@ -226,4 +237,12 @@ function draw() {
 
 function mousePressed() {
   currentState.mousePressed();
+}
+
+function keyPressed() {
+  currentState.keyPressed();
+}
+
+function keyTyped() {
+  currentState.keyTyped();
 }

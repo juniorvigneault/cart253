@@ -47,7 +47,7 @@ class Home2 {
     this.journal2x = width / 2;
     this.journal2y = height / 2;
     this.journal2PopUp = false;
-    // close
+    // close Button
     this.close = close;
     this.closex = width / 2 * 0.7
     this.closey = height / 2 * 1.5

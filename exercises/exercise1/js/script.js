@@ -1,91 +1,73 @@
-/**************************************************
-Exercise 01 : I like to move it move it
-Junior Vigneault - 40136480
+"use strict";
 
-A big eye swallowing the screen on a stroboscoping background
-**************************************************/
-
-let bg = {
-  r: 0,
-  b: 0,
-  g: 0
+let circle = {
+  x: 250,
+  y: 250,
+  size: 100
 };
 
-let circle1 = {
-  x: 0,
-  y: 0,
+let bullet = {
+  x: -100,
+  y: -100,
+  size: 10,
+  vx: 0,
+  vy: 0,
+  speed: 20,
+  fired: false
+};
+
+let enemy = {
+  x: 800,
+  y: 250,
   size: 200,
-  fill: 0,
-  sizeGrowth: 1
-};
-
-let circle2 = {
-  x: 0,
-  y: 0,
-  size: 190,
-  fill: 255,
-  sizeGrowth: 2
-};
-
-let circle3 = {
-  x: 0,
-  y: 0,
-  size: 1,
-  speed: 1,
-  fill: 255,
-  maximumGrowth:30
-};
-
-let constrainStart = 0;
-let mapStartValue = 200;
-let aLittleBitToTheLeft = -20;
-let aLittleBitUpward = -12;
-
-// setup()
-//
-// Description of setup() goes here.
-function setup() {
-createCanvas(windowWidth,windowHeight);
-
+  active: true
 }
 
-// draw()
-//
-// Description of draw() goes here.
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+}
+
 function draw() {
+  background(0);
 
-// creating dark stroboscopy background
+  circle.x = mouseX;
+  circle.y = mouseY;
 
-  bg.r = random(0,50);
-  bg.g = random(0,50);
-  bg.b = random(0,50);
+  bullet.x += bullet.vx;
+  bullet.y += bullet.vy;
 
-  background(bg.r, bg.g, bg.b);
+  if (bullet.x > width) {
+    bullet.fired = false;
+  }
 
-// creating an eye flooding the screen over time
+  let d = dist(bullet.x, bullet.y, enemy.x, enemy.y);
+  if (bullet.fired && enemy.active && d < bullet.size / 2 + enemy.size / 2) {
+    // Stop the bullet
+    bullet.fired = false;
+    // Kill the enemy
+    enemy.active = false;
+  }
 
-noStroke();
-circle1.size = circle1.size + circle1.sizeGrowth;
-ellipse(mouseX, mouseY, circle1.size);
-fill(circle1.fill);
+  fill(255);
+  ellipse(circle.x, circle.y, circle.size);
 
-circle2.size = circle1.size / circle2.sizeGrowth;
-circle2.size = constrain(circle2.size, constrainStart, width);
-ellipse(mouseX, mouseY, circle2.size);
-fill(circle2.fill);
+  if (bullet.fired) {
+    ellipse(bullet.x, bullet.y, bullet.size);
+  }
 
+  if (enemy.active) {
+    fill(255, 0, 0);
+    ellipse(enemy.x, enemy.y, enemy.size);
+  }
+}
 
-fill(circle3.fill);
-circle3.size = map(circle1.size, mapStartValue, width, circle3.size, circle3.maximumGrowth);
-ellipse(mouseX + aLittleBitToTheLeft, mouseY + aLittleBitUpward, circle3.size);
+function mousePressed() {
+  if (bullet.fired) {
+    return;
+  }
 
-
-
-
-
-
-
-
-
-
+  bullet.fired = true;
+  bullet.x = circle.x;
+  bullet.y = circle.y;
+  bullet.vx = bullet.speed;
 }

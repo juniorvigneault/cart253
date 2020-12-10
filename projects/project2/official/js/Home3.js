@@ -61,7 +61,7 @@ class Home3 {
     image(this.caringMenu, this.caringMenux, this.caringMenuy);
     image(this.achievementsMenu, this.achievementsMenux, this.achievementsMenuy);
     image(this.volunteerMenu, this.volunteerMenux, this.volunteerMenuy);
-
+    pop();
 
     // slideshow dark
     //  this.home2Slideshow.display();
@@ -96,7 +96,7 @@ class Home3 {
         mouseY > this.caringMenuy - this.caringMenu.height / 2 &&
         mouseY < this.caringMenuy + this.caringMenu.height / 2) {
         // current state definition
-        currentState = new Caring2(caringBg, homeIcon, flask1, flask2, close, chest, password, unlockButton);
+        currentState = new Caring2(caringBg2, homeIcon, flask1, flask2, close, chest, password, unlockButton);
       }
 
       // clicking on achievements in the menu opens the achievements page
@@ -105,7 +105,7 @@ class Home3 {
         mouseY > this.achievementsMenuy - this.achievementsMenu.height / 2 &&
         mouseY < this.achievementsMenuy + this.achievementsMenu.height / 2) {
         // current state definition
-        currentState = new Achievements2(achievementsBg2, homeIcon);
+        currentState = new Achievements2(achievementsBg2, homeIcon, parchemin1, parchemin2, close);
       }
 
       // clicking on volunteer in the menu opens the volunteer page

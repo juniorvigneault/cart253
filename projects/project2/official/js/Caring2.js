@@ -1,7 +1,7 @@
 class Caring2 {
 
-  constructor(caringBg, homeIcon, flask1, flask2, close, chest, password, unlockButton) {
-    this.caringBg = caringBg
+  constructor(caringBg2, homeIcon, flask1, flask2, close, chest, password, unlockButton) {
+    this.caringBg = caringBg2;
     this.caringBgx = 0;
     this.caringBgy = 0;
 
@@ -12,6 +12,7 @@ class Caring2 {
     this.homeIcon = homeIcon;
     this.homeIconx = 700;
     this.homeIcony = 800;
+    this.homeIconAppear = true;
 
     // flask laying around
     this.flask1 = flask1;
@@ -33,6 +34,7 @@ class Caring2 {
     this.chest = chest;
     this.chestx = width/2;
     this.chesty = height/2;
+    this.chestAppear = true;
 
     this.magicWord = `cavalry`;
 
@@ -59,11 +61,6 @@ class Caring2 {
     push();
     image(this.caringBg, this.caringBgx, this.caringBgy);
     pop();
-    // display home Icon
-    push();
-    imageMode(CENTER);
-    image(this.homeIcon, this.homeIconx, this.homeIcony);
-    pop();
 
     // chest
     if (this.passwordAppear) {
@@ -73,6 +70,16 @@ class Caring2 {
     // you found flask pop up
     if (this.flask2PopUp) {
       this.displayPopUp();
+    }
+
+    // you found flask pop up
+    if (this.chestAppear) {
+      this.displayChest();
+    }
+
+    // you found flask pop up
+    if (this.homeIconAppear) {
+      this.displayIcon();
     }
   }
 
@@ -96,7 +103,6 @@ class Caring2 {
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
       // current state definition
       currentState = new Home3(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
-      // currentState.home2Slideshow.startSlideshow();
     }
 
 
@@ -108,8 +114,9 @@ class Caring2 {
       mouseY < this.chesty + this.chest.height / 2) {
       // hides the rolled parchemin after opening it
       this.passwordAppear = true;
+      this.hideChest();
+      this.hideIcon();
       // opens the password pop up
-
     }
 
     // clicking on close button hides the pop up
@@ -119,7 +126,20 @@ class Caring2 {
       mouseY < this.closey + this.close.height / 2) {
       // hides the pop up
       this.hidePopUp();
+      this.displayIcon();
+      currentState = new Caring3(caringBg2, homeIcon);
 
+    }
+
+    // clicking on close button hides the pop up
+    if (this.unlockButtonAppear &&
+      mouseX > this.unlockButtonx - this.unlockButton.width / 2 &&
+      mouseX < this.unlockButtonx + this.unlockButton.width / 2 &&
+      mouseY > this.unlockButtony - this.unlockButton.height / 2 &&
+      mouseY < this.unlockButtony + this.unlockButton.height / 2) {
+      // hides the pop up
+      this.passwordAppear = false;
+      setTimeout(this.togglePopUp.bind(this), 10);
     }
   }
 
@@ -129,6 +149,7 @@ class Caring2 {
     image(this.chest, this.chestx, this.chesty);
     pop();
   }
+
   // hide the small flask once clicked on
   hideChest() {
     this.chestAppear = false;
@@ -156,8 +177,6 @@ class Caring2 {
 
   enterPassword(){
     this.checkInput();
-    this.keyTyped();
-    this.keyPressed();
     this.displayPassword();
   }
 
@@ -167,17 +186,17 @@ class Caring2 {
     if(lowerCaseInput === this.magicWord) {
       this.unlockButtonAppear = true;
     }
-    else {
-      this.unlockButtonAppear = true;
-    }
   }
+
     keyTyped(){
+      if (this.passwordAppear){
       this.currentInput += key;
+    }
     }
 
     keyPressed(){
-      if (keyCode === BACKSPACE) {
-        currentInput = ``;
+      if (keyCode === BACKSPACE && this.passwordAppear) {
+        this.currentInput = ``;
       }
     }
 
@@ -186,7 +205,24 @@ class Caring2 {
       push();
       imageMode(CENTER);
       image(this.password, this.passwordx, this.passwordy);
+      text(this.currentInput, this.passwordx, this.passwordy)
+      if (this.unlockButtonAppear) {
       image(this.unlockButton, this.unlockButtonx, this.unlockButtony);
+      }
+      pop();
+    }
+
+    displayIcon(){
+      // display home Icon
+      push();
+      imageMode(CENTER);
+      image(this.homeIcon, this.homeIconx, this.homeIcony);
+      pop();
+    }
+
+    hideIcon(){
+      push();
+      this.homeIconAppear = false;
       pop();
     }
 
