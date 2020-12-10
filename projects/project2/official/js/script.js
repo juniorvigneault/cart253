@@ -236,6 +236,7 @@ function preload() {
   // final boss
   boss1 = loadImage(`assets/images/boss1.png`)
   boss11 = loadImage(`assets/images/boss1.gif`)
+
   boss2 = loadImage(`assets/images/boss2.png`)
   boss22 = loadImage(`assets/images/boss2.gif`)
   gun = loadImage(`assets/images/gun.png`)
@@ -252,6 +253,7 @@ function setup() {
 // draw()
 function draw() {
   currentState.draw();
+  console.log(boss11)
 }
 
 function mousePressed() {

@@ -56,6 +56,7 @@ class Home6 {
     this.boss1x = width / 2 + 400;
     this.boss1y = height / 2;
     this.boss1Appear = true;
+    this.boss1Lives = 2;
     this.boss1Speed = 10;
     this.boss1vx = 0;
     this.boss1vy = 0;
@@ -63,6 +64,7 @@ class Home6 {
 
     this.boss2 = boss2;
     this.boss22 = boss22;
+    this.boss2Lives = 2;
     this.boss2x = width / 2 - 400;
     this.boss2y = height / 2;
     this.boss2Appear = true;
@@ -77,8 +79,8 @@ class Home6 {
     this.gunAppear = true;
 
     // bullets
-    this.bulletx = width/2;
-    this.bullety = height/2;
+    this.bulletx = width / 2;
+    this.bullety = height / 2;
     this.bulletSize = 20;
     this.bulletvx = 0;
     this.bulletvy = 0;
@@ -154,7 +156,7 @@ class Home6 {
     this.bulletx = this.gunx;
     this.bullety = this.guny - 30;
     this.bulletvx = this.bulletSpeed;
-    this.bulletvy = - this.bulletSpeed;
+    this.bulletvy = -this.bulletSpeed;
 
   }
 
@@ -162,8 +164,13 @@ class Home6 {
 
   displayBoss1() {
     push();
-    imageMode(CENTER);
-    image(this.boss1, this.boss1x, this.boss1y);
+    if (this.boss1Lives === 2) {
+      imageMode(CENTER);
+      image(this.boss1, this.boss1x, this.boss1y);
+    }
+     else if (this.boss1Lives === 1) {
+      image(this.boss11, this.boss1x, this.boss1y);
+    }
     pop();
   }
 
@@ -178,9 +185,14 @@ class Home6 {
 
   displayBoss2() {
     push();
-    imageMode(CENTER);
+  imageMode(CENTER);
+  if(this.boss2Lives === 2){
     image(this.boss2, this.boss2x, this.boss2y);
-    pop();
+  }
+  else if (this.boss2Lives === 1){
+    image(this.boss22, this.boss2x, this.boss2y);
+  }
+  pop();
   }
 
 
@@ -264,7 +276,11 @@ class Home6 {
       // Stop the bullet
       this.bulletFired = false;
       // boss 1 disappear
-      this.hideBoss1();
+      this.boss1Lives -= 1;
+      this.boss1Speed = 100;
+      if (this.boss1Lives === 0) {
+        this.hideBoss1();
+      }
     }
 
     // killing boss 2
@@ -272,9 +288,12 @@ class Home6 {
     if (this.bulletFired && this.boss2Appear && d2 < this.bulletSize / 2 + this.boss2.width / 2) {
       // Stop the bullet
       this.bulletFired = false;
+      this.boss2Speed = 100;
       // boss 2 disappear
-      // this.hideBoss2();
-
+      this.boss2Lives -= 1;
+      if (this.boss2Lives === 0) {
+        this.hideBoss2();
+      }
     }
   }
 
