@@ -43,7 +43,7 @@ class Enter {
       mouseY > this.enterGify - this.enterGif.height / 2 &&
       mouseY < this.enterGify + this.enterGif.height / 2) {
       // current state definition
-      currentState = new Home5(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
+      currentState = new Home5(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse, glitchHorse, flask1, curedHorse, boss1, boss2, gun);
       currentState.homeSlideshow.startSlideshow();
       // guitarMusic.loop();
       // darkSFX.loop();

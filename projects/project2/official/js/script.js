@@ -97,6 +97,16 @@ let isanybodythereSFX;
 // Our Mission 3 : catching the soul!
 let ghostCaught;
 
+// Cured Horse
+let curedHorse;
+
+// final bosses
+let boss1;
+let boss11;
+let boss2;
+let boss22;
+let gun;
+
 // Slideshow variables
 // Array to store the slideshow images to display
 let slideshowImages = [];
@@ -220,6 +230,15 @@ function preload() {
   // Our mission 3
   ghostCaught = loadImage(`assets/images/caught.gif`)
 
+  // cured horse
+  curedHorse = loadImage(`assets/images/cured.jpg`)
+
+  // final boss
+  boss1 = loadImage(`assets/images/boss1.png`)
+  boss11 = loadImage(`assets/images/boss1.gif`)
+  boss2 = loadImage(`assets/images/boss2.png`)
+  boss22 = loadImage(`assets/images/boss2.gif`)
+  gun = loadImage(`assets/images/gun.png`)
 }
 
 // setup()

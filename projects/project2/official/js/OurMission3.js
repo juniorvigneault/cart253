@@ -93,7 +93,7 @@ class OurMission3 {
     mouseY < this.closey + this.close.height / 2) {
     // hides the pop up parchemin
     this.hidePopUp();
-    currentState = new Home5(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
+    currentState = new Home5(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse, glitchHorse, curedHorse);
 
   }
 }
