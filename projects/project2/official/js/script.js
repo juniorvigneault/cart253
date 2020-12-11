@@ -10,9 +10,10 @@ You have won
 let currentState;
 
 // variables for the enter pager visuals
-let enterCollage;
-let enterGif;
-let petalGif;
+let enterButton;
+let enterHorse;
+let clickSFX;
+let cursor;
 
 // variables for the home page visuals and music
 let homePageImage;
@@ -25,6 +26,7 @@ let homePageImage2;
 let horseDotComGif2;
 let backgroundHorse2;
 let darkSFX
+let bgGlitchSFX;
 
 // variables for Home 3
 let homePageImage3;
@@ -70,6 +72,8 @@ let screamSFX
 // OUR MISSION2 / Clue 2
 let horseGhost;
 let wanderingInfo;
+let findSoulSFX;
+let ghostSFX;
 
 // caring 2
 let caringBg2;
@@ -85,12 +89,16 @@ let stabSFX
 let password;
 let unlockButton;
 let chest;
+let chestSFX;
+let unlockSFX;
 
 // Achievements 2 bg
 let achievementsBg2;
+let satanSFX;
 
 // glitch horse pop up
 let glitchHorse;
+
 // glitch horse sound
 let isanybodythereSFX;
 
@@ -99,6 +107,7 @@ let ghostCaught;
 
 // Cured Horse
 let curedHorse;
+let curedSFX;
 
 // final bosses
 let boss1;
@@ -138,6 +147,9 @@ function preload() {
   // guitar music
   guitarMusic = loadSound(`assets/sounds/guitar.mp3`)
 
+  // click when clicking on things
+  clickSFX = loadSound(`assets/sounds/click.mp3`)
+
   // second home page glitch happy/dark
   homePageImage2 = loadImage(`assets/images/webpagebg2.gif`);
   // fire horse.com
@@ -154,9 +166,9 @@ function preload() {
   volunteer = loadImage(`assets/images/volunteer.png`)
 
   // enter page images
-  enterCollage = loadImage(`assets/images/collage.png`);
-  enterGif = loadImage(`assets/images/enterGif.gif`);
-  petalGif = loadImage(`assets/images/petal.gif`);
+  enterHorse = loadImage(`assets/images/enter.gif`);
+  enterButton = loadImage(`assets/images/horse_enter.gif`);
+  cursor = loadImage(`assets/images/cursor.png`);
 
   // our mission page images
   ourMissionBg = loadImage(`assets/images/ourmissionbg.jpg`)
@@ -192,7 +204,9 @@ function preload() {
   parchemin2 = loadImage(`assets/images/parchemin2.png`);
   parcheminSFX = loadSound(`assets/sounds/paper.mp3`);
   parchemin2SFX = loadSound(`assets/sounds/paper2.mp3`);
-  close = loadImage(`assets/images/close.png`);
+  close = loadImage(`assets/images/xx.png`);
+
+  bgGlitchSFX = loadSound(`assets/sounds/bgsfx1.mp3`)
 
   // glitch backgrounds menu pages
   ourMission2Bg = loadImage(`assets/images/ourmission2bg.gif`);
@@ -208,21 +222,28 @@ function preload() {
   // flask in Our Mission 2
   flask1 = loadImage(`assets/images/flask1.png`)
   flask2 = loadImage(`assets/images/flask2.png`)
-  stabSFX = loadSound(`assets/sounds/stab.mp3`)
+  stabSFX = loadSound(`assets/sounds/guitar2.mp3`)
 
   // horse ghost gif in Our Mission 2
   horseGhost = loadImage(`assets/images/ghost.png`)
   // pop up without flask
-  wanderingInfo = loadImage(`assets/images/wandering.png`)
+  wanderingInfo = loadImage(`assets/images/wandering.jpg`)
+  // SFX for second glitch horse
+  findSoulSFX = loadSound(`assets/sounds/findsoul.mp3`)
+  // SFX for ghost
+  ghostSFX = loadSound(`assets/sounds/ghost.mp3`)
 
   // chest that opens password
   chest = loadImage(`assets/images/chest.png`)
+  chestSFX = loadSound(`assets/sounds/chest.mp3`)
   // password Riddle
   password = loadImage(`assets/images/password.png`)
   unlockButton = loadImage(`assets/images/unlock.png`)
+  unlockSFX = loadSound(`assets/sounds/unlock.mp3`)
 
   // achievementsbg 2
   achievementsBg2 = loadImage(`assets/images/achievements2.gif`)
+  satanSFX = loadSound(`assets/sounds/satan.mp3`)
 
   // caring2 bg
   caringBg2 = loadImage(`assets/images/caring2.gif`)
@@ -232,6 +253,7 @@ function preload() {
 
   // cured horse
   curedHorse = loadImage(`assets/images/cured.jpg`)
+  curedSFX = loadSound(`assets/sounds/thankyou.mp3`)
 
   // final boss
   boss1 = loadImage(`assets/images/boss1.png`)
@@ -245,15 +267,15 @@ function preload() {
 // setup()
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  noCursor();
 
   // current state definition
-  currentState = new Enter(enterCollage, enterGif, petalGif);
+  currentState = new Enter(enterButton, enterHorse, cursor);
 }
 
 // draw()
 function draw() {
   currentState.draw();
-  console.log(boss11)
 }
 
 function mousePressed() {

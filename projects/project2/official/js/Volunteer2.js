@@ -1,6 +1,6 @@
 class Volunteer2 {
 
-  constructor(volunteerBg, homeIcon){
+  constructor(volunteerBg, homeIcon, cursor){
     this.volunteerBg = volunteerBg
     this.volunteerBgx = 0;
     this.volunteerBgy = 0;
@@ -12,6 +12,11 @@ class Volunteer2 {
     this.homeIcon = homeIcon;
     this.homeIconx = 700;
     this.homeIcony = 800;
+
+    // cursor
+    this.cursor = cursor;
+    this.cursorx = 0;
+    this.cursory = 0;
   }
 
   // display background
@@ -24,6 +29,14 @@ class Volunteer2 {
     push();
     imageMode(CENTER);
     image(this.homeIcon, this.homeIconx, this.homeIcony);
+    pop();
+
+    // cursor image hand
+    push();
+    imageMode(CENTER);
+    this.cursorx = mouseX;
+    this.cursory = mouseY;
+    image(this.cursor, this.cursorx, this.cursory);
     pop();
   }
 
@@ -39,10 +52,12 @@ class Volunteer2 {
        mouseY > this.homeIcony - this.homeIcon.height / 2 &&
        mouseY < this.homeIcony + this.homeIcon.height / 2) {
        // current state definition -- goes to dark homepage and starts adventure
-       currentState = new Home2(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, journal1, journal2, close);
+       currentState = new Home2(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, journal1, journal2, close, cursor);
        currentState.home2Slideshow.startSlideshow();
        // starts dark drone sound
        darkSFX.loop();
+       clickSFX.play();
+       bgGlitchSFX.loop();
      }
   }
 }

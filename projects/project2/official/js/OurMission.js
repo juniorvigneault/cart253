@@ -1,6 +1,6 @@
 class OurMission {
 
-  constructor(ourMissionBg, homeIcon) {
+  constructor(ourMissionBg, homeIcon, cursor) {
     this.ourMissionBg = ourMissionBg;
     this.ourMissionBgx = 0;
     this.ourMissionBgy = 0;
@@ -12,6 +12,11 @@ class OurMission {
     this.homeIcon = homeIcon;
     this.homeIconx = 700;
     this.homeIcony = 800;
+
+    // cursor
+    this.cursor = cursor;
+    this.cursorx = 0;
+    this.cursory = 0;
   }
 
   // display background
@@ -24,6 +29,14 @@ class OurMission {
     push();
     imageMode(CENTER);
     image(this.homeIcon, this.homeIconx, this.homeIcony);
+    pop();
+
+    // cursor image hand
+    push();
+    imageMode(CENTER);
+    this.cursorx = mouseX;
+    this.cursory = mouseY;
+    image(this.cursor, this.cursorx, this.cursory);
     pop();
   }
 
@@ -39,8 +52,9 @@ class OurMission {
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
       // current state definition
-      currentState = new Home(homePageImage, horseDotComGif, backgroundHorse, caring, ourMission, achievements, volunteer, slideshowImages);
+      currentState = new Home(homePageImage, horseDotComGif, backgroundHorse, caring, ourMission, achievements, volunteer, slideshowImages, cursor);
       currentState.homeSlideshow.startSlideshow();
+      clickSFX.play();
     }
   }
 }

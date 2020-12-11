@@ -1,6 +1,6 @@
 class Caring2 {
 
-  constructor(caringBg2, homeIcon, flask1, flask2, close, chest, password, unlockButton) {
+  constructor(caringBg2, homeIcon, flask1, flask2, close, chest, password, unlockButton, cursor) {
     this.caringBg = caringBg2;
     this.caringBgx = 0;
     this.caringBgy = 0;
@@ -28,7 +28,7 @@ class Caring2 {
     // // close button
     this.close = close;
     this.closex = width / 2 * 0.7
-    this.closey = height / 2 * 1.5
+    this.closey = height / 2 * 0.6
 
     // locked chest
     this.chest = chest;
@@ -50,9 +50,14 @@ class Caring2 {
     this.unlockButtonAppear = false;
 
     this.currentInput =``;
-    this.textSize = 30;
+    this.textSize = 50;
     this.textColor = 0;
     this.correct = undefined;
+
+    // cursor
+    this.cursor = cursor;
+    this.cursorx = 0;
+    this.cursory = 0;
 
   }
 
@@ -77,10 +82,24 @@ class Caring2 {
       this.displayChest();
     }
 
-    // you found flask pop up
-    if (this.homeIconAppear) {
-      this.displayIcon();
-    }
+    // display home icon
+    // if (this.homeIconAppear) {
+    //   this.displayIcon();
+    // }
+
+    // cursor image hand
+    push();
+    imageMode(CENTER);
+    this.cursorx = mouseX;
+    this.cursory = mouseY;
+    image(this.cursor, this.cursorx, this.cursory);
+    pop();
+
+    // display home Icon
+    push();
+    imageMode(CENTER);
+    image(this.homeIcon, this.homeIconx, this.homeIcony);
+    pop();
   }
 
   draw() {
@@ -102,7 +121,8 @@ class Caring2 {
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
       // current state definition
-      currentState = new Home3(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
+      currentState = new Home7(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse, cursor);
+      currentState.home7Slideshow.startSlideshow();
     }
 
 
@@ -115,7 +135,8 @@ class Caring2 {
       // hides the rolled parchemin after opening it
       this.passwordAppear = true;
       this.hideChest();
-      this.hideIcon();
+      // this.hideIcon();
+      chestSFX.play();
       // opens the password pop up
     }
 
@@ -126,8 +147,9 @@ class Caring2 {
       mouseY < this.closey + this.close.height / 2) {
       // hides the pop up
       this.hidePopUp();
-      this.displayIcon();
-      currentState = new Caring3(caringBg2, homeIcon);
+      // this.displayIcon();
+      clickSFX.play();
+      currentState = new Caring3(caringBg2, homeIcon, cursor);
 
     }
 
@@ -140,6 +162,7 @@ class Caring2 {
       // hides the pop up
       this.passwordAppear = false;
       setTimeout(this.togglePopUp.bind(this), 10);
+      unlockSFX.play();
     }
   }
 
@@ -212,18 +235,18 @@ class Caring2 {
       pop();
     }
 
-    displayIcon(){
-      // display home Icon
-      push();
-      imageMode(CENTER);
-      image(this.homeIcon, this.homeIconx, this.homeIcony);
-      pop();
-    }
-
-    hideIcon(){
-      push();
-      this.homeIconAppear = false;
-      pop();
-    }
+    // displayIcon(){
+    //   // display home Icon
+    //   push();
+    //   imageMode(CENTER);
+    //   image(this.homeIcon, this.homeIconx, this.homeIcony);
+    //   pop();
+    // }
+    //
+    // hideIcon(){
+    //   push();
+    //   this.homeIconAppear = false;
+    //   pop();
+    // }
 
 }

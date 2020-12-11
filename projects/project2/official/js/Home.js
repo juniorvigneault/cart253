@@ -1,14 +1,14 @@
 class Home {
   // class home is the home webpage of horse.com || displays the webpage and different things to click on
 
-  constructor(image, gif, bgImg, caring, ourMission, achievements, volunteer, slideshowImage) {
+  constructor(image, gif, bgImg, caring, ourMission, achievements, volunteer, slideshowImage, cursor) {
     // home page background template
     this.homePageImagex = 0;
     this.homePageImagey = 0;
     this.homePageImage = image;
     // glitter gif
     this.horseDotComGif = gif;
-    this.horseDotComGifx = this.homePageImagex + 50;
+    this.horseDotComGifx = this.homePageImagex + 10;
     this.horseDotComGify = this.homePageImagey + 30;
     this.horseDotcomGifWidth = 439.5;
     this.horseDotcomGifHeight = 180;
@@ -36,6 +36,11 @@ class Home {
 
     // slide show
     this.homeSlideshow = new Slideshow(slideshowImage);
+
+    // cursor
+    this.cursor = cursor;
+    this.cursorx = 0;
+    this.cursory = 0;
   }
 
 
@@ -58,6 +63,14 @@ class Home {
 
     // slideshow
     this.homeSlideshow.display();
+
+    // cursor image hand
+    push();
+    imageMode(CENTER);
+    this.cursorx = mouseX;
+    this.cursory = mouseY;
+    image(this.cursor, this.cursorx, this.cursory);
+    pop();
   }
 
   draw() {
@@ -75,7 +88,8 @@ class Home {
       mouseY > this.ourMissionMenuy - this.ourMissionMenu.height / 2 &&
       mouseY < this.ourMissionMenuy + this.ourMissionMenu.height / 2) {
       // current state definition
-      currentState = new OurMission(ourMissionBg, homeIcon);
+      currentState = new OurMission(ourMissionBg, homeIcon, cursor);
+      clickSFX.play();
     }
 
     // clicking on caring in the menu opens the caring page
@@ -84,7 +98,8 @@ class Home {
       mouseY > this.caringMenuy - this.caringMenu.height / 2 &&
       mouseY < this.caringMenuy + this.caringMenu.height / 2) {
       // current state definition
-      currentState = new Caring(caringBg, homeIcon);
+      currentState = new Caring(caringBg, homeIcon, cursor);
+      clickSFX.play();
     }
 
     // clicking on achievements in the menu opens the achievements page
@@ -93,7 +108,8 @@ class Home {
       mouseY > this.achievementsMenuy - this.achievementsMenu.height / 2 &&
       mouseY < this.achievementsMenuy + this.achievementsMenu.height / 2) {
       // current state definition
-      currentState = new Achievements(achievementsBg, homeIcon);
+      currentState = new Achievements(achievementsBg, homeIcon, cursor);
+      clickSFX.play();
     }
 
     // clicking on volunteer in the menu opens the volunteer page
@@ -102,7 +118,8 @@ class Home {
       mouseY > this.volunteerMenuy - this.volunteerMenu.height / 2 &&
       mouseY < this.volunteerMenuy + this.volunteerMenu.height / 2) {
       // current state definition
-      currentState = new Volunteer(volunteerBg, homeIcon, glitchHorse);
+      currentState = new Volunteer(volunteerBg, homeIcon, glitchHorse, cursor);
+      clickSFX.play();
     }
   }
 }

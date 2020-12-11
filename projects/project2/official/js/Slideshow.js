@@ -1,5 +1,5 @@
 class Slideshow {
-
+// class displaying the slideshow of images in home page
   constructor(slideshowImages) {
 
     // Array to store the slideshow images to display
@@ -10,6 +10,10 @@ class Slideshow {
     this.numImages = 4;
     // A place to store the timer that moves between the images in case we want to stop it
     this.slideshowTimer = undefined;
+
+    this.slideShowx = 1250;
+    this.slideShowy = 530;
+    this.slideShowSize = 500;
 
   }
 
@@ -25,7 +29,8 @@ class Slideshow {
   display() {
     push();
     // Display the current slideshow image in the array
-    image(this.slideshowImages[this.currentSlideshowImage], 730, 630, 800,800);
+    imageMode(CENTER);
+    image(this.slideshowImages[this.currentSlideshowImage], this.slideShowx, this.slideShowy, this.slideShowSize, this.slideShowSize);
     pop();
   }
 

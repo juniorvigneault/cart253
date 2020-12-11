@@ -1,6 +1,6 @@
 class OurMission2 {
 
-  constructor(ourMissionBg2, homeIcon, horseGhost, wanderingInfo, close) {
+  constructor(ourMissionBg2, homeIcon, horseGhost, wanderingInfo, close, cursor, glitchHorse) {
     this.ourMission2Bg = ourMissionBg2;
     this.ourMission2Bgx = 0;
     this.ourMission2Bgy = 0;
@@ -20,11 +20,11 @@ class OurMission2 {
     this.horseGhostCaptured = false;
     this.changeDirection = undefined;
 
-    // this.ghostTrail = [];
-    // this.newTrailPosition = {
-    //   x: undefined,
-    //   y: undefined
-    // }
+    // glitch horse pop up after clicking home Icon
+    this.horsePopUp = false;
+    this.glitchHorse = glitchHorse;
+    this.glitchHorsex = windowWidth / 2;
+    this.glitchHorsey = windowHeight / 2;
 
     // wandering soul pop up
     this.wanderingInfo = wanderingInfo;
@@ -34,7 +34,12 @@ class OurMission2 {
     // // close button
     this.close = close;
     this.closex = width / 2 * 0.7
-    this.closey = height / 2 * 1.5
+    this.closey = height / 2 * 0.6
+
+    // cursor
+    this.cursor = cursor;
+    this.cursorx = 0;
+    this.cursory = 0;
   }
 
   // display background
@@ -55,6 +60,19 @@ class OurMission2 {
     if (this.wanderingInfoAppear) {
       this.displayPopUp();
     }
+
+    // displaying horsePopUp
+    if (this.horsePopUp) {
+      this.displayGlitch();
+    }
+
+    // cursor image hand
+    push();
+    imageMode(CENTER);
+    this.cursorx = mouseX;
+    this.cursory = mouseY;
+    image(this.cursor, this.cursorx, this.cursory);
+    pop();
   }
 
   draw() {
@@ -71,9 +89,9 @@ class OurMission2 {
       mouseX < this.homeIconx + this.homeIcon.width / 2 &&
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
-      // current state definition
-      currentState = new Home3(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
-      // currentState.home2Slideshow.startSlideshow();
+        // sets timer for glitchy pop up
+      setTimeout(this.toggleGlitch.bind(this), 50);
+      clickSFX.play();
     }
 
     // clicking on the closed journal opens the opened version with sound effect
@@ -83,6 +101,7 @@ class OurMission2 {
       mouseY < this.horseGhosty + this.horseGhost.height / 2) {
       // opens the pop up
       setTimeout(this.togglePopUp.bind(this), 50);
+      ghostSFX.play();
     }
 
   // clicking on close in opened journal hides the pop up
@@ -92,28 +111,15 @@ class OurMission2 {
     mouseY < this.closey + this.close.height / 2) {
     // hides the pop up parchemin
     this.hidePopUp();
+    clickSFX.play();
   }
 }
 
   displayGhost() {
-
-    // display ghost trail
-    // for(let i = 0; i < this.ghostTrail.length; i++) {
-    //   let position = this.ghostTrail[i];
-    //   push();
-    //   imageMode(CENTER);
-    //   image(this.horseGhost, this.horseGhostx, this.horseGhosty);
-    //   pop();
-    // }
     push();
     imageMode(CENTER);
     image(this.horseGhost, this.horseGhostx, this.horseGhosty);
     pop();
-    //
-    // this.newTrailPosition.x = this.horseGhostx;
-    // this.newTrailPosition.y = this.horseGhosty;
-    //
-    // this.ghostTrail.push(newTrailPosition);
     }
 
   moveGhost() {
@@ -156,4 +162,26 @@ class OurMission2 {
     hidePopUp() {
       this.wanderingInfoAppear = false;
     }
+
+    displayGlitch() {
+      push();
+      imageMode(CENTER);
+      image(this.glitchHorse, this.glitchHorsex, this.glitchHorsey);
+      pop();
+    }
+
+    toggleGlitch() {
+      this.horsePopUp = true;
+      findSoulSFX.loop();
+      setTimeout(this.hideGlitch.bind(this), 6000);
+    }
+
+    hideGlitch() {
+      this.horsePopUp = false;
+      // guitarMusic.loop();
+      findSoulSFX.stop();
+      stabSFX.play();
+      // current state definition
+      currentState = new OurMission4(ourMission2Bg, homeIcon, horseGhost, wanderingInfo, close, cursor);
+     }
 }

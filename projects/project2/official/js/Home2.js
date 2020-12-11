@@ -1,7 +1,7 @@
 class Home2 {
   // class home is the home webpage of horse.com || displays the webpage and different things to click on
 
-  constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, slideshowImages2, journal1, journal2, close) {
+  constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, slideshowImages2, journal1, journal2, close, cursor) {
     // home page background glitch happy/dark
     this.homePage2Imagex = 0;
     this.homePage2Imagey = 0;
@@ -39,7 +39,7 @@ class Home2 {
 
     // secret journal closed
     this.journal1 = journal1;
-    this.journal1x = width / 2;
+    this.journal1x = 500;
     this.journal1y = height / 2;
     this.journal1Display = true;
     // opened secret journal
@@ -49,8 +49,13 @@ class Home2 {
     this.journal2PopUp = false;
     // close Button
     this.close = close;
-    this.closex = width / 2 * 0.7
+    this.closex = width / 2 * 0.5
     this.closey = height / 2 * 1.5
+
+    // cursor
+    this.cursor = cursor;
+    this.cursorx = 0;
+    this.cursory = 0;
 
 
   }
@@ -75,7 +80,7 @@ class Home2 {
 
 
     // slideshow dark
-    //  this.home2Slideshow.display();
+     this.home2Slideshow.display();
 
     // Journal clue display
 
@@ -88,6 +93,14 @@ class Home2 {
     if (this.journal2PopUp) {
       this.displayPopUp();
     }
+
+    // cursor image hand
+    push();
+    imageMode(CENTER);
+    this.cursorx = mouseX;
+    this.cursory = mouseY;
+    image(this.cursor, this.cursorx, this.cursory);
+    pop();
   }
 
   draw() {
@@ -109,6 +122,7 @@ class Home2 {
       setTimeout(this.hidejournal1.bind(this), 50);
       // opens the parchemin
       setTimeout(this.togglePopUp.bind(this), 50);
+
     }
 
     // clicking on close in opened journal hides the pop up
@@ -118,7 +132,8 @@ class Home2 {
       mouseY < this.closey + this.close.height / 2) {
       // hides the pop up parchemin
       this.hidePopUp();
-      currentState = new Home3(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
+      currentState = new Home3(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse, cursor);
+      currentState.home3Slideshow.startSlideshow();
     }
   }
 
@@ -147,6 +162,7 @@ class Home2 {
   togglePopUp() {
     this.journal2PopUp = true;
     parcheminSFX.play();
+    stabSFX.play();
   }
   // hide
   hidePopUp() {

@@ -1,4 +1,4 @@
-class Home4 {
+class Home7 {
   // class home is the home webpage of horse.com || displays the webpage and different things to click on
 
   constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse, cursor) {
@@ -35,7 +35,7 @@ class Home4 {
     this.volunteerMenuy = 600;
 
     // slideshow 2
-    this.home2Slideshow = new Slideshow(slideshowImages2);
+    this.home7Slideshow = new Slideshow(slideshowImages2);
 
     // screaming horse
     this.screamingHorse = screamingHorse;
@@ -47,14 +47,6 @@ class Home4 {
     this.cursor = cursor;
     this.cursorx = 0;
     this.cursory = 0;
-
-    // cursor image hand
-    push();
-    imageMode(CENTER);
-    this.cursorx = mouseX;
-    this.cursory = mouseY;
-    image(this.cursor, this.cursorx, this.cursory);
-    pop();
   }
 
 
@@ -77,12 +69,20 @@ class Home4 {
     pop();
 
     // slideshow dark
-    //  this.home2Slideshow.display();
+     this.home7Slideshow.display();
 
     // displaying horse screaming
     if (this.screamingHorseAppear) {
       this.displayPopUp();
     }
+
+    // cursor image hand
+    push();
+    imageMode(CENTER);
+    this.cursorx = mouseX;
+    this.cursory = mouseY;
+    image(this.cursor, this.cursorx, this.cursory);
+    pop();
   }
 
     draw() {
@@ -100,8 +100,7 @@ class Home4 {
         mouseY > this.ourMissionMenuy - this.ourMissionMenu.height / 2 &&
         mouseY < this.ourMissionMenuy + this.ourMissionMenu.height / 2) {
         // current state definition
-        currentState = new OurMission3(ourMission2Bg, homeIcon, horseGhost, close, flask1, ghostCaught);
-
+        currentState = new OurMission4(ourMission2Bg, homeIcon, horseGhost, wanderingInfo, close, cursor);
       }
 
       // clicking on caring in the menu opens the caring page
@@ -110,7 +109,7 @@ class Home4 {
         mouseY > this.caringMenuy - this.caringMenu.height / 2 &&
         mouseY < this.caringMenuy + this.caringMenu.height / 2) {
         // current state definition
-        currentState = new Caring3(caringBg2, homeIcon);
+        currentState = new Caring2(caringBg2, homeIcon, flask1, flask2, close, chest, password, unlockButton, cursor);
       }
 
       // clicking on achievements in the menu opens the achievements page
@@ -119,8 +118,8 @@ class Home4 {
         mouseY > this.achievementsMenuy - this.achievementsMenu.height / 2 &&
         mouseY < this.achievementsMenuy + this.achievementsMenu.height / 2) {
         // current state definition
-        currentState = new Achievements3(achievementsBg2, homeIcon);
-
+        currentState = new Achievements2(achievementsBg2, homeIcon, parchemin1, parchemin2, close, cursor);
+        satanSFX.loop();
       }
 
       // clicking on volunteer in the menu opens the volunteer page
@@ -131,6 +130,7 @@ class Home4 {
         // Make horse scream
         setTimeout(this.togglePopUp.bind(this), 100);
         screamSFX.play();
+        stabSFX.play();
       }
     }
 

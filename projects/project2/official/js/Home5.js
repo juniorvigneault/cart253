@@ -149,11 +149,9 @@ class Home5 {
       this.hideFlask();
       this.hidePopUp();
       setTimeout(this.toggleCuredHorse.bind(this), 50);
-      setTimeout(this.toggleBoss1.bind(this), 1000);
-      setTimeout(this.toggleBoss2.bind(this), 1000);
-      setTimeout(this.toggleGun.bind(this), 3000);
-      setTimeout(this.hideCuredHorse.bind(this), 4000);
-      setTimeout(this.hideCuredHorse.bind(this), 4000);
+      setTimeout(this.toggleGun.bind(this), 300000);
+      setTimeout(this.hideCuredHorse.bind(this), 400000);
+      setTimeout(this.hideCuredHorse.bind(this), 400000);
       setTimeout(function(){currentState = new Home6(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse, boss1, boss2, gun)
 }, 4000);
 
@@ -197,13 +195,18 @@ class Home5 {
 
   toggleCuredHorse() {
     this.curedHorseAppear = true;
-    // guitarMusic.stop();
-    // isanybodythereSFX.loop();
+    darkSFX.stop();
+    guitarMusic.loop();
+    isanybodythereSFX.stop();
+    ghostSFX.stop();
+    curedSFX.play();
     // setTimeout(this.hidePopUp.bind(this), 6000);
   }
 
   hideCuredHorse() {
     this.curedHorseAppear = false;
+    setTimeout(this.toggleBoss1.bind(this), 100000);
+    setTimeout(this.toggleBoss2.bind(this), 100000);
     // guitarMusic.loop();
     // isanybodythereSFX.stop();
 

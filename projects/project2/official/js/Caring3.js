@@ -1,6 +1,6 @@
 class Caring3 {
 
-  constructor(caringBg2, homeIcon) {
+  constructor(caringBg2, homeIcon, cursor) {
     this.caringBg = caringBg2;
     this.caringBgx = 0;
     this.caringBgy = 0;
@@ -12,6 +12,11 @@ class Caring3 {
     this.homeIcon = homeIcon;
     this.homeIconx = 700;
     this.homeIcony = 800;
+
+    // cursor
+    this.cursor = cursor;
+    this.cursorx = 0;
+    this.cursory = 0;
   }
 
   // display background
@@ -19,6 +24,14 @@ class Caring3 {
     push();
     image(this.caringBg, this.caringBgx, this.caringBgy);
     image(this.homeIcon, this.homeIconx, this.homeIcony);
+    pop();
+
+    // cursor image hand
+    push();
+    imageMode(CENTER);
+    this.cursorx = mouseX;
+    this.cursory = mouseY;
+    image(this.cursor, this.cursorx, this.cursory);
     pop();
   }
 
@@ -34,7 +47,7 @@ class Caring3 {
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
       // current state definition
-      currentState = new Home4(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
+      currentState = new Home4(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse, cursor);
       // currentState.home2Slideshow.startSlideshow();
     }
   }

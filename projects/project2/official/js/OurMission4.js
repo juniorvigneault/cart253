@@ -1,6 +1,6 @@
-class OurMission3 {
+class OurMission4 {
 
-  constructor(ourMissionBg2, homeIcon, horseGhost, close, flask1, ghostCaught) {
+  constructor(ourMissionBg2, homeIcon, horseGhost, wanderingInfo, close, cursor) {
     this.ourMission2Bg = ourMissionBg2;
     this.ourMission2Bgx = 0;
     this.ourMission2Bgy = 0;
@@ -17,12 +17,8 @@ class OurMission3 {
     this.horseGhostSpeed = 10;
     this.horseGhostvx = 0;
     this.horseGhostvy = 0;
-    this.horseGhostNotCaptured = true;
+    this.horseGhostCaptured = false;
     this.changeDirection = undefined;
-
-    // flask to capture ghost
-    this.flask1 = flask1;
-    this.flask1Appear = true;
 
     // this.ghostTrail = [];
     // this.newTrailPosition = {
@@ -31,15 +27,20 @@ class OurMission3 {
     // }
 
     // wandering soul pop up
-    this.ghostCaught = ghostCaught;
-    this.ghostCaughtx = width/2;
-    this.ghostCaughty = height/2;
-    this.ghostCaughtAppear = false;
+    this.wanderingInfo = wanderingInfo;
+    this.wanderingInfox = width/2;
+    this.wanderingInfoy = height/2;
+    this.wanderingInfoAppear = false;
 
-    // close button
+    // // close button
     this.close = close;
     this.closex = width / 2 * 0.7
     this.closey = height / 2 * 0.6
+
+    // cursor
+    this.cursor = cursor;
+    this.cursorx = 0;
+    this.cursory = 0;
   }
 
   // display background
@@ -57,13 +58,17 @@ class OurMission3 {
     // Ghost pop up display
 
     // closed journal
-    if (this.ghostCaughtAppear) {
+    if (this.wanderingInfoAppear) {
       this.displayPopUp();
     }
 
-    if (this.flask1Appear) {
-    this.displayFlask();
-  }
+    // cursor image hand
+    push();
+    imageMode(CENTER);
+    this.cursorx = mouseX;
+    this.cursory = mouseY;
+    image(this.cursor, this.cursorx, this.cursory);
+    pop();
   }
 
   draw() {
@@ -76,6 +81,15 @@ class OurMission3 {
   }
 
   mousePressed() {
+    if (mouseX > this.homeIconx - this.homeIcon.width / 2 &&
+      mouseX < this.homeIconx + this.homeIcon.width / 2 &&
+      mouseY > this.homeIcony - this.homeIcon.height / 2 &&
+      mouseY < this.homeIcony + this.homeIcon.height / 2) {
+      // current state definition
+      currentState = new Home7(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse, cursor);
+      currentState.home7Slideshow.startSlideshow();
+      clickSFX.play();
+    }
 
     // clicking on the closed journal opens the opened version with sound effect
     if (mouseX > this.horseGhostx - this.horseGhost.width / 2 &&
@@ -85,7 +99,6 @@ class OurMission3 {
       // opens the pop up
       setTimeout(this.togglePopUp.bind(this), 50);
       ghostSFX.play();
-      // this.hideFlask();
     }
 
   // clicking on close in opened journal hides the pop up
@@ -95,9 +108,7 @@ class OurMission3 {
     mouseY < this.closey + this.close.height / 2) {
     // hides the pop up parchemin
     this.hidePopUp();
-    currentState = new Home5(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer,  slideshowImages2, screamingHorse, glitchHorse, flask1, curedHorse, boss1, boss2, gun);
     clickSFX.play();
-    isanybodythereSFX.loop();
   }
 }
 
@@ -111,7 +122,6 @@ class OurMission3 {
     //   image(this.horseGhost, this.horseGhostx, this.horseGhosty);
     //   pop();
     // }
-    if (this.horseGhostNotCaptured) {
     push();
     imageMode(CENTER);
     image(this.horseGhost, this.horseGhostx, this.horseGhosty);
@@ -121,7 +131,6 @@ class OurMission3 {
     // this.newTrailPosition.y = this.horseGhosty;
     //
     // this.ghostTrail.push(newTrailPosition);
-  }
     }
 
   moveGhost() {
@@ -152,28 +161,16 @@ class OurMission3 {
     displayPopUp() {
       push();
       imageMode(CENTER);
-      image(this.ghostCaught, this.ghostCaughtx, this.ghostCaughty);
+      image(this.wanderingInfo, this.wanderingInfox, this.wanderingInfoy);
       image(this.close, this.closex, this.closey);
       pop();
     }
 
     togglePopUp() {
-      this.ghostCaughtAppear = true;
-      this.horseGhostNotCaptured = false;
+      this.wanderingInfoAppear = true;
     }
 
     hidePopUp() {
-      this.ghostCaughtAppear = false;
+      this.wanderingInfoAppear = false;
     }
-
-    displayFlask(){
-      push();
-      imageMode(CENTER);
-      image(this.flask1, mouseX, mouseY);
-      pop();
-    }
-
-    // hideFlask(){
-    // this.flask1Appear = false;
-    // }
 }

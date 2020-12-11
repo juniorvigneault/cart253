@@ -1,6 +1,6 @@
 class Achievements2 {
 
-  constructor(achievementsBg2, homeIcon, parchemin1, parchemin2, close) {
+  constructor(achievementsBg2, homeIcon, parchemin1, parchemin2, close, cursor) {
     this.achievementsBg = achievementsBg2;
     this.achievementsBgx = 0;
     this.achievementsBgy = 0;
@@ -10,7 +10,7 @@ class Achievements2 {
 
     // home icon
     this.homeIcon = homeIcon;
-    this.homeIconx = 700;
+    this.homeIconx = 850;
     this.homeIcony = 800;
 
     // parchemin closed
@@ -27,6 +27,11 @@ class Achievements2 {
     this.close = close;
     this.closex = width / 2 * 0.7
     this.closey = height / 2 * 1.5
+
+    // cursor
+    this.cursor = cursor;
+    this.cursorx = 0;
+    this.cursory = 0;
   }
 
   // display background
@@ -49,6 +54,14 @@ class Achievements2 {
     if (this.parchemin2PopUp) {
       this.displayPopUp();
     }
+
+    // cursor image hand
+    push();
+    imageMode(CENTER);
+    this.cursorx = mouseX;
+    this.cursory = mouseY;
+    image(this.cursor, this.cursorx, this.cursory);
+    pop();
   }
 
   draw() {
@@ -63,8 +76,9 @@ class Achievements2 {
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
       // current state definition
-      currentState = new Home3(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse);
-      // currentState.home2Slideshow.startSlideshow();
+      currentState = new Home7(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse, cursor);
+      currentState.home7Slideshow.startSlideshow();
+      satanSFX.stop();
     }
 
     // clicking on the closed parchemin opens the opened version with sound effect
