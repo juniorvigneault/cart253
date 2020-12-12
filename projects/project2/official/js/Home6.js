@@ -1,7 +1,7 @@
 class Home6 {
   // class home is the home webpage of horse.com || displays the webpage and different things to click on
 
-  constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, screamingHorse, boss1, boss2, gun, boss11, boss22) {
+  constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, screamingHorse, boss1, boss2, gun, boss11, boss22, bullet) {
     // home page background glitch happy/dark
     this.homePage2Imagex = 0;
     this.homePage2Imagey = 0;
@@ -77,12 +77,13 @@ class Home6 {
     this.gunAppear = true;
 
     // bullets
+    this.bullet = bullet;
+    this.bulletSize = 25;
     this.bulletx = width / 2;
     this.bullety = height / 2;
-    this.bulletSize = 20;
     this.bulletvx = 0;
     this.bulletvy = 0;
-    this.bulletSpeed = 40;
+    this.bulletSpeed = 50;
     this.bulletFired = false;
   }
 
@@ -141,6 +142,8 @@ class Home6 {
     this.bulletMove();
 
     pop();
+
+
   }
 
   mousePressed() {
@@ -153,6 +156,7 @@ class Home6 {
     this.bullety = this.guny - 30;
     this.bulletvx = this.bulletSpeed;
     this.bulletvy = -this.bulletSpeed;
+    bulletSFX.play();
 
   }
 
@@ -163,8 +167,7 @@ class Home6 {
     if (this.boss1Lives === 2) {
       imageMode(CENTER);
       image(this.boss1, this.boss1x, this.boss1y);
-    }
-     else if (this.boss1Lives === 1) {
+    } else if (this.boss1Lives === 1) {
       image(this.boss11, this.boss1x, this.boss1y);
     }
     pop();
@@ -181,14 +184,13 @@ class Home6 {
 
   displayBoss2() {
     push();
-  imageMode(CENTER);
-  if(this.boss2Lives === 2){
-    image(this.boss2, this.boss2x, this.boss2y);
-  }
-  else if (this.boss2Lives === 1){
-    image(this.boss22, this.boss2x, this.boss2y);
-  }
-  pop();
+    imageMode(CENTER);
+    if (this.boss2Lives === 2) {
+      image(this.boss2, this.boss2x, this.boss2y);
+    } else if (this.boss2Lives === 1) {
+      image(this.boss22, this.boss2x, this.boss2y);
+    }
+    pop();
   }
 
 
@@ -273,9 +275,10 @@ class Home6 {
       this.bulletFired = false;
       // boss 1 disappear
       this.boss1Lives -= 1;
-      this.boss1Speed = 100;
-      if (this.boss1Lives === 0) {
-        this.hideBoss1();
+      this.boss1Speed = 50;
+      if (this.boss1Lives === 0 && this.boss2Lives === 0) {
+        killSFX.stop();
+        currentState = new TheEnd();
       }
     }
 
@@ -284,20 +287,28 @@ class Home6 {
     if (this.bulletFired && this.boss2Appear && d2 < this.bulletSize / 2 + this.boss2.width / 2) {
       // Stop the bullet
       this.bulletFired = false;
-      this.boss2Speed = 100;
+      this.boss2Speed = 50;
       // boss 2 disappear
       this.boss2Lives -= 1;
-      if (this.boss2Lives === 0) {
-        this.hideBoss2();
+      if (this.boss2Lives === 0 && this.boss1Lives === 0) {
+        killSFX.stop();
+        currentState = new TheEnd();
       }
     }
   }
 
   displayBullet() {
     if (this.bulletFired) {
-      fill(0);
-      ellipse(this.bulletx, this.bullety, this.bulletSize);
-      console.log(this.bulletx, this.bullety)
+      push();
+      imageMode(CENTER);
+      image(this.bullet, this.bulletx, this.bullety, this.bulletSize, this.bulletSize);
+      pop();
     }
   }
+
+  keyTyped(){
+  }
+  KeyPressed(){
+  }
+
 }

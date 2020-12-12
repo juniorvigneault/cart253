@@ -115,6 +115,7 @@ let boss11;
 let boss2;
 let boss22;
 let gun;
+let bullet;
 
 // final bosses sounds
 let ohnoSFX;
@@ -122,6 +123,9 @@ let ohnomuSFX;
 let gunSFX;
 let bulletSFX;
 let killSFX;
+
+// end video of running horses
+let endVid;
 
 // Slideshow variables
 // Array to store the slideshow images to display
@@ -259,7 +263,7 @@ function preload() {
   ghostCaught = loadImage(`assets/images/caught.gif`)
 
   // cured horse
-  curedHorse = loadImage(`assets/images/cured.jpg`)
+  curedHorse = loadImage(`assets/images/cured.gif`)
   curedSFX = loadSound(`assets/sounds/thankyou.mp3`)
 
   // final boss
@@ -269,10 +273,11 @@ function preload() {
   boss2 = loadImage(`assets/images/boss2.png`)
   boss22 = loadImage(`assets/images/boss2.gif`)
   gun = loadImage(`assets/images/gun.png`)
+  bullet = loadImage(`assets/images/bullet.png`)
 
   ohnoSFX = loadSound(`assets/sounds/ohno.mp3`);
   ohnomuSFX = loadSound(`assets/sounds/ohnomu.mp3`);
-  gunSFX = loadSound(`assets/sounds/ohno.mp3`);
+  gunSFX = loadSound(`assets/sounds/gun.mp3`);
   bulletSFX = loadSound(`assets/sounds/bullet.mp3`);
   killSFX = loadSound(`assets/sounds/kill.mp3`);
 

@@ -27,21 +27,21 @@ class Home5 {
 
     // enemy appear
     this.boss1 = boss1;
-    this.boss1x = width/2 + 400;
-    this.boss1y = height/2;
+    this.boss1x = width / 2 + 400;
+    this.boss1y = height / 2;
     this.boss1Appear = false;
 
     this.boss2 = boss2;
-    this.boss2x = width/2 - 400;
-    this.boss2y = height/2;
+    this.boss2x = width / 2 - 400;
+    this.boss2y = height / 2;
     this.boss2Appear = false;
 
     // gun appear
     this.gun = gun;
-    this.gunx = width/2;
+    this.gunx = width / 2;
     this.guny = height - 200;
     this.gunAppear = false;
-    }
+  }
 
 
   display() {
@@ -95,16 +95,20 @@ class Home5 {
       mouseY > this.glitchHorsey - this.glitchHorse.height / 2 &&
       mouseY < this.glitchHorsey + this.glitchHorse.height / 2) {
       // hides the pop up parchemin
+      this.glitchHorsex = 2000;
+      this.glitchHorsey = 2000;
       this.hideFlask();
       this.hidePopUp();
+      // set time outs leading to finale
       setTimeout(this.toggleCuredHorse.bind(this), 50);
       setTimeout(this.toggleBoss1.bind(this), 29000);
       setTimeout(this.toggleBoss2.bind(this), 29000);
-      setTimeout(this.toggleGun.bind(this), 32000);
-      setTimeout(this.hideCuredHorse.bind(this), 33000);
-      setTimeout(this.hideCuredHorse.bind(this), 33000);
-      setTimeout(function(){currentState = new Home6(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, screamingHorse, boss1, boss2, gun)
-}, 33000);
+      setTimeout(this.toggleGun.bind(this), 38000);
+      setTimeout(this.hideCuredHorse.bind(this), 39000);
+      // final boss scene
+      setTimeout(function() {
+        currentState = new Home6(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, screamingHorse, boss1, boss2, gun, boss11, boss22, bullet)
+      }, 39500);
 
 
     }
@@ -151,17 +155,19 @@ class Home5 {
     isanybodythereSFX.stop();
     ghostSFX.stop();
     curedSFX.play();
+    bgGlitchSFX.stop();
     // setTimeout(this.hidePopUp.bind(this), 6000);
   }
 
   hideCuredHorse() {
     this.curedHorseAppear = false;
+    killSFX.play();
     // guitarMusic.loop();
     // isanybodythereSFX.stop();
 
   }
 
-// BOSS 1 APPEAR / DISAPPEAR
+  // BOSS 1 APPEAR / DISAPPEAR
 
   displayBoss1() {
     push();
@@ -188,7 +194,6 @@ class Home5 {
   }
 
   // BOSS 2 APPEAR / DISAPPEAR
-
   displayBoss2() {
     push();
     imageMode(CENTER);
@@ -198,19 +203,13 @@ class Home5 {
 
   toggleBoss2() {
     this.boss2Appear = true;
-    // guitarMusic.stop();
-    // isanybodythereSFX.loop();
-    // setTimeout(this.hidePopUp.bind(this), 6000);
   }
 
   hideBoss2() {
     this.boss2Appear = false;
-    // guitarMusic.loop();
-    // isanybodythereSFX.stop();
   }
 
   // GUN APPEAR
-
   displayGun() {
     push();
     imageMode(CENTER);
@@ -220,14 +219,16 @@ class Home5 {
 
   toggleGun() {
     this.gunAppear = true;
-    // guitarMusic.stop();
-    // isanybodythereSFX.loop();
-    // setTimeout(this.hidePopUp.bind(this), 6000);
+    gunSFX.play();
   }
 
   hideGun() {
     this.gunAppear = false;
-    // guitarMusic.loop();
-    // isanybodythereSFX.stop();
   }
+
+  keyTyped(){
+  }
+  KeyPressed(){
+  }
+  
 }

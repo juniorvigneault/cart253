@@ -1,12 +1,11 @@
 class Achievements2 {
 
   constructor(achievementsBg2, homeIcon, parchemin1, parchemin2, close, cursor) {
+
+    // page template background dark
     this.achievementsBg = achievementsBg2;
     this.achievementsBgx = 0;
     this.achievementsBgy = 0;
-
-    // checking if the page has been visited
-    this.achievementsChecked = false;
 
     // home icon
     this.homeIcon = homeIcon;
@@ -18,28 +17,30 @@ class Achievements2 {
     this.parchemin1x = width / 2;
     this.parchemin1y = height / 2;
     this.parchemin1Display = true;
-    // opened secret journal
+
+    // opened secret parchemin with password and info
     this.parchemin2 = parchemin2;
     this.parchemin2x = width / 2;
     this.parchemin2y = height / 2;
     this.parchemin2PopUp = false;
-    // close Button
+    // close Button in parchemin
     this.close = close;
-    this.closex = width / 2 * 0.7
-    this.closey = height / 2 * 1.5
+    this.closex = 650;
+    this.closey = 290;
 
-    // cursor
+    // hand cursor
     this.cursor = cursor;
     this.cursorx = 0;
     this.cursory = 0;
   }
 
-  // display background
+  // display background template, home icon, cursor and parchemin (opened and closed)
   display() {
     push();
     image(this.achievementsBg, this.achievementsBgx, this.achievementsBgy);
     pop();
 
+    // home
     push();
     imageMode(CENTER);
     image(this.homeIcon, this.homeIconx, this.homeIcony);
@@ -70,14 +71,16 @@ class Achievements2 {
     pop();
   }
 
+
   mousePressed() {
     if (mouseX > this.homeIconx - this.homeIcon.width / 2 &&
       mouseX < this.homeIconx + this.homeIcon.width / 2 &&
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
       // current state definition
-      currentState = new Home7(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, screamingHorse, cursor);
+      currentState = new Home7(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, screamingHorse, cursor);
       satanSFX.stop();
+      clickSFX.play();
     }
 
     // clicking on the closed parchemin opens the opened version with sound effect
@@ -98,9 +101,11 @@ class Achievements2 {
       mouseY < this.closey + this.close.height / 2) {
       // hides the pop up parchemin
       this.hidePopUp();
+      clickSFX.play();
     }
   }
 
+  // display closed parchemin
   displayParchemin1() {
     push();
     imageMode(CENTER);
@@ -131,5 +136,10 @@ class Achievements2 {
   hidePopUp() {
     this.parchemin2PopUp = false;
     parchemin2SFX.play();
+  }
+  
+  keyTyped(){
+  }
+  KeyPressed(){
   }
 }

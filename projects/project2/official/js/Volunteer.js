@@ -1,6 +1,7 @@
 class Volunteer {
 
   constructor(volunteerBg, homeIcon, glitchHorse, cursor) {
+
     this.volunteerBg = volunteerBg
     this.volunteerBgx = 0;
     this.volunteerBgy = 0;
@@ -60,7 +61,7 @@ class Volunteer {
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
 
-        // sets timer for glitchy pop up
+      // sets timer for glitchy pop up
       setTimeout(this.togglePopUp.bind(this), 500);
       clickSFX.play();
     }
@@ -87,4 +88,10 @@ class Volunteer {
     stabSFX.play();
     currentState = new Volunteer2(volunteerBg, homeIcon, cursor);
   }
+
+  keyTyped(){
+  }
+  KeyPressed(){
+  }
+  
 }

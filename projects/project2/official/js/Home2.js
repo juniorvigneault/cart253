@@ -125,7 +125,8 @@ class Home2 {
       mouseY < this.closey + this.close.height / 2) {
       // hides the pop up parchemin
       this.hidePopUp();
-      currentState = new Home3(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, screamingHorse, cursor);
+      currentState = new Home3(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, screamingHorse, cursor);
+      clickSFX.play();
     }
   }
 
@@ -139,7 +140,6 @@ class Home2 {
   hidejournal1() {
     this.journal1Display = false;
   }
-
 
   // secret journal pop up
   // display
@@ -160,6 +160,11 @@ class Home2 {
   hidePopUp() {
     this.journal2PopUp = false;
     parchemin2SFX.play();
+  }
+
+  keyTyped(){
+  }
+  KeyPressed(){
   }
 
 }
