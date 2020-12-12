@@ -1,6 +1,7 @@
 class OurMission5 {
 
   constructor(ourMissionBg2, homeIcon, cursor) {
+
     this.ourMission2Bg = ourMissionBg2;
     this.ourMission2Bgx = 0;
     this.ourMission2Bgy = 0;
@@ -48,10 +49,16 @@ class OurMission5 {
       mouseX < this.homeIconx + this.homeIcon.width / 2 &&
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
-        // sets timer for glitchy pop up
+      // sets timer for glitchy pop up
       clickSFX.play();
       currentState = new Home5(glitchHorse, flask1, curedHorse, boss1, boss2, gun);
       isanybodythereSFX.loop();
     }
-}
+  }
+
+  keyTyped(){
+  }
+  KeyPressed(){
+  }
+  
 }

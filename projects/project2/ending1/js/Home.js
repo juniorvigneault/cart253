@@ -122,4 +122,10 @@ class Home {
       clickSFX.play();
     }
   }
+
+  keyTyped(){
+  }
+  KeyPressed(){
+  }
+  
 }

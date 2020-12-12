@@ -1,6 +1,7 @@
 class OurMission {
 
   constructor(ourMissionBg, homeIcon, cursor) {
+
     this.ourMissionBg = ourMissionBg;
     this.ourMissionBgx = 0;
     this.ourMissionBgy = 0;
@@ -57,4 +58,10 @@ class OurMission {
       clickSFX.play();
     }
   }
+
+  keyTyped(){
+  }
+  KeyPressed(){
+  }
+  
 }

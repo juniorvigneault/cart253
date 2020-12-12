@@ -23,9 +23,9 @@ class Enter {
     push();
     imageMode(CENTER);
     background(255);
-    // collage
+    // enter text
     image(this.enterCollage, this.enterCollagex, this.enterCollagey);
-    //enter gif
+    // runing horse small gif
     image(this.enterGif, this.enterGifx, this.enterGify, this.enterGifWidth, this.enterGifHeight);
     pop();
 
@@ -42,6 +42,7 @@ class Enter {
     this.display();
   }
 
+  // press enter to access home
   mousePressed() {
     if (mouseX > this.enterGifx - this.enterGif.width / 2 &&
       mouseX < this.enterGifx + this.enterGif.width / 2 &&
@@ -49,6 +50,7 @@ class Enter {
       mouseY < this.enterGify + this.enterGif.height / 2) {
 
       // current state definition
+      // currentState = new TheEnd();
       // currentState = new Home4(homePageImage2, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, screamingHorse, cursor);
       // currentState = new OurMission3(ourMission2Bg, homeIcon, horseGhost, close, flask1, ghostCaught)
       // currentState = new OurMission2(ourMission2Bg, homeIcon, horseGhost, wanderingInfo, close, cursor, glitchHorse)
@@ -62,4 +64,10 @@ class Enter {
       // darkSFX.loop();
     }
   }
+
+  keyTyped(){
+  }
+  KeyPressed(){
+  }
+
 }

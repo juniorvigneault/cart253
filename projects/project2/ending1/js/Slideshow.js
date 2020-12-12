@@ -1,5 +1,5 @@
 class Slideshow {
-// class displaying the slideshow of images in home page
+  // class displaying the slideshow of images in home page
   constructor(slideshowImages) {
 
     // Array to store the slideshow images to display
@@ -34,8 +34,14 @@ class Slideshow {
     pop();
   }
 
-  startSlideshow(){
+  startSlideshow() {
     // Start our slideshow timer, it will call the changeImage function every 1 second
     this.slideshowTimer = setInterval(this.changeImage.bind(this), 2000);
   }
+
+  keyTyped(){
+  }
+  KeyPressed(){
+  }
+  
 }

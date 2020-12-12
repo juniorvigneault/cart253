@@ -141,7 +141,6 @@ class Home2 {
     this.journal1Display = false;
   }
 
-
   // secret journal pop up
   // display
   displayPopUp() {
@@ -161,6 +160,11 @@ class Home2 {
   hidePopUp() {
     this.journal2PopUp = false;
     parchemin2SFX.play();
+  }
+
+  keyTyped(){
+  }
+  KeyPressed(){
   }
 
 }

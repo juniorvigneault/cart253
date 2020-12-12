@@ -1,12 +1,11 @@
 class Caring3 {
 
   constructor(caringBg2, homeIcon, cursor) {
+
+    // page template background
     this.caringBg = caringBg2;
     this.caringBgx = 0;
     this.caringBgy = 0;
-
-    // checking if the user visited the caring page
-    this.caringChecked = false;
 
     // home icon
     this.homeIcon = homeIcon;
@@ -19,7 +18,7 @@ class Caring3 {
     this.cursory = 0;
   }
 
-  // display background
+  // display background template and home icon and cursor
   display() {
     push();
     image(this.caringBg, this.caringBgx, this.caringBgy);
@@ -44,6 +43,7 @@ class Caring3 {
     pop();
   }
 
+  // home icon to home 4 screen
   mousePressed() {
     if (mouseX > this.homeIconx - this.homeIcon.width / 2 &&
       mouseX < this.homeIconx + this.homeIcon.width / 2 &&
@@ -54,4 +54,10 @@ class Caring3 {
       clickSFX.play();
     }
   }
+
+  keyTyped(){
+  }
+  KeyPressed(){
+  }
+  
 }

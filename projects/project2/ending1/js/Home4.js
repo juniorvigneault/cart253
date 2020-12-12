@@ -82,71 +82,77 @@ class Home4 {
     pop();
   }
 
-    draw() {
-      push();
-      // drawing background and website template image
-      background(this.background2);
-      this.display();
-      pop();
+  draw() {
+    push();
+    // drawing background and website template image
+    background(this.background2);
+    this.display();
+    pop();
+  }
+
+  mousePressed() {
+    // clicking on our mission in the menu opens the our mission page
+    if (mouseX > this.ourMissionMenux - this.ourMissionMenu.width / 2 &&
+      mouseX < this.ourMissionMenux + this.ourMissionMenu.width / 2 &&
+      mouseY > this.ourMissionMenuy - this.ourMissionMenu.height / 2 &&
+      mouseY < this.ourMissionMenuy + this.ourMissionMenu.height / 2) {
+      // current state definition
+      currentState = new OurMission3(ourMission2Bg, homeIcon, horseGhost, close, flask1, ghostCaught, cursor);
+      clickSFX.play();
     }
 
-    mousePressed() {
-      // clicking on our mission in the menu opens the our mission page
-      if (mouseX > this.ourMissionMenux - this.ourMissionMenu.width / 2 &&
-        mouseX < this.ourMissionMenux + this.ourMissionMenu.width / 2 &&
-        mouseY > this.ourMissionMenuy - this.ourMissionMenu.height / 2 &&
-        mouseY < this.ourMissionMenuy + this.ourMissionMenu.height / 2) {
-        // current state definition
-        currentState = new OurMission3(ourMission2Bg, homeIcon, horseGhost, close, flask1, ghostCaught, cursor);
-        clickSFX.play();
-      }
-
-      // clicking on caring in the menu opens the caring page
-      if (mouseX > this.caringMenux - this.caringMenu.width / 2 &&
-        mouseX < this.caringMenux + this.caringMenu.width / 2 &&
-        mouseY > this.caringMenuy - this.caringMenu.height / 2 &&
-        mouseY < this.caringMenuy + this.caringMenu.height / 2) {
-        // current state definition
-        currentState = new Caring3(caringBg2, homeIcon, cursor);
-        clickSFX.play();
-      }
-
-      // clicking on achievements in the menu opens the achievements page
-      if (mouseX > this.achievementsMenux - this.achievementsMenu.width / 2 &&
-        mouseX < this.achievementsMenux + this.achievementsMenu.width / 2 &&
-        mouseY > this.achievementsMenuy - this.achievementsMenu.height / 2 &&
-        mouseY < this.achievementsMenuy + this.achievementsMenu.height / 2) {
-        // current state definition
-        currentState = new Achievements3(achievementsBg2, homeIcon, cursor);
-        clickSFX.play();
-      }
-
-      // clicking on volunteer in the menu opens the volunteer page
-      if (mouseX > this.volunteerMenux - this.volunteerMenu.width / 2 &&
-        mouseX < this.volunteerMenux + this.volunteerMenu.width / 2 &&
-        mouseY > this.volunteerMenuy - this.volunteerMenu.height / 2 &&
-        mouseY < this.volunteerMenuy + this.volunteerMenu.height / 2) {
-        // Make horse scream
-        setTimeout(this.togglePopUp.bind(this), 100);
-        screamSFX.play();
-        clickSFX.play();   
-      }
+    // clicking on caring in the menu opens the caring page
+    if (mouseX > this.caringMenux - this.caringMenu.width / 2 &&
+      mouseX < this.caringMenux + this.caringMenu.width / 2 &&
+      mouseY > this.caringMenuy - this.caringMenu.height / 2 &&
+      mouseY < this.caringMenuy + this.caringMenu.height / 2) {
+      // current state definition
+      currentState = new Caring3(caringBg2, homeIcon, cursor);
+      clickSFX.play();
     }
 
-    displayPopUp() {
-      push();
-      imageMode(CENTER);
-      image(this.screamingHorse, this.screamingHorsex, this.screamingHorsey);
-      pop();
+    // clicking on achievements in the menu opens the achievements page
+    if (mouseX > this.achievementsMenux - this.achievementsMenu.width / 2 &&
+      mouseX < this.achievementsMenux + this.achievementsMenu.width / 2 &&
+      mouseY > this.achievementsMenuy - this.achievementsMenu.height / 2 &&
+      mouseY < this.achievementsMenuy + this.achievementsMenu.height / 2) {
+      // current state definition
+      currentState = new Achievements3(achievementsBg2, homeIcon, cursor);
+      clickSFX.play();
     }
 
-    togglePopUp() {
-      this.screamingHorseAppear = true;
-      setTimeout(this.hidePopUp.bind(this), 400);
-    }
-
-    hidePopUp() {
-      this.screamingHorseAppear = false;
-      screamSFX.stop();
+    // clicking on volunteer in the menu opens the volunteer page
+    if (mouseX > this.volunteerMenux - this.volunteerMenu.width / 2 &&
+      mouseX < this.volunteerMenux + this.volunteerMenu.width / 2 &&
+      mouseY > this.volunteerMenuy - this.volunteerMenu.height / 2 &&
+      mouseY < this.volunteerMenuy + this.volunteerMenu.height / 2) {
+      // Make horse scream
+      setTimeout(this.togglePopUp.bind(this), 100);
+      screamSFX.play();
+      clickSFX.play();
     }
   }
+
+  displayPopUp() {
+    push();
+    imageMode(CENTER);
+    image(this.screamingHorse, this.screamingHorsex, this.screamingHorsey);
+    pop();
+  }
+
+  togglePopUp() {
+    this.screamingHorseAppear = true;
+    setTimeout(this.hidePopUp.bind(this), 400);
+  }
+
+  hidePopUp() {
+    this.screamingHorseAppear = false;
+    screamSFX.stop();
+  }
+
+  keyTyped(){
+  }
+  KeyPressed(){
+  }
+  
+}

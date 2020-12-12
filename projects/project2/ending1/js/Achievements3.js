@@ -1,6 +1,8 @@
 class Achievements3 {
 
   constructor(achievementsBg2, homeIcon, cursor) {
+
+    // page template background happy
     this.achievementsBg = achievementsBg2;
     this.achievementsBgx = 0;
     this.achievementsBgy = 0;
@@ -19,12 +21,13 @@ class Achievements3 {
     this.cursory = 0;
   }
 
-  // display background
+  // display background template, home icon and hand cursor
   display() {
     push();
     image(this.achievementsBg, this.achievementsBgx, this.achievementsBgy);
     pop();
 
+    // display home icon
     push();
     imageMode(CENTER);
     image(this.homeIcon, this.homeIconx, this.homeIcony);
@@ -55,5 +58,10 @@ class Achievements3 {
       currentState = new Home4(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, screamingHorse, cursor);
       clickSFX.play();
     }
+  }
+
+  keyTyped(){
+  }
+  KeyPressed(){
   }
 }

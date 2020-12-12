@@ -167,8 +167,7 @@ class Home6 {
     if (this.boss1Lives === 2) {
       imageMode(CENTER);
       image(this.boss1, this.boss1x, this.boss1y);
-    }
-     else if (this.boss1Lives === 1) {
+    } else if (this.boss1Lives === 1) {
       image(this.boss11, this.boss1x, this.boss1y);
     }
     pop();
@@ -185,14 +184,13 @@ class Home6 {
 
   displayBoss2() {
     push();
-  imageMode(CENTER);
-  if(this.boss2Lives === 2){
-    image(this.boss2, this.boss2x, this.boss2y);
-  }
-  else if (this.boss2Lives === 1){
-    image(this.boss22, this.boss2x, this.boss2y);
-  }
-  pop();
+    imageMode(CENTER);
+    if (this.boss2Lives === 2) {
+      image(this.boss2, this.boss2x, this.boss2y);
+    } else if (this.boss2Lives === 1) {
+      image(this.boss22, this.boss2x, this.boss2y);
+    }
+    pop();
   }
 
 
@@ -279,8 +277,8 @@ class Home6 {
       this.boss1Lives -= 1;
       this.boss1Speed = 50;
       if (this.boss1Lives === 0 && this.boss2Lives === 0) {
-      killSFX.stop();
-      currentState = new TheEnd();
+        killSFX.stop();
+        currentState = new TheEnd();
       }
     }
 
@@ -293,8 +291,8 @@ class Home6 {
       // boss 2 disappear
       this.boss2Lives -= 1;
       if (this.boss2Lives === 0 && this.boss1Lives === 0) {
-      killSFX.stop();
-      currentState = new TheEnd();
+        killSFX.stop();
+        currentState = new TheEnd();
       }
     }
   }
@@ -308,9 +306,9 @@ class Home6 {
     }
   }
 
-  // ending(){
-  //   if(this.boss1Lives === 0 && this.boss2lives === 0) {
-  //     currentState = new TheEnd();
-  //   }
-  // }
+  keyTyped(){
+  }
+  KeyPressed(){
+  }
+
 }

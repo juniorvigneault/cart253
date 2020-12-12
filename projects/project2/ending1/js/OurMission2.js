@@ -1,6 +1,7 @@
 class OurMission2 {
 
   constructor(ourMissionBg2, homeIcon, horseGhost, wanderingInfo, close, cursor, glitchHorse) {
+
     this.ourMission2Bg = ourMissionBg2;
     this.ourMission2Bgx = 0;
     this.ourMission2Bgy = 0;
@@ -28,8 +29,8 @@ class OurMission2 {
 
     // wandering soul pop up
     this.wanderingInfo = wanderingInfo;
-    this.wanderingInfox = width/2;
-    this.wanderingInfoy = height/2;
+    this.wanderingInfox = width / 2;
+    this.wanderingInfoy = height / 2;
     this.wanderingInfoAppear = false;
     // // close button
     this.close = close;
@@ -89,7 +90,7 @@ class OurMission2 {
       mouseX < this.homeIconx + this.homeIcon.width / 2 &&
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
-        // sets timer for glitchy pop up
+      // sets timer for glitchy pop up
       setTimeout(this.toggleGlitch.bind(this), 50);
       clickSFX.play();
     }
@@ -104,23 +105,23 @@ class OurMission2 {
       ghostSFX.play();
     }
 
-  // clicking on close in opened journal hides the pop up
-  if (mouseX > this.closex - this.close.width / 2 &&
-    mouseX < this.closex + this.close.width / 2 &&
-    mouseY > this.closey - this.close.height / 2 &&
-    mouseY < this.closey + this.close.height / 2) {
-    // hides the pop up parchemin
-    this.hidePopUp();
-    clickSFX.play();
+    // clicking on close in opened journal hides the pop up
+    if (mouseX > this.closex - this.close.width / 2 &&
+      mouseX < this.closex + this.close.width / 2 &&
+      mouseY > this.closey - this.close.height / 2 &&
+      mouseY < this.closey + this.close.height / 2) {
+      // hides the pop up parchemin
+      this.hidePopUp();
+      clickSFX.play();
+    }
   }
-}
 
   displayGhost() {
     push();
     imageMode(CENTER);
     image(this.horseGhost, this.horseGhostx, this.horseGhosty);
     pop();
-    }
+  }
 
   moveGhost() {
     this.changeDirection = random();
@@ -132,56 +133,59 @@ class OurMission2 {
     this.horseGhosty = this.horseGhosty + this.horseGhostvy;
   }
 
-  wrapGhost(){
-      if (this.horseGhostx > width) {
-        this.horseGhostx -= width;
-      }
-      else if (this.horseGhostx < 0) {
-        this.horseGhostx += width;
-      }
-      else if (this.horseGhosty > width) {
-        this.horseGhosty -= width;
-      }
-      else if (this.horseGhosty < 0) {
-        this.horseGhosty += width;
-      }
+  wrapGhost() {
+    if (this.horseGhostx > width) {
+      this.horseGhostx -= width;
+    } else if (this.horseGhostx < 0) {
+      this.horseGhostx += width;
+    } else if (this.horseGhosty > width) {
+      this.horseGhosty -= width;
+    } else if (this.horseGhosty < 0) {
+      this.horseGhosty += width;
     }
+  }
 
-    displayPopUp() {
-      push();
-      imageMode(CENTER);
-      image(this.wanderingInfo, this.wanderingInfox, this.wanderingInfoy);
-      image(this.close, this.closex, this.closey);
-      pop();
-    }
+  displayPopUp() {
+    push();
+    imageMode(CENTER);
+    image(this.wanderingInfo, this.wanderingInfox, this.wanderingInfoy);
+    image(this.close, this.closex, this.closey);
+    pop();
+  }
 
-    togglePopUp() {
-      this.wanderingInfoAppear = true;
-    }
+  togglePopUp() {
+    this.wanderingInfoAppear = true;
+  }
 
-    hidePopUp() {
-      this.wanderingInfoAppear = false;
-    }
+  hidePopUp() {
+    this.wanderingInfoAppear = false;
+  }
 
-    displayGlitch() {
-      push();
-      imageMode(CENTER);
-      image(this.glitchHorse, this.glitchHorsex, this.glitchHorsey);
-      pop();
-    }
+  displayGlitch() {
+    push();
+    imageMode(CENTER);
+    image(this.glitchHorse, this.glitchHorsex, this.glitchHorsey);
+    pop();
+  }
 
-    toggleGlitch() {
-      this.horsePopUp = true;
-      findSoulSFX.loop();
-      setTimeout(this.hideGlitch.bind(this), 6000);
-    }
+  toggleGlitch() {
+    this.horsePopUp = true;
+    findSoulSFX.loop();
+    setTimeout(this.hideGlitch.bind(this), 6000);
+  }
 
-    hideGlitch() {
-      this.horsePopUp = false;
-      // guitarMusic.loop();
-      findSoulSFX.stop();
-      stabSFX.play();
-      // current state definition
-      currentState = new OurMission4(ourMission2Bg, homeIcon, horseGhost, wanderingInfo, close, cursor);
-     }
+  hideGlitch() {
+    this.horsePopUp = false;
+    // guitarMusic.loop();
+    findSoulSFX.stop();
+    stabSFX.play();
+    // current state definition
+    currentState = new OurMission4(ourMission2Bg, homeIcon, horseGhost, wanderingInfo, close, cursor);
+  }
+
+  keyTyped(){
+  }
+  KeyPressed(){
+  }
+  
 }

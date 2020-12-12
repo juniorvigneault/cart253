@@ -1,6 +1,7 @@
 class OurMission4 {
 
   constructor(ourMissionBg2, homeIcon, horseGhost, wanderingInfo, close, cursor) {
+
     this.ourMission2Bg = ourMissionBg2;
     this.ourMission2Bgx = 0;
     this.ourMission2Bgy = 0;
@@ -28,8 +29,8 @@ class OurMission4 {
 
     // wandering soul pop up
     this.wanderingInfo = wanderingInfo;
-    this.wanderingInfox = width/2;
-    this.wanderingInfoy = height/2;
+    this.wanderingInfox = width / 2;
+    this.wanderingInfoy = height / 2;
     this.wanderingInfoAppear = false;
 
     // // close button
@@ -100,16 +101,16 @@ class OurMission4 {
       ghostSFX.play();
     }
 
-  // clicking on close in opened journal hides the pop up
-  if (mouseX > this.closex - this.close.width / 2 &&
-    mouseX < this.closex + this.close.width / 2 &&
-    mouseY > this.closey - this.close.height / 2 &&
-    mouseY < this.closey + this.close.height / 2) {
-    // hides the pop up parchemin
-    this.hidePopUp();
-    clickSFX.play();
+    // clicking on close in opened journal hides the pop up
+    if (mouseX > this.closex - this.close.width / 2 &&
+      mouseX < this.closex + this.close.width / 2 &&
+      mouseY > this.closey - this.close.height / 2 &&
+      mouseY < this.closey + this.close.height / 2) {
+      // hides the pop up parchemin
+      this.hidePopUp();
+      clickSFX.play();
+    }
   }
-}
 
   displayGhost() {
 
@@ -130,7 +131,7 @@ class OurMission4 {
     // this.newTrailPosition.y = this.horseGhosty;
     //
     // this.ghostTrail.push(newTrailPosition);
-    }
+  }
 
   moveGhost() {
     this.changeDirection = random();
@@ -142,34 +143,37 @@ class OurMission4 {
     this.horseGhosty = this.horseGhosty + this.horseGhostvy;
   }
 
-  wrapGhost(){
-      if (this.horseGhostx > width) {
-        this.horseGhostx -= width;
-      }
-      else if (this.horseGhostx < 0) {
-        this.horseGhostx += width;
-      }
-      else if (this.horseGhosty > width) {
-        this.horseGhosty -= width;
-      }
-      else if (this.horseGhosty < 0) {
-        this.horseGhosty += width;
-      }
+  wrapGhost() {
+    if (this.horseGhostx > width) {
+      this.horseGhostx -= width;
+    } else if (this.horseGhostx < 0) {
+      this.horseGhostx += width;
+    } else if (this.horseGhosty > width) {
+      this.horseGhosty -= width;
+    } else if (this.horseGhosty < 0) {
+      this.horseGhosty += width;
     }
+  }
 
-    displayPopUp() {
-      push();
-      imageMode(CENTER);
-      image(this.wanderingInfo, this.wanderingInfox, this.wanderingInfoy);
-      image(this.close, this.closex, this.closey);
-      pop();
-    }
+  displayPopUp() {
+    push();
+    imageMode(CENTER);
+    image(this.wanderingInfo, this.wanderingInfox, this.wanderingInfoy);
+    image(this.close, this.closex, this.closey);
+    pop();
+  }
 
-    togglePopUp() {
-      this.wanderingInfoAppear = true;
-    }
+  togglePopUp() {
+    this.wanderingInfoAppear = true;
+  }
 
-    hidePopUp() {
-      this.wanderingInfoAppear = false;
-    }
+  hidePopUp() {
+    this.wanderingInfoAppear = false;
+  }
+
+  keyTyped(){
+  }
+  KeyPressed(){
+  }
+  
 }

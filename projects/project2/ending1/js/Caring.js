@@ -1,12 +1,11 @@
 class Caring {
 
   constructor(caringBg, homeIcon, cursor){
+
+    // page template background happy
     this.caringBg = caringBg
     this.caringBgx = 0;
     this.caringBgy = 0;
-
-    // checking if the user visited the caring page
-    this.caringChecked = false;
 
     // home icon
     this.homeIcon = homeIcon;
@@ -19,7 +18,7 @@ class Caring {
     this.cursory = 0;
   }
 
-  // display background
+  // display background template, home icon and hand cursor
   display(){
     push();
     image(this.caringBg, this.caringBgx, this.caringBgy);
@@ -56,5 +55,10 @@ class Caring {
         clickSFX.play();
       }
 
+  }
+
+  keyTyped(){
+  }
+  KeyPressed(){
   }
 }
