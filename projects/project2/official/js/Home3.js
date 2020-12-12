@@ -1,7 +1,7 @@
 class Home3 {
   // class home is the home webpage of horse.com || displays the webpage and different things to click on
 
-  constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse, cursor) {
+  constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, screamingHorse, cursor) {
     // home page background glitch happy/dark
     this.homePage2Imagex = 0;
     this.homePage2Imagey = 0;
@@ -34,9 +34,6 @@ class Home3 {
     this.volunteerMenux = 150;
     this.volunteerMenuy = 600;
 
-    // slideshow 2
-    this.home3Slideshow = new Slideshow(slideshowImages2);
-
     // screaming horse
     this.screamingHorse = screamingHorse;
     this.screamingHorsex = width / 2;
@@ -67,9 +64,6 @@ class Home3 {
     image(this.achievementsMenu, this.achievementsMenux, this.achievementsMenuy);
     image(this.volunteerMenu, this.volunteerMenux, this.volunteerMenuy);
     pop();
-
-    // slideshow dark
-     this.home3Slideshow.display();
 
     // displaying horse screaming
     if (this.screamingHorseAppear) {

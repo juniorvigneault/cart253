@@ -1,7 +1,7 @@
 class Home7 {
   // class home is the home webpage of horse.com || displays the webpage and different things to click on
 
-  constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse, cursor) {
+  constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, screamingHorse, cursor) {
     // home page background glitch happy/dark
     this.homePage2Imagex = 0;
     this.homePage2Imagey = 0;
@@ -34,9 +34,6 @@ class Home7 {
     this.volunteerMenux = 150;
     this.volunteerMenuy = 600;
 
-    // slideshow 2
-    this.home7Slideshow = new Slideshow(slideshowImages2);
-
     // screaming horse
     this.screamingHorse = screamingHorse;
     this.screamingHorsex = width / 2;
@@ -68,8 +65,6 @@ class Home7 {
     image(this.volunteerMenu, this.volunteerMenux, this.volunteerMenuy);
     pop();
 
-    // slideshow dark
-     this.home7Slideshow.display();
 
     // displaying horse screaming
     if (this.screamingHorseAppear) {
@@ -119,7 +114,7 @@ class Home7 {
         mouseY < this.achievementsMenuy + this.achievementsMenu.height / 2) {
         // current state definition
         currentState = new Achievements2(achievementsBg2, homeIcon, parchemin1, parchemin2, close, cursor);
-        satanSFX.loop();
+        satanSFX.loop()
       }
 
       // clicking on volunteer in the menu opens the volunteer page

@@ -76,8 +76,7 @@ class Achievements2 {
       mouseY > this.homeIcony - this.homeIcon.height / 2 &&
       mouseY < this.homeIcony + this.homeIcon.height / 2) {
       // current state definition
-      currentState = new Home7(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse, cursor);
-      currentState.home7Slideshow.startSlideshow();
+      currentState = new Home7(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, screamingHorse, cursor);
       satanSFX.stop();
     }
 

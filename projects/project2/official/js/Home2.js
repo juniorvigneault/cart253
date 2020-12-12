@@ -1,7 +1,7 @@
 class Home2 {
   // class home is the home webpage of horse.com || displays the webpage and different things to click on
 
-  constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, slideshowImages2, journal1, journal2, close, cursor) {
+  constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, journal1, journal2, close, cursor) {
     // home page background glitch happy/dark
     this.homePage2Imagex = 0;
     this.homePage2Imagey = 0;
@@ -34,9 +34,6 @@ class Home2 {
     this.volunteerMenux = 150;
     this.volunteerMenuy = 600;
 
-    // slideshow 2
-    this.home2Slideshow = new Slideshow(slideshowImages2);
-
     // secret journal closed
     this.journal1 = journal1;
     this.journal1x = 500;
@@ -49,7 +46,7 @@ class Home2 {
     this.journal2PopUp = false;
     // close Button
     this.close = close;
-    this.closex = width / 2 * 0.5
+    this.closex = width / 2 * 0.7
     this.closey = height / 2 * 1.5
 
     // cursor
@@ -77,10 +74,6 @@ class Home2 {
     image(this.caringMenu, this.caringMenux, this.caringMenuy);
     image(this.achievementsMenu, this.achievementsMenux, this.achievementsMenuy);
     image(this.volunteerMenu, this.volunteerMenux, this.volunteerMenuy);
-
-
-    // slideshow dark
-     this.home2Slideshow.display();
 
     // Journal clue display
 
@@ -132,8 +125,7 @@ class Home2 {
       mouseY < this.closey + this.close.height / 2) {
       // hides the pop up parchemin
       this.hidePopUp();
-      currentState = new Home3(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, slideshowImages2, screamingHorse, cursor);
-      currentState.home3Slideshow.startSlideshow();
+      currentState = new Home3(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer, screamingHorse, cursor);
     }
   }
 

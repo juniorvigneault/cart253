@@ -33,7 +33,7 @@ class OurMission2 {
     this.wanderingInfoAppear = false;
     // // close button
     this.close = close;
-    this.closex = width / 2 * 0.7
+    this.closex = width / 2 * 0.8
     this.closey = height / 2 * 0.6
 
     // cursor

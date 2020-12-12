@@ -116,6 +116,13 @@ let boss2;
 let boss22;
 let gun;
 
+// final bosses sounds
+let ohnoSFX;
+let ohnomuSFX;
+let gunSFX;
+let bulletSFX;
+let killSFX;
+
 // Slideshow variables
 // Array to store the slideshow images to display
 let slideshowImages = [];
@@ -262,6 +269,15 @@ function preload() {
   boss2 = loadImage(`assets/images/boss2.png`)
   boss22 = loadImage(`assets/images/boss2.gif`)
   gun = loadImage(`assets/images/gun.png`)
+
+  ohnoSFX = loadSound(`assets/sounds/ohno.mp3`);
+  ohnomuSFX = loadSound(`assets/sounds/ohnomu.mp3`);
+  gunSFX = loadSound(`assets/sounds/ohno.mp3`);
+  bulletSFX = loadSound(`assets/sounds/bullet.mp3`);
+  killSFX = loadSound(`assets/sounds/kill.mp3`);
+
+
+
 }
 
 // setup()

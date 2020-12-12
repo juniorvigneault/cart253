@@ -38,7 +38,7 @@ class OurMission3 {
 
     // close button
     this.close = close;
-    this.closex = width / 2 * 0.7
+    this.closex = width / 2 * 0.8
     this.closey = height / 2 * 0.6
   }
 
@@ -95,9 +95,8 @@ class OurMission3 {
     mouseY < this.closey + this.close.height / 2) {
     // hides the pop up parchemin
     this.hidePopUp();
-    currentState = new Home5(homePageImage3, horseDotComGif2, backgroundHorse2, caring, ourMission, achievements, volunteer,  slideshowImages2, screamingHorse, glitchHorse, flask1, curedHorse, boss1, boss2, gun);
+    currentState = new OurMission5(ourMission2Bg, homeIcon, cursor);
     clickSFX.play();
-    isanybodythereSFX.loop();
   }
 }
 
