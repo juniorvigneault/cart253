@@ -7,6 +7,15 @@ class TheEnd {
     this.endvid.play();
   }
 
+  display(){
+  }
+
+  draw(){
+  }
+
+  mousePressed(){
+  }
+
   keyTyped(){
   }
   KeyPressed(){

@@ -9,6 +9,7 @@ class OurMission3 {
     this.homeIcon = homeIcon;
     this.homeIconx = 700;
     this.homeIcony = 800;
+    this.displayIcon = true;
 
     // ghost of horse
     this.horseGhost = horseGhost;
@@ -42,11 +43,6 @@ class OurMission3 {
     image(this.ourMission2Bg, this.ourMission2Bgx, this.ourMission2Bgy);
     pop();
 
-    // home icon display
-    push();
-    imageMode(CENTER);
-    image(this.homeIcon, this.homeIconx, this.homeIcony);
-    pop();
 
     // Ghost pop up display
 
@@ -57,6 +53,10 @@ class OurMission3 {
 
     if (this.flask1Appear) {
       this.displayFlask();
+    }
+
+    if (this.displayIcon) {
+      this.displayHomeIcon();
     }
   }
 
@@ -71,7 +71,7 @@ class OurMission3 {
 
   mousePressed() {
 
-    // clicking on the closed journal opens the opened version with sound effect
+    // clicking on the ghost makes you catch it
     if (mouseX > this.horseGhostx - this.horseGhost.width / 2 &&
       mouseX < this.horseGhostx + this.horseGhost.width / 2 &&
       mouseY > this.horseGhosty - this.horseGhost.height / 2 &&
@@ -79,6 +79,7 @@ class OurMission3 {
       // opens the pop up
       setTimeout(this.togglePopUp.bind(this), 50);
       ghostSFX.play();
+      this.hideIcon();
       // this.hideFlask();
     }
 
@@ -91,6 +92,7 @@ class OurMission3 {
       this.hidePopUp();
       currentState = new OurMission5(ourMission2Bg, homeIcon, cursor);
       clickSFX.play();
+      this.displayHomeIcon();
     }
 
     if (mouseX > this.homeIconx - this.homeIcon.width / 2 &&
@@ -172,9 +174,24 @@ class OurMission3 {
     pop();
   }
 
+  hideIcon() {
+    //move icon so you can't click on it
+    this.homeIconx = 2000;
+    this.homeIcony = 2000;
+    this.displayIcon = false;
+  }
+
+  displayHomeIcon() {
+    // home icon display
+    push();
+    imageMode(CENTER);
+    image(this.homeIcon, this.homeIconx, this.homeIcony);
+    pop();
+  }
+
   keyTyped(){
   }
   KeyPressed(){
   }
-  
+
 }
