@@ -5,6 +5,14 @@ Nonetheless, something feels off.
 
 Who is really horse.com and what could they be possibly hiding under their saddle. Only you has a chance of unfolding their secrets and change the faith of the equestrian world, forever.
 
--
+,
+/,`\
+` | \____\\
+_(      ) \
+\-\~~~_|\  \
+   \ `   \  `
+   `     `
 
-horse.com is a dream turning to NIGHTMARE created to make Pippin Barr laugh. I want to surprise people and fool them and make art that is funky and funny and unique. Art sometimes takes itself too seriously and I'm here to shake it up! I want to tell a well constructed story and create an atmosphere using humour and style. 
+horse.com is a simulation created to make Pippin Barr laugh. The Horse Whisperer meets Mother! by Darren Aronofsky.
+
+Art sometimes takes itself too seriously and I'm here to shake it up! Who doesn't like surprises?
