@@ -1,6 +1,8 @@
 class Home7 {
-  // class home is the home webpage of horse.com || displays the webpage and different things to click on
 
+  // I had help from Dana setting up the boss lives
+
+  // class home is the home webpage of horse.com || displays the webpage and different things to click on
   constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, screamingHorse, cursor) {
     // home page background glitch happy/dark
     this.homePage2Imagex = 0;
@@ -154,5 +156,5 @@ class Home7 {
   }
   KeyPressed(){
   }
-  
+
 }

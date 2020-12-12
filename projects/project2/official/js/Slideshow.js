@@ -1,4 +1,5 @@
 class Slideshow {
+  // Based on an example by Pippin Barr 
   // class displaying the slideshow of images in home page
   constructor(slideshowImages) {
 
@@ -43,5 +44,5 @@ class Slideshow {
   }
   KeyPressed(){
   }
-  
+
 }
