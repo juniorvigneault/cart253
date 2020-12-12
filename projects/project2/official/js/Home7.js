@@ -1,6 +1,6 @@
 class Home7 {
 
-  // I had help from Dana setting up the boss lives
+  // I had help from Dana setting up the boss lives & and based myself of an example by Pippin Barr for the shooting system
 
   // class home is the home webpage of horse.com || displays the webpage and different things to click on
   constructor(image3, gif2, bgImg2, caring, ourMission, achievements, volunteer, screamingHorse, cursor) {
