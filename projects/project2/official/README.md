@@ -7,6 +7,6 @@ Who is really horse.com and what could they be possibly hiding under their saddl
 
 -
 
-horse.com is a simulation created to make Pippin Barr laugh. The Horse Whisperer meets Mother! by Darren Aronofsky.
+horse.com is a simulation created to make Pippin Barr laugh. Think the Horse Whisperer meets Mother! by Darren Aronofsky.
 
 Art sometimes takes itself too seriously and I'm here to shake it up! Who doesn't like surprises?
