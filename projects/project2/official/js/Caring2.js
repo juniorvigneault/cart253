@@ -234,6 +234,9 @@ class Caring2 {
     text(this.currentInput, this.textx, this.texty)
     if (this.unlockButtonAppear) {
       image(this.unlockButton, this.unlockButtonx, this.unlockButtony);
+      // making the user not able to click on home whenn password is written
+      this.homeIconx = 2000;
+      this.homeIcony = 2000;
     }
     pop();
   }
